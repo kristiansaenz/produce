@@ -1,0 +1,41 @@
+//fonts
+$primary-font: helvetica bold;
+$secondary-font: helvetica;
+
+//colors
+$primary-color: #41BA77;
+$secondary-color: #A3D060;
+$card-color: #EBEBEB;
+$font-color: #464646;
+$lite-font-color: #707070;
+$accent-color: #B12020;
+$app-bg: #FFFFFF;
+
+
+.App {
+  margin: 0;
+  padding: 0;
+}
+
+.level img {
+  height: 1.5rem;
+}
+
+.level a {
+  color: $primary-color;
+}
+
+// .card:hover {
+//   background-color: $secondary-color;
+//   color: white;  
+// }
+
+// .card:hover .card-image {
+//   visibility: hidden;
+// }
+
+#filter {
+  background-color: $primary-color;
+  padding: 1rem;
+  color: white;
+}
