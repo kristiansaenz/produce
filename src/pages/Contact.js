@@ -9,7 +9,7 @@ function Contact() {
         <h2 class = "subtitle" >
         4202 Weedlings Dr. < br / >
         Windhelm, Einsedeln 28932 < br / >
-        +5(342) 432 - 2432 </h2> 
+        +5(341) 432 - 2432 </h2> 
         </div> 
         </section>
     )
