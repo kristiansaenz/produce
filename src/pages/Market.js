@@ -18,4 +18,4 @@ function Market() {
 
 export default Market
 
-//Components filterbooths, boothlist will be called here
+//Components boothlist will be called here

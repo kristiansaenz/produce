@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../logo.svg';
+import logo from '../images/logo.svg';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 

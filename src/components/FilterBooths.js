@@ -1,5 +1,5 @@
 import React from 'react'
-import FilterButton from '../filterbutton.svg'
+import FilterButton from '../images/filterbutton.svg'
 
 
 class FilterBooths extends React.Component {
