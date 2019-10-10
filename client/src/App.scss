@@ -34,8 +34,21 @@ $app-bg: #FFFFFF;
 //   visibility: hidden;
 // }
 
+.login-form, .contact-form {
+  background: $primary-color;
+  padding: 3rem 2rem;
+  border-radius: .3rem;
+  color: white;
+}
+
 #filter {
   background-color: $primary-color;
   padding: 1rem;
   color: white;
+  border-radius: .2rem;
+}
+
+.button-area {
+  text-align: center;
+  padding-top: 1rem;
 }

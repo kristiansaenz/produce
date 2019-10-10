@@ -1,14 +1,14 @@
 import React from 'react'
-import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
 
 
-function Login() {
+function Signup() {
     return(
         <section class="section is-small">
         <div class="container">
-            <h1 class="title">Login</h1>
+            <h1 class="title">Sign Up</h1>
             <h2 class="subtitle">
-                Here you can login/signup to become a farmer & create your booth!
+                Here you can sign up to become a farmer & create your booth!
             </h2>
         </div>
 
@@ -16,7 +16,7 @@ function Login() {
         <div class="hero-body">
             <div class="columns is-centered">
             <div class="column is-one-third">
-                <LoginForm />
+                <SignupForm />
             </div>
             </div>
         </div>
@@ -25,4 +25,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Signup
