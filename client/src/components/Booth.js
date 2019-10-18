@@ -14,8 +14,11 @@ class Booth extends React.Component {
                 </div>
                 <div class="card-content">
                     <div class="content">
+                    <div class="subtitle"> Ispum Lorem Farm </div>
+                    <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
+                    </p>
                     <br/>
                     <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                     </div>
