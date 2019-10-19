@@ -1,16 +1,11 @@
 const FarmerModel = require('../models/farmer.js')
 
-const userInfo ={
-  name: "Jason",
-  email: "jason@123.com"
-}
-
 module.exports = {
   list: function(req, res) {
     FarmerModel.find(function(err, Farmers) {
       if (err) {
         return res.status(500).json({
-          message: "Error when getting Farmers.",
+          message: 'Error when getting Farmers.',
           error: err
         });
       }

@@ -6,25 +6,25 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function Header() {
     return(
-        <section class="hero">
-        <div class="hero-body">
-            <nav class="level">
-                <div class="level-left">
-                    <div class="level-item">
-                    <p class="subtitle is-5">
+        <section className="hero">
+        <div className="hero-body">
+            <nav className="level">
+                <div className="level-left">
+                    <div className="level-item">
+                    <p className="subtitle is-5">
                         <Link to="/"><strong>Produce</strong></Link>
                     </p>
                     </div>
-                    <div class='level-item'>
+                    <div className='level-item'>
                         <img src={logo}></img>
                     </div>
                 </div>
 
-                <div class="level-right">
-                    <p class="level-item"><a><Link to="/about">About</Link></a></p>
-                    <p class="level-item"><a><Link to="/market">Market</Link></a></p>
-                    <p class="level-item"><a><Link to="/login">Login</Link></a></p>
-                    <p class="level-item"><a><Link to="/contact">Contact</Link></a></p>
+                <div className="level-right">
+                    <p className="level-item"><a><Link to="/about">About</Link></a></p>
+                    <p className="level-item"><a><Link to="/market">Market</Link></a></p>
+                    <p className="level-item"><a><Link to="/login">Login</Link></a></p>
+                    <p className="level-item"><a><Link to="/contact">Contact</Link></a></p>
                 </div>
             </nav>
         </div>
