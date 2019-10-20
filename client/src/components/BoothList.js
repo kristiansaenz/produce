@@ -7,21 +7,32 @@ function BoothList(){
 
   const [farmers, setFarmers] = React.useState([]);
 
-  React.useEffect(() => {
-    axios.get('/farmers')
-      .then(res => {
-        filterData(res.data)
-      })
-  })
-
-  let filterData = (farmersList) => {
-    for(let i = 0; i < farmersList.length; i++) {
-       console.log(farmersList[i]);
-    }
-    //console.log(farmers);
-  }
+    React.useEffect(() => {
+      const fetchData = async () => {
+        const result = await axios.get('/farmers')
+        setFarmers(result.data);
+      };
+      fetchData();
+    }, []);
 
     return(
+      <div>
+        <FilterBooths />
+        <div className="columns is-mobile">
+        {farmers.map(c => (
+          <div>
+            -{c.name}
+            <Booth />
+          </div>
+        ))}
+        </div>
+      </div>
+    )
+  }
+
+
+
+    //return(
         // <div>
         //     <FilterBooths />
         //     <div className="columns is-mobile">
@@ -32,9 +43,7 @@ function BoothList(){
         //         <Booth />
         //     </div>
         // </div>
-        <div>Hello {farmers}</div>
-    )
-  }
+
 // BoothList = {
 //     booths: propTypes.array.isRequired
 // }
