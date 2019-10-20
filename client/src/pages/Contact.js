@@ -3,7 +3,7 @@ import ContactForm from '../components/ContactForm'
 
 
 function Contact() {
-    return ( 
+    return (
         <section class = "section is-small">
             <div class = "container">
             <h1 class = "title">Contact</h1> 
@@ -23,9 +23,6 @@ function Contact() {
                 </div>
                 </div>
             </div>
-        </section>
-
-
         </section>
     )
 }

@@ -18,7 +18,11 @@ module.exports = {
       name: req.body.name,
       email: req.body.email
     })
+<<<<<<< HEAD
+    Farmer.save(userInfo, function(err, result) {
+=======
     Farmer.save(Farmer, function(err, result) {
+>>>>>>> ed86dc95ac6f9665635418d53b1c236f2a5df999
       if(err) throw err;
       if(result) console.log('INSERTED SUCCESSFULLY')
       return res.json(Farmer)

@@ -30,22 +30,4 @@ function BoothList(){
     )
   }
 
-
-
-    //return(
-        // <div>
-        //     <FilterBooths />
-        //     <div className="columns is-mobile">
-        //         <Booth />
-        //         <Booth />
-        //         <Booth />
-        //         <Booth />
-        //         <Booth />
-        //     </div>
-        // </div>
-
-// BoothList = {
-//     booths: propTypes.array.isRequired
-// }
-
 export default BoothList;
