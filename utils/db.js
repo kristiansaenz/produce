@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const uri = 'mongodb://ryanjalufka:kijut123@ds331558.mlab.com:31558/produce';
+const LOCAL_MONGO_URI = require("./keys").LOCAL_MONGO_URI
+const uri = process.env.MONGODB_URI || LOCAL_MONGO_URI;
 const connection = mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
 connection
     .then(db => {
-        console.log("connected to db");
-        // Populate.populate();
         return db;
     }).catch(err => {
         console.log("ERROR UTIL/db.js", err);
