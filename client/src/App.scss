@@ -52,3 +52,21 @@ $app-bg: #FFFFFF;
   text-align: center;
   padding-top: 1rem;
 }
+
+//svg stuffies
+
+#sun {
+  animation-duration: 1.5s;
+  animation-name: sun-move;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes sun-move {
+  from { 
+    transform: translateX(0) translateY(60px)
+  }
+  to {
+    transform: translateX(0px) translateY(700px)
+  }
+}
