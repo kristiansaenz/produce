@@ -3,20 +3,7 @@ import ContactForm from '../components/ContactForm'
 
 
 function Contact() {
-    return ( 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-        <section class = "section is-medium" >
-        <div class = "container" >
-        <h1 class = "title" > Contact Page </h1> 
-        <h2 class = "subtitle" >
-        4202 Weedlings Dr. < br / >
-        Windhelm, Einsedeln 28932 < br / >
-        +5(341) 432 - 2432 </h2> 
-        </div> 
-=======
->>>>>>> ed86dc95ac6f9665635418d53b1c236f2a5df999
+    return (
         <section class = "section is-small">
             <div class = "container">
             <h1 class = "title">Contact</h1> 
@@ -36,13 +23,6 @@ function Contact() {
                 </div>
                 </div>
             </div>
-        </section>
-
-
-<<<<<<< HEAD
-=======
->>>>>>> feature: creating base ui for login / signup pages and formatting code
->>>>>>> ed86dc95ac6f9665635418d53b1c236f2a5df999
         </section>
     )
 }
