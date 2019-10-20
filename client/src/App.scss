@@ -53,6 +53,10 @@ $app-bg: #FFFFFF;
   padding-top: 1rem;
 }
 
+.columns.is-mobile {
+  flex-wrap: wrap;
+}
+
 //svg stuffies
 
 #sun {

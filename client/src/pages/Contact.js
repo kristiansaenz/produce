@@ -23,6 +23,7 @@ function Contact() {
                 </div>
                 </div>
             </div>
+            </section>
         </section>
         </section>
     )

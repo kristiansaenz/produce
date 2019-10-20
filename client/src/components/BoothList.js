@@ -17,13 +17,13 @@ function BoothList(){
 
     return(
       <div>
-        <FilterBooths />
         <div className="columns is-mobile">
-        {farmers.map(c => (
-          <div>
-            -{c.name}
-            <Booth />
-          </div>
+        {farmers.map(farmer => (
+            <Booth 
+              key={farmer._id}
+              name={farmer.name}
+              email={farmer.email}
+            />
         ))}
         </div>
       </div>

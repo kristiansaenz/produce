@@ -30,22 +30,6 @@ module.exports = {
       }
     })
 
-    // const Farmer = new FarmerModel({
-    //   name: String,
-    //   email: String,
-    //   address: {
-    //     street: String,
-    //     city: String,
-    //     state: String,
-    //     zip: String
-    //   },
-    //   booth: {
-    //     booth_name: String,
-    //     description: String,
-    //     items: Array
-    //   },
-    // })
-
     Farmer.save(Farmer, function(err, result) {
       if(err) throw err;
       if(result) console.log('INSERTED SUCCESSFULLY')
