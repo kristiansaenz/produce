@@ -25,7 +25,8 @@ function Contact() {
             </div>
             </section>
         </section>
+        </section>
     )
 }
 
-export default Contact
+export default Contact;
