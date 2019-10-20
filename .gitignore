@@ -12,7 +12,7 @@
 /build
 
 # misc
-./utils/keys.js
+keys.js
 .DS_Store
 node_modules
 .env
