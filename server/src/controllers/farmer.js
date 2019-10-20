@@ -16,13 +16,37 @@ module.exports = {
   create: function(req, res) {
     const Farmer = new FarmerModel({
       name: req.body.name,
-      email: req.body.email
+      email: req.body.email,
+      address: {
+        street: req.body.address.street,
+        city: req.body.address.city,
+        state: req.body.address.state,
+        zip: req.body.address.zip
+      },
+      booth: {
+        booth_name: req.body.booth.booth_name,
+        description: req.body.booth.description,
+        items: req.body.booth.items
+      }
     })
-<<<<<<< HEAD
-    Farmer.save(userInfo, function(err, result) {
-=======
+
+    // const Farmer = new FarmerModel({
+    //   name: String,
+    //   email: String,
+    //   address: {
+    //     street: String,
+    //     city: String,
+    //     state: String,
+    //     zip: String
+    //   },
+    //   booth: {
+    //     booth_name: String,
+    //     description: String,
+    //     items: Array
+    //   },
+    // })
+
     Farmer.save(Farmer, function(err, result) {
->>>>>>> ed86dc95ac6f9665635418d53b1c236f2a5df999
       if(err) throw err;
       if(result) console.log('INSERTED SUCCESSFULLY')
       return res.json(Farmer)
