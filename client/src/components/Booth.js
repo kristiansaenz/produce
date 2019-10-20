@@ -14,7 +14,7 @@ class Booth extends React.Component {
                 </div>
                 <div class="card-content">
                     <div class="content">
-                    <div class="subtitle"> Ispum Lorem Farm </div>
+                    <div class="subtitle"> {this.props.name} </div>
                     <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
