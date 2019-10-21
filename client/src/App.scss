@@ -25,17 +25,23 @@ $app-bg: #FFFFFF;
   color: $primary-color;
 }
 
-// .card:hover {
-//   background-color: $secondary-color;
-//   color: white;  
-// }
+.card:hover {
+  // background-color: $secondary-color;
+  background-color: #ebecec;
+  // color: white;  
+}
 
 // .card:hover .card-image {
 //   visibility: hidden;
 // }
 
+// .card-content:hover {
+//   background-color: #ebecec;
+// }
+
 .login-form, .contact-form {
-  background: $primary-color;
+  // background: $primary-color;
+  // border-color: $primary-color;
   padding: 3rem 2rem;
   border-radius: .3rem;
   color: white;
@@ -53,7 +59,7 @@ $app-bg: #FFFFFF;
   padding-top: 1rem;
 }
 
-.columns.is-mobile {
+.columns {
   flex-wrap: wrap;
 }
 

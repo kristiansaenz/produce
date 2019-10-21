@@ -5,11 +5,12 @@ class Booth extends React.Component {
 
     render() {
         return(
-            <div class = "column">
+            <div class = "column is-one-quarter">
                 <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"></img>
+                    {/* <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"></img> */}
+                    <img src="https://cdn6.dissolve.com/p/D145_35_594/D145_35_594_1200.jpg" alt="Placeholder image"></img>
                     </figure>
                 </div>
                 <div class="card-content">
@@ -33,4 +34,4 @@ class Booth extends React.Component {
 //     booth: propTypes.object.isRequired
 // }
 
-export default Booth;
+export default Booth

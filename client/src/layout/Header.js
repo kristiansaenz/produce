@@ -8,7 +8,7 @@ function Header() {
     return(
         <section className="hero">
         <div className="hero-body">
-            <nav className="level">
+            <nav className="level is-mobile">
                 <div className="level-left">
                     <div className="level-item">
                     <p className="subtitle is-5">
