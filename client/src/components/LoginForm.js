@@ -3,13 +3,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 
 class LoginForm extends React.Component {
-        constructor(props) {
-            super(props)
-            this.state = {
+            state = {
                 email: '',
                 password: ''
             }
-        }
 
         // updateEmail(value) {
         //     this.setState({
@@ -33,7 +30,7 @@ class LoginForm extends React.Component {
                     <label class="label">Email</label>
                     <div class="control">
                         <input 
-                        class="input" 
+                        class="input is-success" 
                         type="text" 
                         placeholder="e.g Demelza Carne"
                         // onChange={(event) => {this.updateEmail(event.target.value)}}
@@ -46,7 +43,7 @@ class LoginForm extends React.Component {
                     <label class="label">Password</label>
                     <div class="control">
                         <input 
-                        class="input" 
+                        class="input is-success" 
                         type="text" 
                         placeholder="e.g judas"
                         // onChange={(event) => {this.updatePassword(event.target.value)}}
@@ -54,11 +51,14 @@ class LoginForm extends React.Component {
                     </div>
                     </div>
 
-                    <div class="control">
-                    <div class="button-area">
-                        <button class="button is-light">Submit</button>
-                        <Link to="/signup"><button class="button is-success">Sign Up</button></Link>
-                    </div>
+                    {/* Buttons */}
+                    <div class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <a class="button is-success">Submit</a>
+                        </p>
+                        <p class="control">
+                            <Link to="/signup"><button class="button is-light">Sign Up</button></Link>
+                        </p>
                     </div>
 
                 </form>
