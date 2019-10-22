@@ -17,13 +17,15 @@ class FilterBooths extends React.Component {
                </div>
              
                <div class="level-right">
-                    <div class="field has-addons">
-                        <p class="control">
-                            <input class="input" type="text" placeholder="Location"></input>
-                        </p>
-                        <p class="control">
-                            <button class="button">Search</button>
-                        </p>
+                    <div class="level-item">
+                        <div class="field has-addons">
+                            <p class="control">
+                                <input class="input" type="text" placeholder="Location"></input>
+                            </p>
+                            <p class="control">
+                                <button class="button">Search</button>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </nav>

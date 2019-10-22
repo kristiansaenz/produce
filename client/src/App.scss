@@ -11,7 +11,8 @@ $lite-font-color: #707070;
 $accent-color: #B12020;
 $app-bg: #FFFFFF;
 $navbar-item-hover-background-color: #FFFFFF !default;
-$navbar-item-active-background-color: transparent !default
+$navbar-item-active-background-color: transparent !default;
+$is-success: red !default;
 
 
 
@@ -58,6 +59,9 @@ $navbar-item-active-background-color: transparent !default
 //   background-color: #ebecec;
 // }
 
+.navbar-burger span {
+  height: .1rem;
+}
 
 .login-form, .contact-form {
   // background: $primary-color;
@@ -72,6 +76,10 @@ $navbar-item-active-background-color: transparent !default
   padding: 1rem;
   color: white;
   border-radius: .2rem;
+}
+
+.button.is-success {
+  background-color: $primary-color;
 }
 
 .field.is-grouped.is-grouped-centered, .button-area {

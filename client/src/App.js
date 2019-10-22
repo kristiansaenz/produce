@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.scss'
-import 'bulma/css/bulma.css'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"

@@ -27,28 +27,28 @@ class LoginForm extends React.Component {
                     
                     {/* Email field */}
                     <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control">
-                        <input 
-                        class="input is-success" 
-                        type="text" 
-                        placeholder="e.g Demelza Carne"
-                        // onChange={(event) => {this.updateEmail(event.target.value)}}
-                        value={this.state.email} />
-                    </div>
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input 
+                            class="input is-success" 
+                            type="text" 
+                            placeholder="e.g Demelza Carne"
+                            // onChange={(event) => {this.updateEmail(event.target.value)}}
+                            value={this.state.email} />
+                        </div>
                     </div>
 
                     {/* Password field */}
                     <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control">
-                        <input 
-                        class="input is-success" 
-                        type="text" 
-                        placeholder="e.g judas"
-                        // onChange={(event) => {this.updatePassword(event.target.value)}}
-                        value={this.state.password} />
-                    </div>
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input 
+                            class="input is-success" 
+                            type="text" 
+                            placeholder="e.g judas"
+                            // onChange={(event) => {this.updatePassword(event.target.value)}}
+                            value={this.state.password} />
+                        </div>
                     </div>
 
                     {/* Buttons */}
