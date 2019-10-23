@@ -8,13 +8,13 @@ function Login() {
         <div class="container">
             <h1 class="title">Login</h1>
             <h2 class="subtitle">
-                Here you can login/signup to become a farmer & create your booth!
+                Here you can login to your booth!
             </h2>
         </div>
 
         <section class="hero">
         <div class="hero-body">
-            <div class="columns is-centered">
+            <div class="columns">
             <div class="column is-one-third">
                 <LoginForm />
             </div>

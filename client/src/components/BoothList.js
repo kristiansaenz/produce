@@ -17,7 +17,7 @@ function BoothList(){
 
     return(
       <div>
-        <div className="columns is-mobile">
+        <div className="columns">
         {farmers.map(farmer => (
             <Booth 
               key={farmer._id}
@@ -30,4 +30,4 @@ function BoothList(){
     )
   }
 
-export default BoothList;
+export default BoothList

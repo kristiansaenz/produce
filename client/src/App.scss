@@ -10,11 +10,31 @@ $font-color: #464646;
 $lite-font-color: #707070;
 $accent-color: #B12020;
 $app-bg: #FFFFFF;
+$navbar-item-hover-background-color: #FFFFFF !default;
+$navbar-item-active-background-color: transparent !default;
+$is-success: red !default;
+
 
 
 .App {
   margin: 0;
   padding: 0;
+}
+
+.navbar a {
+  color: $font-color;
+}
+.navbar a:hover {
+  color: $primary-color;
+}
+
+.brand-name {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.filter-button {
+  margin-left: .7rem;
 }
 
 .level img {
@@ -25,17 +45,27 @@ $app-bg: #FFFFFF;
   color: $primary-color;
 }
 
-// .card:hover {
-//   background-color: $secondary-color;
-//   color: white;  
-// }
+.card:hover {
+  // background-color: $secondary-color;
+  background-color: #ebecec;
+  // color: white;  
+}
 
 // .card:hover .card-image {
 //   visibility: hidden;
 // }
 
+// .card-content:hover {
+//   background-color: #ebecec;
+// }
+
+.navbar-burger span {
+  height: .1rem;
+}
+
 .login-form, .contact-form {
-  background: $primary-color;
+  // background: $primary-color;
+  // border-color: $primary-color;
   padding: 3rem 2rem;
   border-radius: .3rem;
   color: white;
@@ -48,12 +78,16 @@ $app-bg: #FFFFFF;
   border-radius: .2rem;
 }
 
-.button-area {
-  text-align: center;
-  padding-top: 1rem;
+.button.is-success {
+  background-color: $primary-color;
 }
 
-.columns.is-mobile {
+.field.is-grouped.is-grouped-centered, .button-area {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.columns {
   flex-wrap: wrap;
 }
 
