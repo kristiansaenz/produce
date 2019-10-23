@@ -17,7 +17,7 @@ function Contact() {
 
             <section class="hero">
             <div class="hero-body">
-                <div class="columns is-centered">
+                <div class="columns">
                 <div class="column is-one-third">
                     <ContactForm />
                 </div>

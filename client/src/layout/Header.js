@@ -5,26 +5,44 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 function Header() {
+    
+    function expandNavMenu() {
+        let menu = document.getElementsByClassName("navbar-menu")[0];
+        menu.style.display = (menu.style.display === "block") ? 
+            menu.style.display = "none" : menu.style.display = "block";
+      }
+
+
     return(
         <section className="hero">
         <div className="hero-body">
-            <nav className="level">
-                <div className="level-left">
-                    <div className="level-item">
-                    <p className="subtitle is-5">
-                        <Link to="/"><strong>Produce</strong></Link>
-                    </p>
-                    </div>
-                    <div className='level-item'>
+            
+            {/* Navigation */}
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                    {/* Produce + Logo */}
+                    <a class="navbar-item">
                         <img src={logo}></img>
-                    </div>
+                        <div class="brand-name"><Link to="/"><strong>Produce</strong></Link></div>
+                    </a>
+
+                    {/* Hamburger menu */}
+                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar" onClick={expandNavMenu}>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
                 </div>
 
-                <div className="level-right">
-                    <p className="level-item"><a><Link to="/about">About</Link></a></p>
-                    <p className="level-item"><a><Link to="/market">Market</Link></a></p>
-                    <p className="level-item"><a><Link to="/login">Login</Link></a></p>
-                    <p className="level-item"><a><Link to="/contact">Contact</Link></a></p>
+                {/* Page Routes */}
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <Link to="/about"><a class="navbar-item">About</a></Link>
+                        <Link to="/market"><a class="navbar-item">Market</a></Link>
+                        <Link to="/login"><a class="navbar-item">Login</a></Link>
+                        <Link to="/contact"><a class="navbar-item">Contact</a></Link>
+                    </div>
                 </div>
             </nav>
         </div>

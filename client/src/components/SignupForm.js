@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
                     <label class="label">Email</label>
                     <div class="control">
                         <input 
-                        class="input" 
+                        class="input is-success" 
                         type="text" 
                         placeholder="e.g Demelza Carne"
                         // onChange={(event) => {this.updateEmail(event.target.value)}}
@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
                     <label class="label">Password</label>
                     <div class="control">
                         <input 
-                        class="input" 
+                        class="input is-success" 
                         type="text" 
                         placeholder="e.g judas"
                         // onChange={(event) => {this.updatePassword(event.target.value)}}
@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
                     <label class="label">Confirm Password</label>
                     <div class="control">
                         <input 
-                        class="input" 
+                        class="input is-success" 
                         type="text" 
                         placeholder="e.g judas"
                         // onChange={(event) => {this.updatePassword(event.target.value)}}
@@ -58,7 +58,7 @@ class LoginForm extends React.Component {
                     {/* Buttons */}
                     <div class="control">
                     <div class="button-area">
-                        <button class="button is-light">Submit</button>
+                        <button class="button is-success">Submit</button>
                     </div>
                     </div>
 
