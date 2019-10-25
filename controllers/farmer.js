@@ -1,3 +1,4 @@
+const ObjectID = require('mongodb').ObjectID;
 const FarmerModel = require('../models/farmer.js')
 
 module.exports = {
@@ -35,5 +36,17 @@ module.exports = {
       if(result) console.log('INSERTED SUCCESSFULLY')
       return res.json(Farmer)
     })
-  }
+  },
+
+  // booth: function(req, res) {
+  //   let id = req.params.id;
+  //   // db.collection('farmers').find
+  //   FarmerModel.findOne({_id: new ObjectId(id)}),
+  //   function(err, res) {
+  //     if(err) console.log(err)
+  //     if(res !== null) {
+  //       console.log(res)
+  //     }
+  //   }
+  // }
 }

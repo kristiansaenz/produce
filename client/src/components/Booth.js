@@ -1,11 +1,12 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 
 class Booth extends React.Component {
 
     render() {
         return(
             <div class = "column is-one-quarter">
+            <Link to={`boothpage/${this.props.id}`}>
                 <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
@@ -26,6 +27,7 @@ class Booth extends React.Component {
                     </div>
                 </div>
                 </div>
+                </Link>
             </div>
         )
     }
