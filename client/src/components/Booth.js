@@ -5,7 +5,7 @@ class Booth extends React.Component {
 
     render() {
         return(
-            <div class = "column is-one-quarter">
+            <div class = "column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop">
                 <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
