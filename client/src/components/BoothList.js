@@ -17,7 +17,7 @@ function BoothList(){
 
   return(
     <div>
-      <div className="columns">
+      <div className="columns is-mobile">
       {farmers.map(farmer => (
           <Booth 
             id={farmer._id}
@@ -28,7 +28,6 @@ function BoothList(){
       </div>
     </div>
   )
-
 }
 
 export default BoothList
