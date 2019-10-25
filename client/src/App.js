@@ -9,7 +9,7 @@ import Market from './pages/Market'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Contact from './pages/Contact'
-import Booth from './pages/Booth'
+import BoothPage from './pages/BoothPage'
 
 
 function App() {
@@ -23,7 +23,9 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/contact" component={Contact} />
-        <Route path="/booth" component={Booth} />
+        <Route path="/boothpage/:id">
+          <BoothPage />
+        </Route>
         <Footer />
     </div>
     </Router>
