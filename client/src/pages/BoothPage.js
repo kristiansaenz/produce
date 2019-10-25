@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react'
+import  React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {
   Route,
@@ -10,11 +10,11 @@ const BoothPage = () => {
   const [boothInfo, setBoothInfo] = useState({})
   let id = useParams()
 
-  useEffect((id) => {
-    
+  useEffect(() => {    
     const fetchData = async () => {
-      const result = await axios.get(`/booth/${id}`)
-      console.log(result.data);
+      // const result = await axios.get(`/farmers/booth/${id}`)
+      const result = await axios.get(`/farmers/booth/${id.id}`)
+      console.log('result: ', result);
       setBoothInfo(result.data);
     };
     fetchData();
@@ -22,7 +22,9 @@ const BoothPage = () => {
 
     return(
       <div>
-        Hello 
+        <ul>
+          <li>{boothInfo.name}</li>
+        </ul>
       </div>
     );
 }
