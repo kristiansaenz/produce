@@ -6,7 +6,7 @@ class BoothInfo extends React.Component {
             <div class="column">
                 <div class="booth-info">
                     <div class="booth-title">
-                        <p class="title is-4">Pacha's Farmhaus</p>
+                        <p class="title is-4">{this.props.name}</p>
                     </div>
                     <br />
                     <br />
