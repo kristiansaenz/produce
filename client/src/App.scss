@@ -51,6 +51,14 @@ $is-success: red !default;
   // color: white;  
 }
 
+.booth-info {
+  background-color: #F2F2F2;
+  color: white;
+  min-height: inherit;
+  padding: 1rem;
+  font-style: $secondary-font;
+}
+
 // .card:hover .card-image {
 //   visibility: hidden;
 // }
@@ -89,6 +97,24 @@ $is-success: red !default;
 
 .columns {
   flex-wrap: wrap;
+}
+
+// small devices
+@media only screen and (max-width: 731px) {
+  .hero-body {
+    padding: 0;
+  }
+}
+
+// desktop
+@media only screen and (min-width: 742px) {
+  .booth-header .columns {
+    min-height: 27.8rem;
+  }
+  
+  .booth-header .column {
+    min-height: inherit;
+  }
 }
 
 //svg stuffies
