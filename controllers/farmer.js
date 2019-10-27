@@ -1,4 +1,5 @@
 const ObjectId = require('mongodb').ObjectID;
+const zipToCoordinates = require('./helpers')
 const FarmerModel = require('../models/farmer.js')
 
 module.exports = {
@@ -10,6 +11,7 @@ module.exports = {
           error: err
         });
       }
+      zipToCoordinates(78414)
       return res.json(Farmers);
     });
   },
