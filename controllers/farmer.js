@@ -16,10 +16,10 @@ module.exports = {
   },
 
   create: function(req, res) {
-    
+
     // convert given zip to full address attribute to save in db
     let coordinates = zipToCoordinates(req.body.zip)
-    coordinates.then(result => {
+      coordinates.then(result => {
 
       const Farmer = new FarmerModel({
         name: req.body.name,
