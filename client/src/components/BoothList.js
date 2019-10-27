@@ -26,7 +26,9 @@ function BoothList(){
     return(
       <div>
         <button onClick={() => handleMapClick()}>List View</button>
-        <Map />
+          <Map
+            farmers={farmers}
+          />
       </div>
     )
   } else {
