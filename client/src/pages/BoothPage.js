@@ -17,7 +17,7 @@ const BoothPage = () => {
     const fetchData = async () => {
       // const result = await axios.get(`/farmers/booth/${id}`)
       const result = await axios.get(`/farmers/booth/${id.id}`)
-      setBoothInfo(result.data);
+      setBoothInfo(result.data.booth);
     };
     fetchData();
   }, []);
@@ -25,7 +25,8 @@ const BoothPage = () => {
     return(
       <section class = "section is-small">
             <BoothHeader 
-              name={boothInfo.name}
+              name={boothInfo.booth_name}
+              description={boothInfo.description}
             />
             <br/>
 

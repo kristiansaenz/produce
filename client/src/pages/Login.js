@@ -6,10 +6,12 @@ function Login() {
     return(
         <section class="section is-small">
         <div class="container">
-            <h1 class="title">Login</h1>
-            <h2 class="subtitle">
-                Here you can login to your booth!
-            </h2>
+            <div class="form-titles">
+                <h1 class="title">Login</h1>
+                <h2 class="subtitle">
+                    Here you can login to your booth!
+                </h2>
+            </div>
         </div>
 
         <section class="hero">
