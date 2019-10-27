@@ -12,6 +12,7 @@ class BoothHeader extends React.Component {
                     <BoothImages />
                     <BoothInfo 
                         name={this.props.name}
+                        description={this.props.description}
                     />
                 </div>
             </div>

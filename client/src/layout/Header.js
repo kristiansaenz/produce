@@ -22,10 +22,12 @@ function Header() {
                 <div class="navbar-brand">
                     
                     {/* Produce + Logo */}
+                    <Link to="/">
                     <a class="navbar-item">
-                        <img src={logo}></img>
-                        <div class="brand-name"><Link to="/"><strong>Produce</strong></Link></div>
+                        <img src={logo} id="logo"></img>
+                        <div class="brand-name"><strong>Produce</strong></div>
                     </a>
+                    </Link>
 
                     {/* Hamburger menu */}
                     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar" onClick={expandNavMenu}>

@@ -6,10 +6,12 @@ function Signup() {
     return(
         <section class="section is-small">
         <div class="container">
-            <h1 class="title">Sign Up</h1>
-            <h2 class="subtitle">
-                Here you can sign up to become a farmer & create your booth!
-            </h2>
+            <div class="form-titles">
+                <h1 class="title">Sign Up</h1>
+                <h2 class="subtitle">
+                    Here you can sign up to become a farmer & create your booth!
+                </h2>
+            </div>
         </div>
 
         <section class="hero">

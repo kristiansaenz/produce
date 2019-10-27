@@ -4,6 +4,7 @@ import React from 'react'
 function About() {
     return (
         <section class="section is-small">
+            <div class="about-section">
             <div class="container">
             <h1 class="title">About Us</h1>
             <h2 class="subtitle">
@@ -20,6 +21,7 @@ function About() {
                     <li> As a customer, you can negotiate price and meet up with farmer to purchase goods </li>
                 </ul>
             </p>
+            </div>
             </div>
         </section>
     )
