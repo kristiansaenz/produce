@@ -15,10 +15,14 @@ $navbar-item-active-background-color: transparent !default;
 $is-success: red !default;
 
 
-
 .App {
   margin: 0;
   padding: 0;
+}
+  
+.homepage-image .section {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .navbar a {
@@ -37,6 +41,10 @@ $is-success: red !default;
   margin-left: .7rem;
 }
 
+#logo {
+  padding-bottom: .3rem;
+}
+
 .level img {
   height: 1.5rem;
 }
@@ -46,9 +54,7 @@ $is-success: red !default;
 }
 
 .card:hover {
-  // background-color: $secondary-color;
   background-color: #ebecec;
-  // color: white;  
 }
 
 .booth-info {
@@ -106,7 +112,7 @@ $is-success: red !default;
   }
 }
 
-// desktop
+// desktops
 @media only screen and (min-width: 742px) {
   .booth-header .columns {
     min-height: 27.8rem;
@@ -115,10 +121,30 @@ $is-success: red !default;
   .booth-header .column {
     min-height: inherit;
   }
+
+  .form-titles {
+    padding-left: 3.5rem;
+  }
+
+  .about-section, .home-section, .market-section, .booth-header {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+
+  .booth-items-section {
+    padding: 2rem 3.5rem;
+  }
 }
 
-//svg stuffies
+// big desktops
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1500px;
+  }
+}
 
+
+//svg stuffies
 #sun {
   animation-duration: 1.5s;
   animation-name: sun-move;

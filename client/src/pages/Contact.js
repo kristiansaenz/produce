@@ -6,8 +6,10 @@ function Contact() {
     return (
         <section class = "section is-small">
             <div class = "container">
-            <h1 class = "title">Contact</h1> 
-            <h2 class = "subtitle"> Send us a message! </h2>
+                <div class="form-titles">
+                    <h1 class = "title">Contact</h1> 
+                    <h2 class = "subtitle"> Send us a message! </h2>
+                </div>
             </div> 
 
             <section class="hero">

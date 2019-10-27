@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Booth from '../components/Booth'
-//import FilterBooths from '../components/FilterBooths'
 import axios from 'axios'
 
 function BoothList(){
@@ -23,6 +22,10 @@ function BoothList(){
             id={farmer._id}
             name={farmer.name}
             email={farmer.email}
+            booth_name={farmer.booth.booth_name}
+            booth_description={farmer.booth.description}
+            // city={farmer.address.city}
+            // state={farmer.address.state}
           />
       ))}
       </div>
