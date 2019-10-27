@@ -126,9 +126,13 @@ $is-success: red !default;
     padding-left: 3.5rem;
   }
 
-  .about-section, .home-section, .market-section {
+  .about-section, .home-section, .market-section, .booth-header {
     padding-left: 3.5rem;
     padding-right: 3.5rem;
+  }
+
+  .booth-items-section {
+    padding: 2rem 3.5rem;
   }
 }
 

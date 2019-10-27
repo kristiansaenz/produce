@@ -30,11 +30,11 @@ const BoothPage = () => {
             />
             <br/>
 
-            <section class="hero">
-            <div class="hero-body">
-                <ItemList />
+            <div class="booth-items-section">
+
+                  <ItemList />
+
             </div>
-            </section>
       </section>
     );
 }

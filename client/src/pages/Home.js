@@ -6,12 +6,12 @@ import Farmer from '../images/produce-display.svg'
 function Home() {
     return (
             <div class="homepage">
-                <div class="home-section">
+                {/* <div class="home-section">
                 <section class = "section is-small">
                     <h1 class="title"> Welcome to Produce </h1>  
                     <h2 class="subtitle"> Get homemade goods/produce in your neighborhood :-) </h2>
                 </section>
-                </div>
+                </div> */}
 
                 <div class="homepage-image">
                     <section class = "section is-small">
