@@ -14,9 +14,9 @@ function Market() {
             </h2>
 
             <FilterBooths />
-            <div class="container">
+            {/* <div class="container">
                 <BoothList />
-            </div>
+            </div> */}
             </div>
             </div>
         </section>

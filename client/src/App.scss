@@ -53,6 +53,10 @@ $is-success: red !default;
   color: $primary-color;
 }
 
+.is-map {
+  height: 20rem;
+}
+
 // booth cards
 .card:hover {
   background-color: #ebecec;
@@ -124,6 +128,7 @@ $is-success: red !default;
   padding: 1rem;
   color: white;
   border-radius: .2rem;
+  margin-bottom: 1rem;
 }
 
 .button.is-success {
