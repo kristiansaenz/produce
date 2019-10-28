@@ -19,15 +19,6 @@ class Map extends Component {
     };
   }
 
-  // data.push(
-  //   {
-  //   "type": "Feature",
-  //   "geometry": {
-  //     "type": "Point",
-  //     "coordinates": [farmer.address.longitude, farmer.address.latitude]
-  //   }}
-  // )
-
   componentDidMount() {
 
     let data = []

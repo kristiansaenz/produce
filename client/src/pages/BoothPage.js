@@ -11,12 +11,14 @@ import ItemList from '../components/ItemList'
 const BoothPage = () => {
 
   const [boothInfo, setBoothInfo] = useState({})
+  const [addressInfo, setAddressInfo] = useState({})
   let id = useParams()
 
   useEffect(() => {  
     const fetchData = async () => {
       const result = await axios.get(`/farmers/booth/${id.id}`)
       setBoothInfo(result.data.booth);
+      setAddressInfo(result.data.address);
     };
     fetchData();
   }, []);
@@ -26,6 +28,8 @@ const BoothPage = () => {
             <BoothHeader 
               name={boothInfo.booth_name}
               description={boothInfo.description}
+              city={addressInfo.city}
+               state={addressInfo.state}
             />
             <br/>
 
