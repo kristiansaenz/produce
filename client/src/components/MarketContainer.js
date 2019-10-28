@@ -17,9 +17,26 @@ const MarketContainer = () => {
     fetchData();
   }, []);
 
+  // functions which will be passed to children here
+  // -----------------------------------------------
+
+  const handleFilterSubmit = (location) => {
+    axios.get('/farmers/filter', {
+      params: {
+        city: location
+      }
+    })
+    .then(response => response.data)
+    .then(data => {
+      setFarmers(data)
+    })
+  }
+
+  // -----------------------------------------------
+
     return(
       <div>
-        <FilterBooths />
+        <FilterBooths handleFilterSubmit={handleFilterSubmit}/>
         <Map farmers={farmers}/>
         <BoothList farmers={farmers}/>
       </div>
