@@ -5,35 +5,8 @@ import Map from './Map'
 
 function BoothList(props){
 
-  // const [farmers, setFarmers] = useState([]);
-  // const [mapStatus, setMapStatus] = useState(false)
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await axios.get('/farmers')
-  //     setFarmers(result.data);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // const handleMapClick = () => {
-  //   console.log(!mapStatus)
-  //   setMapStatus(!mapStatus)
-  // }
-
-  // if(mapStatus === true) {
-  //   return(
-  //     <div>
-  //       <button onClick={() => handleMapClick()}>List View</button>
-  //         <Map
-  //           farmers={farmers}
-  //         />
-  //     </div>
-  //   )
-  // } else {
     return(
       <div>
-        {/* <button onClick={() => handleMapClick()}>Map View</button> */}
         <div className="columns is-mobile">
         {props.farmers.map(farmer => (
           <Booth 
@@ -48,7 +21,6 @@ function BoothList(props){
         </div>
       </div>
     )
-  }
-
+}
 
 export default BoothList

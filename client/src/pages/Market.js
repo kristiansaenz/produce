@@ -1,7 +1,6 @@
 import React from 'react'
 import MarketContainer from '../components/MarketContainer'
-import BoothList from '../components/BoothList'
-import FilterBooths from '../components/FilterBooths'
+
 
 
 function Market() {
