@@ -12,7 +12,7 @@ class Booth extends React.Component {
                     {/* Card Image */}
                     <div class="card-image">
                         <figure class="image is-4by3">
-                        <img src="https://cdn6.dissolve.com/p/D145_35_594/D145_35_594_1200.jpg" alt="Placeholder image"></img>
+                        <img src="https://cdn6.dissolve.com/p/D145_35_594/D145_35_594_1200.jpg" alt="Farmer"></img>
                         </figure>
                     </div>
 
@@ -26,7 +26,7 @@ class Booth extends React.Component {
 
                     {/* Card Footer */}
                     <footer class="card-footer">
-                        <div class="card-footer-item">Corpus Christi</div>
+                        <div class="card-footer-item">{this.props.address.city}, {this.props.address.state}</div>
                     </footer>
                 </div>
                 </Link>

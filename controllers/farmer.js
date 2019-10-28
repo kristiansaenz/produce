@@ -52,5 +52,19 @@ module.exports = {
         res.json(farmer);
       }
     });
+  },
+
+  filter: function(req, res) {
+    let city = req.body.city;
+
+    FarmerModel.find({'address.city': city}).exec(function(err, results) {
+      if(err) {
+        return res.status(500).json({
+          message: "Error when filtering Farmers...",
+          error: err
+        });
+      }
+      return res.json(results);
+    })
   }
 }
