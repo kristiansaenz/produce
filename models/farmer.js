@@ -4,12 +4,8 @@ module.exports = FarmerSchema = new mongoose.Schema(
     {
         name: String,
         email: String,
-        address: {
-          street: String,
-          city: String,
-          state: String,
-          zip: String
-        },
+        password: String,
+        address: Object,
         booth: {
           booth_name: String,
           description: String,
