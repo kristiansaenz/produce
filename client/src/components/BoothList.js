@@ -37,12 +37,13 @@ function BoothList(){
         <div className="columns is-mobile">
         {farmers.map(farmer => (
           <Booth 
-            id={farmer._id}
-            name={farmer.name}
-            email={farmer.email}
-            booth_name={farmer.booth.booth_name}
-            booth_description={farmer.booth.description}
-          />
+          id={farmer._id}
+          name={farmer.name}
+          email={farmer.email}
+          address={farmer.address}
+          booth_name={farmer.booth.booth_name}
+          booth_description={farmer.booth.description}
+        />
         ))}
         </div>
       </div>
