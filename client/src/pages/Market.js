@@ -14,11 +14,8 @@ function Market() {
                 Search through farmers booths to discover goods in your area.
             </h2>
 
-            {/* <FilterBooths />
-            <div class="container">
-                <BoothList />
-            </div> */}
             <MarketContainer />
+      
             </div>
             </div>
         </section>
@@ -26,5 +23,3 @@ function Market() {
 }
 
 export default Market
-
-//Components boothlist will be called here

@@ -16,7 +16,6 @@ const BoothPage = () => {
 
   useEffect(() => {  
     const fetchData = async () => {
-      // const result = await axios.get(`/farmers/booth/${id}`)
       const result = await axios.get(`/farmers/booth/${id.id}`)
       setBoothInfo(result.data.booth);
       setAddressInfo(result.data.address);
