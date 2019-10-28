@@ -3,39 +3,39 @@ import Booth from '../components/Booth'
 import axios from 'axios'
 import Map from './Map'
 
-function BoothList(){
+function BoothList(props){
 
-  const [farmers, setFarmers] = useState([]);
-  const [mapStatus, setMapStatus] = useState(false)
+  // const [farmers, setFarmers] = useState([]);
+  // const [mapStatus, setMapStatus] = useState(false)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('/farmers')
-      setFarmers(result.data);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios.get('/farmers')
+  //     setFarmers(result.data);
+  //   };
+  //   fetchData();
+  // }, []);
 
-  const handleMapClick = () => {
-    console.log(!mapStatus)
-    setMapStatus(!mapStatus)
-  }
+  // const handleMapClick = () => {
+  //   console.log(!mapStatus)
+  //   setMapStatus(!mapStatus)
+  // }
 
-  if(mapStatus === true) {
+  // if(mapStatus === true) {
+  //   return(
+  //     <div>
+  //       <button onClick={() => handleMapClick()}>List View</button>
+  //         <Map
+  //           farmers={farmers}
+  //         />
+  //     </div>
+  //   )
+  // } else {
     return(
       <div>
-        <button onClick={() => handleMapClick()}>List View</button>
-          <Map
-            farmers={farmers}
-          />
-      </div>
-    )
-  } else {
-    return(
-      <div>
-        <button onClick={() => handleMapClick()}>Map View</button>
+        {/* <button onClick={() => handleMapClick()}>Map View</button> */}
         <div className="columns is-mobile">
-        {farmers.map(farmer => (
+        {props.farmers.map(farmer => (
           <Booth 
           id={farmer._id}
           name={farmer.name}
@@ -49,6 +49,6 @@ function BoothList(){
       </div>
     )
   }
-}
+
 
 export default BoothList

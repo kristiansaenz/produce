@@ -13,6 +13,8 @@ class BoothHeader extends React.Component {
                     <BoothInfo 
                         name={this.props.name}
                         description={this.props.description}
+                        city={this.props.city}
+                        state={this.props.state}
                     />
                 </div>
             </div>

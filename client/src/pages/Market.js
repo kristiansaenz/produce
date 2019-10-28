@@ -1,4 +1,5 @@
 import React from 'react'
+import MarketContainer from '../components/MarketContainer'
 import BoothList from '../components/BoothList'
 import FilterBooths from '../components/FilterBooths'
 
@@ -13,10 +14,11 @@ function Market() {
                 Search through farmers booths to discover goods in your area.
             </h2>
 
-            <FilterBooths />
+            {/* <FilterBooths />
             <div class="container">
                 <BoothList />
-            </div>
+            </div> */}
+            <MarketContainer />
             </div>
             </div>
         </section>
