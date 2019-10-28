@@ -6,81 +6,48 @@ import Map from './Map'
 import BoothList from './BoothList'
 
 
-function FilterBooths() {
+class FilterBooths extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: '' }
+  }
 
-    const [farmers, setFarmers] = useState([]);
-    const [mapStatus, setMapStatus] = useState(false)
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        const result = await axios.get('/farmers')
-        setFarmers(result.data);
-      };
-      fetchData();
-    }, []);
+  // handleSubmit = (event) => {
+  //   this.props.handleFilterSubmit(this.state.value)
+  //   event.preventDefault();
+  // }
 
-    const handleMapClick = () => {
-        console.log(!mapStatus)
-        setMapStatus(!mapStatus)
-    }
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
 
-    const renderMap = () => {
-        if(mapStatus) {
-          return (
-              <Map farmers={farmers} />
-          )}
-          else {
-            return (
-                <div></div>
-            )
-        
-      }
-    }
-
-    return(
-        <div>
-        <nav class="level" id="filter">
-            <div class="level-left">
-
-                {/* Filter Button */}
-                <div class="level-item">
-                    <p class="subtitle is-5">
-                        <strong>Filter By</strong>
-                    </p>
-                    <div class="filter-button"><img src={FilterButton}></img></div>
-                </div>
-            </div>
-            
-            <div class="level-right">
-
-                {/* Map Button */}
-                <div class="level-item">
-                    <img src={MapIcon} id="map" onClick={() => handleMapClick()}></img>
-                </div>
-
-                {/* Location field + Search button */}
-                <div class="level-item">
-                    <div class="field has-addons">
-                        <p class="control">
-                            <input class="input" type="text" placeholder="Location"></input>
-                        </p>
-                        <p class="control">
-                            <button class="button">Search</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        {/* Render map if clicked */}
-        {renderMap()}
-
-        <div class="container">
-                <BoothList farmers={farmers}/>
+  render() {
+    return (
+      <nav class="level" id="filter">
+        <div class="level-left">
+          <div class="level-item">
+            <p class="subtitle is-5">
+              <strong>Filter By</strong>
+            </p>
+            <div class="filter-button"><img src={FilterButton}></img></div>
+          </div>
         </div>
-        
+
+        <div class="level-right">
+          <div class="level-item">
+            <div class="field has-addons">
+              <p class="control">
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </p>
+              <p class="control">
+                <button onClick={() => this.props.handleFilterSubmit(this.state.value)}className="button">Search</button>
+              </p>
+            </div>
+          </div>
         </div>
+      </nav>
     )
+  }
 }
 
 export default FilterBooths

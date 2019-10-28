@@ -55,7 +55,8 @@ module.exports = {
   },
 
   filter: function(req, res) {
-    let city = req.body.city;
+    let city = req.query.city;
+    console.log(city)
 
     FarmerModel.find({'address.city': city}).exec(function(err, results) {
       if(err) {
@@ -64,6 +65,7 @@ module.exports = {
           error: err
         });
       }
+      console.log(results);
       return res.json(results);
     })
   }
