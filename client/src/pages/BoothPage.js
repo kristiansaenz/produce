@@ -31,9 +31,7 @@ const BoothPage = () => {
             <br/>
 
             <div class="booth-items-section">
-
-                  <ItemList />
-
+                <ItemList items={boothInfo.items} />
             </div>
       </section>
     );

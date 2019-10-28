@@ -15,7 +15,6 @@ function BoothList(){
   }, []);
 
   return(
-    <div>
       <div className="columns is-mobile">
       {farmers.map(farmer => (
           <Booth 
@@ -24,12 +23,9 @@ function BoothList(){
             email={farmer.email}
             booth_name={farmer.booth.booth_name}
             booth_description={farmer.booth.description}
-            // city={farmer.address.city}
-            // state={farmer.address.state}
           />
       ))}
       </div>
-    </div>
   )
 }
 
