@@ -7,26 +7,27 @@ class Booth extends React.Component {
         return(
             <div class = "column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop">
                 <Link to={`boothpage/${this.props.id}`}>
-                <div class="card">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                    {/* <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"></img> */}
-                    <img src="https://cdn6.dissolve.com/p/D145_35_594/D145_35_594_1200.jpg" alt="Placeholder image"></img>
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                    <div class="subtitle"> {this.props.name} </div>
-                    <p>
-                    {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. */}
-                    {this.props.booth_description}
-                    </p>
-                    <br/>
-                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                    {/* <p> {this.props.city}, {this.props.state} </p> */}
+                <div class="card is-equal-height">
+
+                    {/* Card Image */}
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                        <img src="https://cdn6.dissolve.com/p/D145_35_594/D145_35_594_1200.jpg" alt="Farmer"></img>
+                        </figure>
                     </div>
-                </div>
+
+                    {/* Card Content */}
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="subtitle"> {this.props.name} </div>
+                            <p> {this.props.booth_description} </p>
+                        </div>
+                    </div>
+
+                    {/* Card Footer */}
+                    <footer class="card-footer">
+                        <div class="card-footer-item">{this.props.address.city}, {this.props.address.state}</div>
+                    </footer>
                 </div>
                 </Link>
             </div>

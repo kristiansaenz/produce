@@ -53,10 +53,48 @@ $is-success: red !default;
   color: $primary-color;
 }
 
+.is-map {
+  height: 20rem;
+}
+
+// booth cards
 .card:hover {
   background-color: #ebecec;
 }
 
+.card-content {
+  max-height: 15rem;
+  height: fit-content;
+  // overflow: hidden;
+}
+
+.card .content {
+  height: 100%;
+  overflow: hidden;
+}
+
+.card .subtitle {
+  margin-bottom: 1rem;
+}
+
+.is-equal-height {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-footer {
+  border-top: none;
+}
+
+.card-footer-item {
+  padding: 0rem 1.5rem 1.5rem 1.5rem;
+}
+// .card p {
+//   max-height: 4rem;
+// }
+
+// booth header
 .booth-info {
   background-color: #F2F2F2;
   color: white;
@@ -90,6 +128,7 @@ $is-success: red !default;
   padding: 1rem;
   color: white;
   border-radius: .2rem;
+  margin-bottom: 1rem;
 }
 
 .button.is-success {

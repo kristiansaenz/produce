@@ -25,7 +25,7 @@ class BoothInfo extends React.Component {
                     <br />
                     <br />
                     <div class="booth-location">
-                        <p class="subtitle is-6">Corpus Christi, Tx</p>
+                        <p class="subtitle is-6">{this.props.city}, {this.props.state}</p>
                     </div>
 
                 
