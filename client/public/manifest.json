@@ -2,10 +2,15 @@
   "short_name": "Produce",
   "name": "Produce App",
   "icons": [
+    // {
+    //   "src": "produce.png",
+    //   "sizes": "64x64 32x32 24x24 16x16",
+    //   "type": "image/png"
+    // },
     {
-      "src": "produce.png",
+      "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "img/x-icon"
     }
   ],
   "start_url": ".",
