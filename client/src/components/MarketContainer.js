@@ -32,12 +32,34 @@ const MarketContainer = () => {
     })
   }
 
+  const handleMapClick = () => {
+    console.log(!mapStatus)
+    setMapStatus(!mapStatus)
+  }
+
+  const renderMap = () => {
+    if(mapStatus) {
+      return (
+          <Map farmers={farmers} />
+      )}
+      else {
+        return (
+            <div></div>
+        )
+  }
+
+}
+
   // -----------------------------------------------
 
     return(
       <div>
-        <FilterBooths handleFilterSubmit={handleFilterSubmit}/>
-        <Map farmers={farmers}/>
+        <FilterBooths handleMapClick={handleMapClick} handleFilterSubmit={handleFilterSubmit}/>
+
+        {/* <Map farmers={farmers}/> */}
+        {/* Render map if clicked */}
+        {renderMap()}
+
         <BoothList farmers={farmers}/>
       </div>
     );

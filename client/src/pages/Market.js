@@ -9,10 +9,8 @@ function Market() {
       <div class="market-section">
         <div class="container">
           <h1 class="title">Marketplace</h1>
-          <h2 class="subtitle">
-            Search through farmers booths to discover goods in your area.
-            </h2>
-          <MarketContainer />
+          <h2 class="subtitle">Search through farmers booths to discover goods in your area.</h2>
+            <MarketContainer />
         </div>
       </div>
     </section>
