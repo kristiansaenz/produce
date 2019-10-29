@@ -25,6 +25,8 @@ class FilterBooths extends React.Component {
     return (
       <nav class="level" id="filter">
         <div class="level-left">
+
+          {/* Filter Button */}
           <div class="level-item">
             <p class="subtitle is-5">
               <strong>Filter By</strong>
@@ -34,10 +36,17 @@ class FilterBooths extends React.Component {
         </div>
 
         <div class="level-right">
+
+           {/* Map Button */}
+           <div class="level-item">
+              <img src={MapIcon} id="map" onClick={() => this.props.handleMapClick()}></img>
+          </div>
+
+          {/* Location field + Search button */}
           <div class="level-item">
             <div class="field has-addons">
               <p class="control">
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                <input class="input" type="text" value={this.state.value} onChange={this.handleChange} />
               </p>
               <p class="control">
                 <button onClick={() => this.props.handleFilterSubmit(this.state.value)}className="button">Search</button>
