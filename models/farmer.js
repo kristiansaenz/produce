@@ -9,10 +9,7 @@ module.exports = FarmerSchema = new mongoose.Schema(
         booth: {
           booth_name: String,
           description: String,
-          items: {
-            fruits: Array,
-            vegetables: Array
-          },
+          produce: [Object]
         },
     },
     {

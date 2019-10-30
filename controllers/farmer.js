@@ -39,10 +39,7 @@ module.exports = {
         booth: {
           booth_name: req.body.booth.booth_name,
           description: req.body.booth.description,
-          items: {
-            fruits: req.body.booth.items.fruits,
-            vegetables: req.body.booth.items.vegetables
-          }
+          produce: req.body.booth.produce
         }
       })
 

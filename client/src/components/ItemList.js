@@ -5,15 +5,14 @@ import Item from './Item'
 class ItemList extends React.Component {
 
   render(){
-      let items = this.props.items;
+      let produce = this.props.produce;
       // let itemsList = items.split(" ");
       // var itemsList = items.map(item => ({ name: item }));
-      console.log(items)
 
       return (
         <div className="columns is-mobile">
-        {this.props.items && items.map(item =>
-          <Item item={item} />
+        {this.props.produce && produce.map(item =>
+          <Item produce={item} />
         )}        
         </div>
       )
