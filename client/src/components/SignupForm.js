@@ -1,71 +1,99 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import React, { useState } from 'react'
+import ImageUploader from './ImageUploader'
+import axios from 'axios'
 
 
-class LoginForm extends React.Component {
-        constructor(props) {
-            super(props)
-            this.state = {
-                email: '',
-                password: ''
-            }
-        }
+const LoginForm = () => {
 
-        render() {
-            return(
-                <div class="login-form">
-                <form>
-                    
-                    {/* Email field */}
-                    <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control">
-                        <input 
-                        class="input is-success" 
-                        type="text" 
-                        placeholder="e.g Demelza Carne"
-                        // onChange={(event) => {this.updateEmail(event.target.value)}}
-                        value={this.state.email} />
-                    </div>
-                    </div>
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+    name: ''
+  })
 
-                    {/* Password field */}
-                    <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control">
-                        <input 
-                        class="input is-success" 
-                        type="text" 
-                        placeholder="e.g judas"
-                        // onChange={(event) => {this.updatePassword(event.target.value)}}
-                        value={this.state.password} />
-                    </div>
-                    </div>
+  const handleChange = e => {
+    const value = e.target.value;
+    setState({
+      ...state,
+      [e.target.name]: value
+    });
+  }
 
-                    {/* Confirm password field */}
-                    <div class="field">
-                    <label class="label">Confirm Password</label>
-                    <div class="control">
-                        <input 
-                        class="input is-success" 
-                        type="text" 
-                        placeholder="e.g judas"
-                        // onChange={(event) => {this.updatePassword(event.target.value)}}
-                        value={this.state.password} />
-                    </div>
-                    </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("STATE: ", state)
+  }
 
-                    {/* Buttons */}
-                    <div class="control">
-                    <div class="button-area">
-                        <button class="button is-success">Submit</button>
-                    </div>
-                    </div>
+    return (
+      <div class="login-form">
+        <form>
+          {/* Name field */}
+          <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input className="input is-success"
+                  type="text"
+                  name="name"
+                  value={state.name}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
 
-                </form>
-                </div>
-            )
-        }
-}
+          {/* Email field */}
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input className="input is-success"
+              type="text"
+              name="email"
+              value={state.email}
+              onChange={handleChange}
+            />
+            </div>
+          </div>
+
+          {/* Password field */}
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input className="input is-success" 
+                type="text"
+                name="password"
+                value={state.password}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          {/* Confirm password field */}
+          {/* <div class="field">
+            <label class="label">Confirm Password</label>
+            <div class="control">
+              <input
+                type="text"
+                name="password"
+                value={state.password}
+                onChange={handleChange}
+              />
+            </div>
+          </div> */}
+
+          {/* Upload photo */}
+          {/* <ImageUploader /> */}
+
+
+          {/* Buttons */}
+          <div class="control">
+            <div class="button-area">
+              <button class="button is-success" onClick={(e) => handleSubmit(e)}>Submit</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    );
+  }
+  
 
 export default LoginForm
