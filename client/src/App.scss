@@ -21,8 +21,7 @@ $is-success: red !default;
 }
   
 .homepage-image .section {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0rem 0rem 0rem 0rem;
 }
 
 .navbar a {
@@ -91,6 +90,22 @@ $is-success: red !default;
   padding: 0rem 1.5rem 1.5rem 1.5rem;
   align-items: initial;
   justify-content: left;
+}
+
+#form-image {
+  height: 34.8rem;
+}
+
+.is-form-page {
+  padding: 0rem 0rem 0rem 1rem;
+}
+
+.is-backdrop {
+  background-color: #41BA77;
+}
+
+.image.is-4by5 {
+  padding-top: 0;
 }
 
 // booth header
