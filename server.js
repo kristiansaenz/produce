@@ -27,5 +27,3 @@ app.listen(PORT, () => {
   require('./utils/db')
   }
 );
-
-//to run server 'nodemon start.js'

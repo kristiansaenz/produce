@@ -21,6 +21,17 @@ module.exports = {
     let coordinates = zipToCoordinates(req.body.zip)
       coordinates.then(result => {
 
+      // const Farmer = new FarmerModel({
+      //   name: req.body.name,
+      //   email: req.body.email,
+      //   address: result,
+      //   booth: {
+      //     booth_name: req.body.booth.booth_name,
+      //     description: req.body.booth.description,
+      //     items: req.body.booth.items
+      //   }
+      // })
+
       const Farmer = new FarmerModel({
         name: req.body.name,
         email: req.body.email,
@@ -28,9 +39,10 @@ module.exports = {
         booth: {
           booth_name: req.body.booth.booth_name,
           description: req.body.booth.description,
-          items: req.body.booth.items
+          produce: req.body.booth.produce
         }
       })
+
 
       Farmer.save(Farmer, function(err, result) {
         if(err) throw err;
