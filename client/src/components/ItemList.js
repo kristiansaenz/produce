@@ -1,6 +1,5 @@
 import React from 'react'
 import Item from './Item'
-import axios from 'axios'
 
 
 class ItemList extends React.Component {

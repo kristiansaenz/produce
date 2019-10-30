@@ -34,7 +34,7 @@ const BoothPage = () => {
             <br/>
 
             <div class="booth-items-section">
-                <ItemList items={boothInfo.items} />
+                <ItemList items={boothInfo.produce} />
             </div>
       </section>
     );
