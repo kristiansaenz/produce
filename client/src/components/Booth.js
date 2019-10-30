@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PinIcon from '../images/pin.svg'
 
 class Booth extends React.Component {
 
@@ -26,7 +27,7 @@ class Booth extends React.Component {
 
                     {/* Card Footer */}
                     <footer class="card-footer">
-                        <div class="card-footer-item">{this.props.address.city}, {this.props.address.state}</div>
+                        <div class="card-footer-item"><img src={PinIcon} className="pin" />{this.props.address.city}, {this.props.address.state}</div>
                     </footer>
                 </div>
                 </Link>
