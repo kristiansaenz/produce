@@ -41,10 +41,10 @@ class FilterBooths extends React.Component {
           <div class="level-item">
             <div class="field has-addons">
               <p class="control">
-                <input class="input" type="text" value={this.state.value} onChange={this.handleChange} />
+                <input class="input is-location-input-left" type="text" value={this.state.value} onChange={this.handleChange} />
               </p>
               <p class="control">
-                <button onClick={() => this.props.handleFilterSubmit(this.state.value)} className="button">Search</button>
+                <button onClick={() => this.props.handleFilterSubmit(this.state.value)}className="button is-location-input-right">Search</button>
               </p>
             </div>
           </div>
