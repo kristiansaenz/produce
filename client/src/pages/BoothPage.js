@@ -1,7 +1,6 @@
 import  React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {
-  Route,
   useParams
 } from 'react-router-dom'
 import BoothHeader from '../components/BoothHeader'
@@ -33,11 +32,11 @@ const BoothPage = () => {
             />
             <br/>
 
-            <div class="booth-items-section">
-                <ItemList items={boothInfo.items} />
-            </div>
-      </section>
-    );
+      <div class="booth-items-section">
+        <ItemList produce={boothInfo.produce} />
+      </div>
+    </section>
+  );
 }
 
 export default BoothPage

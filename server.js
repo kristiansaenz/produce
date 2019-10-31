@@ -1,4 +1,4 @@
-import 'dotenv/config';
+require("dotenv").config()
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -27,5 +27,3 @@ app.listen(PORT, () => {
   require('./utils/db')
   }
 );
-
-//to run server 'nodemon start.js'
