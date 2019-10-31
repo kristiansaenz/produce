@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.scss'
-// import { UserProvider } from './components/User/UserContext'
 import { UserProvider } from './components/User/UserContext'
+import { reducer, initialState } from './components/User/reducer'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
@@ -16,28 +16,6 @@ import BoothPage from './pages/BoothPage'
 
 
 const App = () => {
-
-  // const user = { name: '', loggedIn: false }
-
-    const initialState = {
-    theme: { primary: 'green' },
-    name: '',
-    loggedIn: false
-  };
-  
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case 'login':
-        return {
-          ...state,
-          loggedIn: !state.loggedIn,
-          name: action.payload
-        };
-        
-      default:
-        return state;
-    }
-  };
 
   return (
     <UserProvider initialState={initialState} reducer={reducer}>
