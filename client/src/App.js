@@ -1,5 +1,7 @@
 import React from 'react'
 import './App.scss'
+// import { UserProvider } from './components/User/UserContext'
+import { UserProvider } from './components/User/UserContext'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
@@ -13,23 +15,48 @@ import Contact from './pages/Contact'
 import BoothPage from './pages/BoothPage'
 
 
-function App() {
+const App = () => {
+
+  // const user = { name: '', loggedIn: false }
+
+    const initialState = {
+    theme: { primary: 'green' },
+    name: '',
+    loggedIn: false
+  };
+  
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'login':
+        return {
+          ...state,
+          loggedIn: !state.loggedIn,
+          name: action.payload
+        };
+        
+      default:
+        return state;
+    }
+  };
+
   return (
-    <Router>
-      <ScrollToTop>
-      <div className="App">
-          <Header />
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/market" component={Market} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/boothpage/:id" component={BoothPage} />
-          <Footer />
-      </div>
-      </ScrollToTop>
-    </Router>
+    <UserProvider initialState={initialState} reducer={reducer}>
+      <Router>
+        <ScrollToTop>
+        <div className="App">
+            <Header />
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/market" component={Market} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/boothpage/:id" component={BoothPage} />
+            <Footer />
+        </div>
+        </ScrollToTop>
+      </Router>
+    </UserProvider>
   );
 }
 

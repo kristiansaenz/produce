@@ -2,7 +2,7 @@ import React from 'react'
 import SignupForm from '../components/SignupForm';
 
 
-function Signup() {
+const Signup = () => {
     return(
         <section class="section is-small">
         <div class="container">
