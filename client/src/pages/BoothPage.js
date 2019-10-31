@@ -29,7 +29,7 @@ const BoothPage = () => {
               name={boothInfo.booth_name}
               description={boothInfo.description}
               city={addressInfo.city}
-               state={addressInfo.state}
+              state={addressInfo.state}
             />
             <br/>
 
