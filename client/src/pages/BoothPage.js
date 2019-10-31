@@ -22,15 +22,15 @@ const BoothPage = () => {
     fetchData();
   }, []);
 
-  return (
-    <section class="section is-small">
-      <BoothHeader
-        name={boothInfo.booth_name}
-        description={boothInfo.description}
-        city={addressInfo.city}
-        state={addressInfo.state}
-      />
-      <br />
+    return(
+      <section class = "section is-small">
+            <BoothHeader 
+              name={boothInfo.booth_name}
+              description={boothInfo.description}
+              city={addressInfo.city}
+              state={addressInfo.state}
+            />
+            <br/>
 
       <div class="booth-items-section">
         <ItemList produce={boothInfo.produce} />

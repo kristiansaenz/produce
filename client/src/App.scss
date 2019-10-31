@@ -21,8 +21,7 @@ $is-success: red !default;
 }
   
 .homepage-image .section {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0rem 0rem 0rem 0rem;
 }
 
 .navbar a {
@@ -55,6 +54,15 @@ $is-success: red !default;
 
 .is-map {
   height: 20rem;
+}
+
+//farmer cards
+.farmer-card, .farmer-description {
+  text-align: center;
+  padding: 2rem;
+  border: #464646;
+	border-radius: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 // booth cards
@@ -91,6 +99,28 @@ $is-success: red !default;
   padding: 0rem 1.5rem 1.5rem 1.5rem;
   align-items: initial;
   justify-content: left;
+}
+
+// .section.is-small {
+//   padding: 0rem 1.5rem;
+// }
+
+#form-image {
+  height: 34.8rem;
+}
+
+.is-form-page {
+  padding: 0rem 0rem 0rem 1rem;
+}
+
+.is-backdrop {
+  background: rgb(65,186,119);
+  background: linear-gradient(90deg, rgba(65,186,119,1) 0%, rgba(163,208,96,1) 81%);
+  height: 35.5rem;
+}
+
+.image.is-4by5 {
+  padding-top: 0;
 }
 
 // booth header
@@ -175,23 +205,28 @@ $is-success: red !default;
     align-items: initial;
     justify-content: left;
   }
+
 }
 
 // desktops
 @media only screen and (min-width: 742px) {
-  .booth-header .columns {
-    min-height: 27.8rem;
-  }
+  // .booth-header .columns {
+  //   min-height: 27.8rem;
+  // }
   
-  .booth-header .column {
-    min-height: inherit;
+  // .booth-header .column {
+  //   min-height: inherit;
+  // }
+
+  .booth-header {
+    padding: 0rem 15rem;
   }
 
   .form-titles {
-    padding-left: 3.5rem;
+    padding-left: 2rem;
   }
 
-  .about-section, .home-section, .market-section, .booth-header {
+  .about-section, .home-section, .market-section {
     padding-left: 3.5rem;
     padding-right: 3.5rem;
   }
