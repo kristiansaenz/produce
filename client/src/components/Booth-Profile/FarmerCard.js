@@ -1,5 +1,6 @@
 import React from 'react';
 import Farmer from '../../images/farmer-card-pic.svg'
+import { Rating } from 'semantic-ui-react'
 
 
 function FarmerCard (props) {
@@ -18,7 +19,7 @@ function FarmerCard (props) {
                 </div>
 
                 <div className="farmer-rating">
-                    <p><i>[insert five stars here]</i></p>
+                  <Rating icon='star' defaultRating={5} maxRating={5} disabled/>
                 </div>
 
                 <div className="farmer-location">
