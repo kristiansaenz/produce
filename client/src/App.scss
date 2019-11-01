@@ -40,8 +40,27 @@ $is-success: red !default;
   margin-left: .7rem;
 }
 
+.produce-box {
+  height: 5rem;
+  width: 100%;
+  border-style: solid;
+  border-color: #464646;
+  // background-color: #464646;
+}
+
+.is-produce-review-switch {
+  border-color: #707070;
+  border-style: solid;
+  border-radius: 2rem;
+  padding: .5rem 1rem;
+}
+
 #logo {
   padding-bottom: .3rem;
+}
+
+#profile-pic {
+  height: 10rem;
 }
 
 .level img {
@@ -218,7 +237,11 @@ $is-success: red !default;
   //   min-height: inherit;
   // }
 
-  .booth-header {
+  // .booth-header {
+  //   padding: 0rem 15rem;
+  // }
+
+  .section.is-small.is-farmer-page {
     padding: 0rem 15rem;
   }
 
@@ -231,32 +254,14 @@ $is-success: red !default;
     padding-right: 3.5rem;
   }
 
-  .booth-items-section {
-    padding: 2rem 3.5rem;
-  }
+  // .booth-items-section {
+  //   padding: 2rem 3.5rem;
+  // }
 }
 
 // big desktops
 @media screen and (min-width: 1024px) {
   .container {
     max-width: 1500px;
-  }
-}
-
-
-//svg stuffies
-#sun {
-  animation-duration: 1.5s;
-  animation-name: sun-move;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-@keyframes sun-move {
-  from { 
-    transform: translateX(0) translateY(60px)
-  }
-  to {
-    transform: translateX(0px) translateY(700px)
   }
 }

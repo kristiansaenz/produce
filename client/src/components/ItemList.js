@@ -7,7 +7,7 @@ class ItemList extends React.Component {
     let produce = this.props.produce;
 
     return (
-      <div className="columns is-mobile">
+      <div className="container">
         {this.props.produce && produce.map(item =>
           <Item produce={item} />
         )}
