@@ -21,12 +21,24 @@ class Map extends Component {
   componentDidMount() {
 
     let data = []
+
+    if (Array.isArray(this.props.farmers)) {
     this.props.farmers.map(farmer => (
-      data.push({
-        lat: farmer.address.latitude,
-        lng: farmer.address.longitude
-      })
-    ))
+        data.push({
+          lat: farmer.address.latitude,
+          lng: farmer.address.longitude
+        })
+    ))}
+    else {
+      if (this.props.farmers.address){
+          data.push({
+            lat: this.props.farmer.address.latitude,
+            lng: this.props.farmer.address.longitude
+          })
+        }
+    }
+    
+
     let newData = GeoJSON.parse(data, { Point: ['lat', 'lng'] });
 
     const { lng, lat, zoom } = this.state;

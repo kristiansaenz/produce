@@ -71,6 +71,10 @@ $is-success: red !default;
   color: $primary-color;
 }
 
+.is-equal-column {
+  display: flex;
+}
+
 .is-map {
   height: 20rem;
 }
@@ -93,6 +97,8 @@ $is-success: red !default;
   max-height: 15rem;
   height: fit-content;
   // overflow: hidden;
+  flex: auto;
+
 }
 
 .card .content {
