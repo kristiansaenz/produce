@@ -14,6 +14,7 @@ class FilterBooths extends React.Component {
 
   handleChange = (event) => {
     this.setState({value: event.target.value});
+    this.props.handleFilterSubmit(event.target.value);
   }
 
   render() {
