@@ -20,6 +20,14 @@ $is-success: red !default;
   padding: 0;
 }
   
+figure {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
 .homepage-image .section {
   padding: 0rem 0rem 0rem 0rem;
 }
@@ -71,12 +79,17 @@ $is-success: red !default;
   color: $primary-color;
 }
 
+.is-equal-column {
+  display: flex;
+}
+
 .is-map {
-  height: 20rem;
+  height: 22.5rem;
 }
 
 //farmer cards
 .farmer-card, .farmer-description {
+  width: 100%;
   text-align: center;
   padding: 2rem;
   border: #464646;
@@ -93,6 +106,8 @@ $is-success: red !default;
   max-height: 15rem;
   height: fit-content;
   // overflow: hidden;
+  flex: auto;
+
 }
 
 .card .content {

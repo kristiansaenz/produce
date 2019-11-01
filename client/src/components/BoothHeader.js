@@ -28,7 +28,7 @@ class BoothHeader extends React.Component {
                             state={this.props.state}
                         />
                     </div>
-                    <div className="column">
+                    <div className="column is-equal-column">
                         <FarmerDescription
                         description={this.props.description}
                         />
