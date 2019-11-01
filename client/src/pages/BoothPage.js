@@ -10,6 +10,7 @@ import Map from '../components/Map'
 
 const BoothPage = () => {
 
+  const [farmer, setFarmer] = useState({})
   const [boothInfo, setBoothInfo] = useState({})
   const [addressInfo, setAddressInfo] = useState({})
   const [farmerName, setFarmerName] = useState("")
@@ -18,7 +19,8 @@ const BoothPage = () => {
   useEffect(() => {  
     const fetchData = async () => {
       const result = await axios.get(`/farmers/booth/${id.id}`)
-      console.log(result.data.name);
+      setFarmer(result.data);
+      console.log(result.data)
       setFarmerName(result.data.name);
       setBoothInfo(result.data.booth);
       setAddressInfo(result.data.address);
@@ -53,7 +55,7 @@ const BoothPage = () => {
           <ItemList produce={boothInfo.produce} />
         </div>
 
-        {/* <Map /> */}
+        <Map farmers={farmer} />
     </section>
   );
 }
