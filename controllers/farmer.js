@@ -21,17 +21,6 @@ module.exports = {
     let coordinates = zipToCoordinates(req.body.zip)
       coordinates.then(result => {
 
-      // const Farmer = new FarmerModel({
-      //   name: req.body.name,
-      //   email: req.body.email,
-      //   address: result,
-      //   booth: {
-      //     booth_name: req.body.booth.booth_name,
-      //     description: req.body.booth.description,
-      //     items: req.body.booth.items
-      //   }
-      // })
-
       const Farmer = new FarmerModel({
         name: req.body.name,
         email: req.body.email,
@@ -70,15 +59,28 @@ module.exports = {
     let city = req.query.city;
     console.log(city)
 
-    FarmerModel.find({'address.city': city}).exec(function(err, results) {
-      if(err) {
-        return res.status(500).json({
-          message: "Error when filtering Farmers...",
-          error: err
-        });
-      }
-      console.log(results);
-      return res.json(results);
-    })
+    if(city !== '') {
+      FarmerModel.find({'address.city': new RegExp(city)}).exec(function(err, results) {
+        if(err) {
+          return res.status(500).json({
+            message: "Error when filtering Farmers...",
+            error: err
+          });
+        }
+        console.log(results);
+        return res.json(results);
+      })
+    } else {
+      // Temporary fix: when submitting search with no value, return all farms
+      FarmerModel.find(function(err, Farmers) {
+        if (err) {
+          return res.status(500).json({
+            message: 'Error when getting Farmers.',
+            error: err
+          });
+        }
+        return res.json(Farmers);
+      });
+    }
   }
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 import './App.scss'
+import { UserProvider } from './components/User/UserContext'
+import { reducer, initialState } from './components/User/reducer'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
@@ -13,23 +15,26 @@ import Contact from './pages/Contact'
 import BoothPage from './pages/BoothPage'
 
 
-function App() {
+const App = () => {
+
   return (
-    <Router>
-      <ScrollToTop>
-      <div className="App">
-          <Header />
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/market" component={Market} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/boothpage/:id" component={BoothPage} />
-          <Footer />
-      </div>
-      </ScrollToTop>
-    </Router>
+    <UserProvider initialState={initialState} reducer={reducer}>
+      <Router>
+        <ScrollToTop>
+        <div className="App">
+            <Header />
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/market" component={Market} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/boothpage/:id" component={BoothPage} />
+            <Footer />
+        </div>
+        </ScrollToTop>
+      </Router>
+    </UserProvider>
   );
 }
 
