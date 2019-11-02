@@ -3,6 +3,7 @@ import axios from 'axios'
 import FilterBooths from './FilterBooths'
 import Map from './Map'
 import BoothList from './BoothList'
+import debounce from 'lodash/debounce';
 
 const MarketContainer = () => {
 
@@ -20,7 +21,7 @@ const MarketContainer = () => {
   // functions which will be passed to children here
   // -----------------------------------------------
 
-  const handleFilterSubmit = (location) => {
+  const handleFilterSubmit = debounce((location) => {
     axios.get('/farmers/filter', {
       params: {
         city: location
@@ -30,33 +31,29 @@ const MarketContainer = () => {
     .then(data => {
       setFarmers(data)
     })
-  }
+  }, 400)
 
   const handleMapClick = () => {
-    console.log(!mapStatus)
     setMapStatus(!mapStatus)
   }
 
   const renderMap = () => {
-    if(mapStatus) {
+    if (mapStatus) {
       return (
-          <Map farmers={farmers} />
-      )}
-      else {
-        return (
-            <div></div>
-        )
+        <Map farmers={farmers} />
+      )
+    }
+    else {
+      return (
+        <div></div>
+      )
+    }
   }
-
-}
-
   // -----------------------------------------------
-
     return(
       <div>
         <FilterBooths handleMapClick={handleMapClick} handleFilterSubmit={handleFilterSubmit}/>
 
-        {/* <Map farmers={farmers}/> */}
         {/* Render map if clicked */}
         {renderMap()}
 

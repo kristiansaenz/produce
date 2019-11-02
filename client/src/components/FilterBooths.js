@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import FilterButton from '../images/filterbutton.svg'
 import MapIcon from '../images/map.svg'
-import axios from 'axios'
-import Map from './Map'
-import BoothList from './BoothList'
+// import axios from 'axios'
+// import Map from './Map'
+// import BoothList from './BoothList'
 
 
 class FilterBooths extends React.Component {
@@ -12,13 +12,9 @@ class FilterBooths extends React.Component {
     this.state = { value: '' }
   }
 
-  // handleSubmit = (event) => {
-  //   this.props.handleFilterSubmit(this.state.value)
-  //   event.preventDefault();
-  // }
-
   handleChange = (event) => {
     this.setState({value: event.target.value});
+    this.props.handleFilterSubmit(event.target.value);
   }
 
   render() {
@@ -31,25 +27,25 @@ class FilterBooths extends React.Component {
             <p class="subtitle is-5">
               <strong>Filter By</strong>
             </p>
-            <div class="filter-button"><img src={FilterButton}></img></div>
+            <div class="filter-button"><img src={FilterButton} alt="filter-button"></img></div>
           </div>
         </div>
 
         <div class="level-right">
 
-           {/* Map Button */}
-           <div class="level-item">
-              <img src={MapIcon} id="map" onClick={() => this.props.handleMapClick()}></img>
+          {/* Map Button */}
+          <div class="level-item">
+            <img src={MapIcon} id="map" onClick={() => this.props.handleMapClick()} alt="map"></img>
           </div>
 
           {/* Location field + Search button */}
           <div class="level-item">
             <div class="field has-addons">
               <p class="control">
-                <input class="input" type="text" value={this.state.value} onChange={this.handleChange} />
+                <input class="input is-location-input-left" type="text" placeHolder="Austin, Texas" value={this.state.value} onChange={this.handleChange} />
               </p>
               <p class="control">
-                <button onClick={() => this.props.handleFilterSubmit(this.state.value)}className="button">Search</button>
+                <button onClick={() => this.props.handleFilterSubmit(this.state.value)}className="button is-location-input-right">Search</button>
               </p>
             </div>
           </div>

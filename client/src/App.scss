@@ -20,9 +20,16 @@ $is-success: red !default;
   padding: 0;
 }
   
+figure {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
 .homepage-image .section {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0rem 0rem 0rem 0rem;
 }
 
 .navbar a {
@@ -41,8 +48,27 @@ $is-success: red !default;
   margin-left: .7rem;
 }
 
+.produce-box {
+  height: 5rem;
+  width: 100%;
+  border-style: solid;
+  border-color: #464646;
+  // background-color: #464646;
+}
+
+.is-produce-review-switch {
+  border-color: #707070;
+  border-style: solid;
+  border-radius: 2rem;
+  padding: .5rem 1rem;
+}
+
 #logo {
   padding-bottom: .3rem;
+}
+
+#profile-pic {
+  height: 10rem;
 }
 
 .level img {
@@ -53,8 +79,22 @@ $is-success: red !default;
   color: $primary-color;
 }
 
+.is-equal-column {
+  display: flex;
+}
+
 .is-map {
-  height: 20rem;
+  height: 22.5rem;
+}
+
+//farmer cards
+.farmer-card, .farmer-description {
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  border: #464646;
+	border-radius: 0.5rem;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
 }
 
 // booth cards
@@ -66,6 +106,8 @@ $is-success: red !default;
   max-height: 15rem;
   height: fit-content;
   // overflow: hidden;
+  flex: auto;
+
 }
 
 .card .content {
@@ -89,10 +131,31 @@ $is-success: red !default;
 
 .card-footer-item {
   padding: 0rem 1.5rem 1.5rem 1.5rem;
+  align-items: initial;
+  justify-content: left;
 }
-// .card p {
-//   max-height: 4rem;
+
+// .section.is-small {
+//   padding: 0rem 1.5rem;
 // }
+
+#form-image {
+  height: 34.8rem;
+}
+
+.is-form-page {
+  padding: 0rem 0rem 0rem 1rem;
+}
+
+.is-backdrop {
+  background: rgb(65,186,119);
+  background: linear-gradient(90deg, rgba(65,186,119,1) 0%, rgba(163,208,96,1) 81%);
+  height: 35.5rem;
+}
+
+.image.is-4by5 {
+  padding-top: 0;
+}
 
 // booth header
 .booth-info {
@@ -102,14 +165,6 @@ $is-success: red !default;
   padding: 1rem;
   font-style: $secondary-font;
 }
-
-// .card:hover .card-image {
-//   visibility: hidden;
-// }
-
-// .card-content:hover {
-//   background-color: #ebecec;
-// }
 
 .navbar-burger span {
   height: .1rem;
@@ -121,6 +176,11 @@ $is-success: red !default;
   padding: 3rem 2rem;
   border-radius: .3rem;
   color: white;
+}
+
+.pin {
+  height: 1rem;
+  margin-right: .3rem;
 }
 
 #filter {
@@ -144,58 +204,79 @@ $is-success: red !default;
   flex-wrap: wrap;
 }
 
+.is-location-input-left {
+  border-radius: 3rem 0rem 0rem 3rem;
+}
+
+.is-location-input-right {
+  border-radius: 0rem 3rem 3rem 0rem;
+}
+
 // small devices
 @media only screen and (max-width: 731px) {
   .hero-body {
     padding: 0;
   }
+
+  //booth cards
+  .card {
+    font-size: 3vw;
+  }
+
+  .card-content {
+    padding: 1rem;
+    height: 50%;
+    min-height: 45%;
+    // max-height: 50%;
+  }
+
+  .card .subtitle {
+    margin-bottom: .5rem;
+  }
+
+  .card-footer-item {
+    padding: 0rem 1rem 1rem 1rem;
+    align-items: initial;
+    justify-content: left;
+  }
+
 }
 
 // desktops
 @media only screen and (min-width: 742px) {
-  .booth-header .columns {
-    min-height: 27.8rem;
-  }
+  // .booth-header .columns {
+  //   min-height: 27.8rem;
+  // }
   
-  .booth-header .column {
-    min-height: inherit;
+  // .booth-header .column {
+  //   min-height: inherit;
+  // }
+
+  // .booth-header {
+  //   padding: 0rem 15rem;
+  // }
+
+  .section.is-small.is-farmer-page {
+    padding: 0rem 15rem;
   }
 
   .form-titles {
-    padding-left: 3.5rem;
+    padding-left: 2rem;
   }
 
-  .about-section, .home-section, .market-section, .booth-header {
+  .about-section, .home-section, .market-section {
     padding-left: 3.5rem;
     padding-right: 3.5rem;
   }
 
-  .booth-items-section {
-    padding: 2rem 3.5rem;
-  }
+  // .booth-items-section {
+  //   padding: 2rem 3.5rem;
+  // }
 }
 
 // big desktops
 @media screen and (min-width: 1024px) {
   .container {
     max-width: 1500px;
-  }
-}
-
-
-//svg stuffies
-#sun {
-  animation-duration: 1.5s;
-  animation-name: sun-move;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-@keyframes sun-move {
-  from { 
-    transform: translateX(0) translateY(60px)
-  }
-  to {
-    transform: translateX(0px) translateY(700px)
   }
 }

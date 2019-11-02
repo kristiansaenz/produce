@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserValue } from '../components/User/UserContext'
 import logo from '../images/logo.svg';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
 function Header() {
+
+    const [{ loggedIn, name }] = UserValue();
     
     function expandNavMenu() {
         let menu = document.getElementsByClassName("navbar-menu")[0];
@@ -44,6 +47,9 @@ function Header() {
                         <Link to="/market"><a class="navbar-item">Market</a></Link>
                         <Link to="/login"><a class="navbar-item">Login</a></Link>
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
+                        {loggedIn && 
+                          <div>Welcome, {name}</div>
+                        }
                     </div>
                 </div>
             </nav>

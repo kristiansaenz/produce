@@ -1,71 +1,110 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import React, { useState, useContext } from 'react'
+import { UserValue } from '../components/User/UserContext'
+import ImageUploader from './ImageUploader'
+import axios from 'axios'
 
 
-class LoginForm extends React.Component {
-        constructor(props) {
-            super(props)
-            this.state = {
-                email: '',
-                password: ''
-            }
-        }
+const SignupForm = () => {
 
-        render() {
-            return(
-                <div class="login-form">
-                <form>
-                    
-                    {/* Email field */}
-                    <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control">
-                        <input 
-                        class="input is-success" 
-                        type="text" 
-                        placeholder="e.g Demelza Carne"
-                        // onChange={(event) => {this.updateEmail(event.target.value)}}
-                        value={this.state.email} />
-                    </div>
-                    </div>
+  const [{ loggedIn, name }, dispatch] = UserValue();
 
-                    {/* Password field */}
-                    <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control">
-                        <input 
-                        class="input is-success" 
-                        type="text" 
-                        placeholder="e.g judas"
-                        // onChange={(event) => {this.updatePassword(event.target.value)}}
-                        value={this.state.password} />
-                    </div>
-                    </div>
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+    name: ''
+  })
 
-                    {/* Confirm password field */}
-                    <div class="field">
-                    <label class="label">Confirm Password</label>
-                    <div class="control">
-                        <input 
-                        class="input is-success" 
-                        type="text" 
-                        placeholder="e.g judas"
-                        // onChange={(event) => {this.updatePassword(event.target.value)}}
-                        value={this.state.password} />
-                    </div>
-                    </div>
+  const handleChange = e => {
+    const value = e.target.value;
+    setState({
+      ...state,
+      [e.target.name]: value
+    });
+  }
 
-                    {/* Buttons */}
-                    <div class="control">
-                    <div class="button-area">
-                        <button class="button is-success">Submit</button>
-                    </div>
-                    </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("STATE: ", state)
+    dispatch({ type: 'login', payload: state.name})
+  }
 
-                </form>
+  if(loggedIn) {
+    return (
+      <h1>Welcome, {name}</h1>
+    );
+  } else {
+
+    return (
+        <div class="login-form">
+          <form>
+            {/* Name field */}
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                  <input className="input is-success"
+                    type="text"
+                    name="name"
+                    value={state.name}
+                    onChange={handleChange}
+                  />
                 </div>
-            )
-        }
-}
+              </div>
 
-export default LoginForm
+            {/* Email field */}
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input className="input is-success"
+                type="text"
+                name="email"
+                value={state.email}
+                onChange={handleChange}
+              />
+              </div>
+            </div>
+
+            {/* Password field */}
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input className="input is-success" 
+                  type="text"
+                  name="password"
+                  value={state.password}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            {/* Confirm password field */}
+            {/* <div class="field">
+              <label class="label">Confirm Password</label>
+              <div class="control">
+                <input
+                  type="text"
+                  name="password"
+                  value={state.password}
+                  onChange={handleChange}
+                />
+              </div>
+            </div> */}
+
+            {/* Upload photo */}
+            {/* <ImageUploader /> */}
+
+
+            {/* Buttons */}
+            <div class="control">
+              <div class="button-area">
+                <button class="button is-success" onClick={(e) => handleSubmit(e)}>Submit</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+    );
+  }
+}
+  
+
+export default SignupForm

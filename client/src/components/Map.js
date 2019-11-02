@@ -1,7 +1,6 @@
 import  React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl'
 const GeoJSON = require('geojson');
-//import ReactMapGl, { Marker, Layer } from 'react-map-gl'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw'
 
@@ -22,12 +21,24 @@ class Map extends Component {
   componentDidMount() {
 
     let data = []
+
+    if (Array.isArray(this.props.farmers)) {
     this.props.farmers.map(farmer => (
-      data.push({
-        lat: farmer.address.latitude,
-        lng: farmer.address.longitude
-      })
-    ))
+        data.push({
+          lat: farmer.address.latitude,
+          lng: farmer.address.longitude
+        })
+    ))}
+    else {
+      if (this.props.farmers.address){
+          data.push({
+            lat: this.props.farmer.address.latitude,
+            lng: this.props.farmer.address.longitude
+          })
+        }
+    }
+    
+
     let newData = GeoJSON.parse(data, { Point: ['lat', 'lng'] });
 
     const { lng, lat, zoom } = this.state;
@@ -65,12 +76,11 @@ class Map extends Component {
   }
 
   render() {
-    const { lng, lat, zoom } = this.state;
+    // const { lng, lat, zoom } = this.state;
 
     return (
       <div className="container is-map">
-      <div className="inline-block absolute top left mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
-    {/* <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div> */}
+        <div className="inline-block absolute top left mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
         </div>
         <div ref={el => this.mapContainer = el} className="absolute top right left bottom" />
       </div>
