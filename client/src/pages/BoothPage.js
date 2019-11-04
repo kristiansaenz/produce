@@ -54,13 +54,7 @@ const BoothPage = () => {
         <ItemList produce={boothInfo.produce} />
       </div>
 
-      {/* { farmer && addressInfo ? <ProfileMap farmers={farmer} lat={addressInfo.latitude} lng={addressInfo.longitude} /> : null } */}
-
-        <ProfileMap 
-          // farmers={farmer}
-          // lat={addressInfo.latitude}
-          // lng={addressInfo.longitude}
-        />
+        <ProfileMap farmers={farmer}/>
     </section>
   );
 }
