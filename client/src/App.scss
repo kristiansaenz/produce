@@ -95,6 +95,24 @@ p {
   height: 2rem;
 }
 
+.navbar-link, a.navbar-item:hover {
+  background-color: transparent;
+}
+
+//semantic ui tab component
+.ui.pointing.secondary.menu {
+  margin: 2rem 0rem;
+}
+
+.ui.pointing.secondary.menu a.item {
+  margin-right: 1rem;
+  color: $font-color;
+}
+
+.ui.segment.active.tab {
+  min-height: 25rem;
+}
+
 //farmer cards
 .farmer-card, .farmer-description {
   width: 100%;
