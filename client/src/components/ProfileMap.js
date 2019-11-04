@@ -58,7 +58,7 @@ const ProfileMap = (props) => {
       }
 
     return (
-        <div>
+        <div class="map-container">
         <ReactMapGl
           {...viewport}
           mapboxApiAccessToken={MAP_TOKEN}

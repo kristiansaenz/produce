@@ -48,19 +48,23 @@ p {
   margin-left: .7rem;
 }
 
-.produce-box {
-  height: 5rem;
-  width: 100%;
-  border-style: solid;
-  border-color: #464646;
-  // background-color: #464646;
-}
+// .produce-box {
+//   height: 5rem;
+//   width: 100%;
+//   border-style: solid;
+//   border-color: #464646;
+//   // background-color: #464646;
+// }
 
 .is-produce-review-switch {
   border-color: #707070;
   border-style: solid;
   border-radius: 2rem;
   padding: .5rem 1rem;
+}
+
+.produce-icon {
+  height: 3.5rem;
 }
 
 #logo {
