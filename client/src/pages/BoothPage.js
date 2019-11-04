@@ -6,9 +6,25 @@ import {
 import BoothHeader from '../components/BoothHeader'
 import ItemList from '../components/ItemList'
 import ProfileMap from '../components/ProfileMap'
+import { Tab } from 'semantic-ui-react'
 
 
 const BoothPage = () => {
+
+  const panes = [
+    {
+      menuItem: 'Produce',
+      render: () => <Tab.Pane attached={false}><ItemList produce={boothInfo.produce} /></Tab.Pane>,
+    },
+    {
+      menuItem: 'Map',
+      render: () => <Tab.Pane attached={false}><ProfileMap farmers={farmer}/></Tab.Pane>,
+    },
+    {
+      menuItem: 'Reviews',
+      render: () => <Tab.Pane attached={false}>No reviews yet</Tab.Pane>,
+    },
+  ]
 
   const [farmer, setFarmer] = useState({})
   const [boothInfo, setBoothInfo] = useState({})
@@ -38,7 +54,7 @@ const BoothPage = () => {
         />
         <br/>
 
-        <nav class="level is-mobile is-produce-review-switch">
+        {/* <nav class="level is-mobile is-produce-review-switch">
           <div class="level-left">
             <div class="level-item">
               <p class="subtitle is-5">Produce</p>
@@ -54,7 +70,9 @@ const BoothPage = () => {
         <ItemList produce={boothInfo.produce} />
       </div>
 
-        <ProfileMap farmers={farmer}/>
+        <ProfileMap farmers={farmer}/> */}
+
+      <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
     </section>
   );
 }

@@ -6,7 +6,7 @@ class BoothImages extends React.Component {
         return(
             <div class="booth-images">
                 <figure class="image is-2by1">
-                <img src={Pacha} alt="Placeholder image"></img>
+                <img src={Pacha} alt="Placeholder"></img>
                 </figure>
             </div>
         )

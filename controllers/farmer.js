@@ -60,7 +60,7 @@ module.exports = {
     console.log(city)
 
     if(city !== '') {
-      FarmerModel.find({'address.city': new RegExp(city)}).exec(function(err, results) {
+      FarmerModel.find({'address.city': new RegExp(city, 'i')}).exec(function(err, results) {
         if(err) {
           return res.status(500).json({
             message: "Error when filtering Farmers...",
