@@ -4,6 +4,7 @@ import FilterBooths from './FilterBooths'
 import Map from './Map'
 import BoothList from './BoothList'
 import debounce from 'lodash/debounce';
+import ProfileMap from './ProfileMap'
 
 const MarketContainer = () => {
 
@@ -40,7 +41,10 @@ const MarketContainer = () => {
   const renderMap = () => {
     if (mapStatus) {
       return (
-        <Map farmers={farmers} />
+        // <Map farmers={farmers} />
+        <div className="container is-map">
+          <ProfileMap farmers={farmers} />
+        </div>
       )
     }
     else {

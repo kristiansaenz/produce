@@ -1,20 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { UserValue } from '../components/User/UserContext'
 import logo from '../images/logo.svg';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 
 function Header() {
-
     const [{ loggedIn, name }] = UserValue();
     
     function expandNavMenu() {
         let menu = document.getElementsByClassName("navbar-menu")[0];
         menu.style.display = (menu.style.display === "block") ? 
             menu.style.display = "none" : menu.style.display = "block";
-      }
-
+    }
 
     return(
         <section className="hero">

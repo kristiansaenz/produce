@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 import BoothHeader from '../components/BoothHeader'
 import ItemList from '../components/ItemList'
-import Map from '../components/Map'
+import ProfileMap from '../components/ProfileMap'
 
 
 const BoothPage = () => {
@@ -20,7 +20,6 @@ const BoothPage = () => {
     const fetchData = async () => {
       const result = await axios.get(`/farmers/booth/${id.id}`)
       setFarmer(result.data);
-      console.log(result.data)
       setFarmerName(result.data.name);
       setBoothInfo(result.data.booth);
       setAddressInfo(result.data.address);
@@ -51,11 +50,17 @@ const BoothPage = () => {
       </nav>
         
 
-        <div class="booth-items-section">
-          <ItemList produce={boothInfo.produce} />
-        </div>
+      <div class="booth-items-section">
+        <ItemList produce={boothInfo.produce} />
+      </div>
 
-        <Map farmers={farmer} />
+      {/* { farmer && addressInfo ? <ProfileMap farmers={farmer} lat={addressInfo.latitude} lng={addressInfo.longitude} /> : null } */}
+
+        <ProfileMap 
+          // farmers={farmer}
+          // lat={addressInfo.latitude}
+          // lng={addressInfo.longitude}
+        />
     </section>
   );
 }
