@@ -30,7 +30,7 @@ const ProfileMap = (props) => {
                 })
             }
         }
-    });
+    }, [props.farmers]);
 
     const renderMarkers = () => {
         if (Array.isArray(props.farmers)) {
