@@ -1,5 +1,5 @@
 import  React, { useState, useEffect } from 'react'
-import ReactMapGl, {Marker} from 'react-map-gl'
+import ReactMapGl, {Marker, Popup} from 'react-map-gl'
 import Pin from '../images/pin.svg'
 const GeoJSON = require('geojson')
 
@@ -59,13 +59,13 @@ const ProfileMap = (props) => {
 
     return (
         <div>
-        <ReactMapGl 
-            {...viewport}
-            mapboxApiAccessToken = {MAP_TOKEN}
-            onViewportChange = {viewport => {setViewport(viewport)}}
-            mapStyle="mapbox://styles/mapbox/streets-v9"
-            >
-            {renderMarkers()}
+        <ReactMapGl
+          {...viewport}
+          mapboxApiAccessToken={MAP_TOKEN}
+          onViewportChange={viewport => { setViewport(viewport) }}
+          mapStyle="mapbox://styles/mapbox/streets-v9"
+        >
+          {renderMarkers()}
         </ReactMapGl>
         </div>
     );
