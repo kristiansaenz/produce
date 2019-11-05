@@ -20,7 +20,7 @@ class BoothHeader extends React.Component {
 
                 {/* Farmer Card + Farmer Description */}
                 <div class="columns">
-                    <div className="column is-two-fifths">
+                    <div className="column is-two-fifths is-equal-column">
                         <FarmerCard 
                             farmerName={this.props.farmerName}
                             name={this.props.name}
