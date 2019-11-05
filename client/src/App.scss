@@ -87,9 +87,13 @@ p {
   display: flex;
 }
 
-.is-map {
-  height: 20rem;
+.booth-list {
+  margin-top: .5rem
 }
+
+// .is-map {
+//   height: 20rem;
+// }
 
 #profile-map-pin {
   height: 2rem;
@@ -458,9 +462,9 @@ p {
     padding: 0;
   }
 
-  .is-map {
-    height: 15rem;
-  }
+  // .is-map {
+  //   height: 15rem;
+  // }
 
   //booth cards
   .card {

@@ -14,7 +14,7 @@ function BoothList(props){
   } else {
     return (
       <div>
-        <div className="columns is-mobile">
+        <div className="columns is-mobile booth-list">
 
           {props.farmers.map(farmer => (
             <Booth
