@@ -22,8 +22,10 @@ function BoothList(props){
               name={farmer.name}
               email={farmer.email}
               address={farmer.address}
+              avatar={farmer.avatar}
               booth_name={farmer.booth.booth_name}
               booth_description={farmer.booth.description}
+              booth_images={farmer.booth.images}
             />
           ))}
         </div>

@@ -9,7 +9,7 @@ function FarmerCard (props) {
                 
                 <div className="farmer-image">
                     {/* <figure className="image is-4by5"> */}
-                        <img src={Farmer} id="profile-pic"></img>  
+                        <img src={props.avatar} className="profile-pic"></img>  
                     {/* </figure>  */}
                 </div>
 

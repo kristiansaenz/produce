@@ -47,6 +47,8 @@ const BoothPage = () => {
       <section class="section is-small is-farmer-page">
         <BoothHeader 
           farmerName={farmerName}
+          avatar={farmer.avatar}
+          booth_images={boothInfo.images}
           name={boothInfo.booth_name}
           description={boothInfo.description}
           city={addressInfo.city}

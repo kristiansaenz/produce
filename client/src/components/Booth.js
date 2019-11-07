@@ -13,7 +13,7 @@ class Booth extends React.Component {
             {/* Card Image */}
             <div class="card-image">
               <figure class="image is-4by3">
-                <img src="https://cdn6.dissolve.com/p/D145_35_594/D145_35_594_1200.jpg" alt="Farmer"></img>
+                <img src={this.props.booth_images} alt="Farmer"></img>
               </figure>
             </div>
 

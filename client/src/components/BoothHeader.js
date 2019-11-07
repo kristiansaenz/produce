@@ -1,5 +1,5 @@
 import React from 'react'
-import BoothImages from './Booth-Profile/FarmerImages'
+import BoothImages from './Booth-Profile/BoothImages'
 import FarmerCard from './Booth-Profile/FarmerCard'
 import FarmerDescription from './Booth-Profile/FarmerDescription'
 
@@ -14,7 +14,7 @@ class BoothHeader extends React.Component {
                 {/* Booth Images Component */}
                 <div class="columns">
                     <div class="column">
-                        <BoothImages />
+                        <BoothImages booth_images={this.props.booth_images}/>
                     </div>
                 </div>
 
@@ -23,6 +23,7 @@ class BoothHeader extends React.Component {
                     <div className="column is-two-fifths is-equal-column">
                         <FarmerCard 
                             farmerName={this.props.farmerName}
+                            avatar={this.props.avatar}
                             name={this.props.name}
                             city={this.props.city}
                             state={this.props.state}
