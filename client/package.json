@@ -19,6 +19,7 @@
     "react-router-scroll-top": "^0.2.1",
     "react-scripts": "3.0.1",
     "semantic-ui-react": "^0.88.1",
+    "sinon": "^7.5.0",
     "typescript": "^3.6.4"
   },
   "scripts": {
@@ -42,6 +43,17 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "react-test-renderer": "^16.11.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/setupTests.js"
     ]
   }
 }

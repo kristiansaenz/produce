@@ -1,9 +1,11 @@
 import React from 'react';
 import Farmer from '../../images/farmer-card-pic.svg'
 import { Rating } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 
 function FarmerCard (props) {
+
         return (
             <div class="farmer-card">
                 
