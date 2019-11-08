@@ -3,7 +3,7 @@ import React from 'react'
 
 function About() {
     return (
-        <section class="section is-small">
+        <section class="section is-medium">
             <div class="about-section">
             <div class="container">
             <h1 class="title">About Us</h1>

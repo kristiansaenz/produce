@@ -1,5 +1,4 @@
 import React from 'react'
-import Pacha from '../../images/pachapacha.png'
 
 class BoothImages extends React.Component {
     render() {

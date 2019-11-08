@@ -1,21 +1,17 @@
-import React from 'react'
-import Booth from '../components/Booth'
-// import axios from 'axios'
-// import Map from './Map'
+import React from "react";
+import Booth from "../components/Booth";
 
-function BoothList(props){
-
+function BoothList(props) {
   if (props.farmers.length === 0) {
     return (
-      <div>
+      <div className="boothlist-area">
         <h1>Hmm... There aren't any booths here :(</h1>
       </div>
-    )
+    );
   } else {
     return (
       <div>
         <div className="columns is-mobile booth-list">
-
           {props.farmers.map(farmer => (
             <Booth
               id={farmer._id}
@@ -30,8 +26,8 @@ function BoothList(props){
           ))}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default BoothList
+export default BoothList;
