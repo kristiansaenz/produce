@@ -15,7 +15,7 @@ function Header() {
 
     return(
         <section className="hero">
-        <div className="hero-body">
+        <div className="hero-body nav-banner">
             
             {/* Navigation */}
             <nav class="navbar" role="navigation" aria-label="main navigation">

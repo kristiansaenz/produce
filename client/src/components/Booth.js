@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PinIcon from '../images/pin.svg'
+import { Rating } from 'semantic-ui-react'
+
 
 class Booth extends React.Component {
 
@@ -13,15 +15,18 @@ class Booth extends React.Component {
             {/* Card Image */}
             <div class="card-image">
               <figure class="image is-4by3">
-                <img src="https://cdn6.dissolve.com/p/D145_35_594/D145_35_594_1200.jpg" alt="Farmer"></img>
+                <img src={this.props.booth_images} alt="Farmer"></img>
               </figure>
             </div>
 
             {/* Card Content */}
             <div class="card-content">
               <div class="content">
-                <div class="subtitle"> {this.props.name} </div>
+                <div class="subtitle"> {this.props.booth_name} </div>
                 <p> {this.props.booth_description} </p>
+                {/* <div className="farmer-rating">
+                  <Rating icon='star' defaultRating={5} maxRating={5} disabled/>
+                </div> */}
               </div>
             </div>
 
