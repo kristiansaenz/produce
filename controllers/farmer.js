@@ -3,8 +3,8 @@ const zipToCoordinates = require('./helpers')
 const FarmerModel = require('../models/farmer.js')
 
 module.exports = {
-  list: function(req, res) {
-    FarmerModel.find(function(err, Farmers) {
+  list: function (req, res) {
+    FarmerModel.find(function (err, Farmers) {
       if (err) {
         return res.status(500).json({
           message: 'Error when getting Farmers.',
@@ -15,16 +15,19 @@ module.exports = {
     });
   },
 
-  create: function(req, res) {
+  create: function (req, res) {
 
     // convert given zip to full address attribute to save in db
     let coordinates = zipToCoordinates(req.body.zip)
-      coordinates.then(result => {
+    coordinates.then(result => {
+
+      let search_address = result.city + ' ' + result.state
 
       const Farmer = new FarmerModel({
         name: req.body.name,
         email: req.body.email,
         address: result,
+        searchAddress: result.city,
         booth: {
           booth_name: req.body.booth.booth_name,
           description: req.body.booth.description,
@@ -33,35 +36,39 @@ module.exports = {
       })
 
 
-      Farmer.save(Farmer, function(err, result) {
-        if(err) throw err;
-        if(result) console.log('INSERTED SUCCESSFULLY')
+      Farmer.save(Farmer, function (err, result) {
+        if (err) throw err;
+        if (result) console.log('INSERTED SUCCESSFULLY')
         return res.json(Farmer)
       })
     })
   },
 
-  booth: function(req, res) {
+  booth: function (req, res) {
     let id = req.params.id;
 
-    FarmerModel.findOne({ _id: id }, function(err, farmer) {
-      if(err) {
+    FarmerModel.findOne({
+      _id: id
+    }, function (err, farmer) {
+      if (err) {
         console.log(err);
       }
-      if(farmer) {
+      if (farmer) {
         console.log(farmer)
         res.json(farmer);
       }
     });
   },
 
-  filter: function(req, res) {
+  filter: function (req, res) {
     let city = req.query.city;
     console.log(city)
 
-    if(city !== '') {
-      FarmerModel.find({'address.city': new RegExp(city, 'i')}).exec(function(err, results) {
-        if(err) {
+    if (city !== '') {
+      FarmerModel.find({
+        'address.city': new RegExp(city, 'i')
+      }).exec(function (err, results) {
+        if (err) {
           return res.status(500).json({
             message: "Error when filtering Farmers...",
             error: err
@@ -72,7 +79,7 @@ module.exports = {
       })
     } else {
       // Temporary fix: when submitting search with no value, return all farms
-      FarmerModel.find(function(err, Farmers) {
+      FarmerModel.find(function (err, Farmers) {
         if (err) {
           return res.status(500).json({
             message: 'Error when getting Farmers.',
