@@ -1,12 +1,9 @@
-import React, { useState, useContext } from 'react'
-import { UserValue } from '../components/User/UserContext'
+import React, { useState } from 'react'
 import ImageUploader from './ImageUploader'
 import axios from 'axios'
 
 
 const SignupForm = () => {
-
-  const [{ loggedIn, name }, dispatch] = UserValue();
 
   const [state, setState] = useState({
     email: '',
@@ -22,17 +19,10 @@ const SignupForm = () => {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     console.log("STATE: ", state)
-    dispatch({ type: 'login', payload: state.name})
   }
-
-  if(loggedIn) {
-    return (
-      <h1>Welcome, {name}</h1>
-    );
-  } else {
 
     return (
         <div class="login-form">
@@ -55,7 +45,7 @@ const SignupForm = () => {
               <label class="label">Email</label>
               <div class="control">
                 <input className="input is-success"
-                type="text"
+                type="email"
                 name="email"
                 value={state.email}
                 onChange={handleChange}
@@ -90,7 +80,7 @@ const SignupForm = () => {
             </div> */}
 
             {/* Upload photo */}
-            <ImageUploader />
+            {/* <ImageUploader /> */}
 
 
             {/* Buttons */}
@@ -104,7 +94,6 @@ const SignupForm = () => {
         </div>
     );
   }
-}
   
 
 export default SignupForm
