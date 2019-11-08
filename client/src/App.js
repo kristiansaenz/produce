@@ -1,7 +1,5 @@
 import React from 'react'
 import './App.scss'
-import { UserProvider } from './components/User/UserContext'
-import { reducer, initialState } from './components/User/reducer'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
@@ -18,7 +16,6 @@ import BoothPage from './pages/BoothPage'
 const App = () => {
 
   return (
-    <UserProvider initialState={initialState} reducer={reducer}>
       <Router>
         <ScrollToTop>
         <div className="App">
@@ -34,7 +31,6 @@ const App = () => {
         </div>
         </ScrollToTop>
       </Router>
-    </UserProvider>
   );
 }
 

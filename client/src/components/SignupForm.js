@@ -80,7 +80,7 @@ const SignupForm = () => {
             </div> */}
 
             {/* Upload photo */}
-            {/* <ImageUploader /> */}
+            <ImageUploader />
 
 
             {/* Buttons */}
