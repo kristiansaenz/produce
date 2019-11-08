@@ -1,30 +1,27 @@
-import React from 'react'
-import LoginForm from '../components/LoginForm';
-
+import React from "react";
+import LoginForm from "../components/LoginForm";
 
 function Login() {
-    return(
-        <section class="section is-small">
-        <div class="container">
-            <div class="form-titles">
-                <h1 class="title">Login</h1>
-                <h2 class="subtitle">
-                    Here you can login to your booth!
-                </h2>
-            </div>
+  return (
+    <section class="section is-small">
+      <div class="container">
+        <div class="form-titles">
+          <h1 class="title">Login</h1>
+          <h2 class="subtitle">Here you can login to your booth!</h2>
         </div>
+      </div>
 
-        <section class="hero">
+      <section class="hero">
         <div class="hero-body">
-            <div class="columns">
+          <div class="columns">
             <div class="column is-one-third">
-                <LoginForm />
+              <LoginForm />
             </div>
-            </div>
+          </div>
         </div>
-        </section>
-        </section>
-    )
+      </section>
+    </section>
+  );
 }
 
-export default Login
+export default Login;
