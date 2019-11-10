@@ -27,7 +27,7 @@ const profileImgUpload = multer({
   }),
   limits: {
     fileSize: 2000000
-  }, 
+  },
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   }
@@ -48,10 +48,6 @@ function checkFileType(file, cb) {
 }
 
 
-router.post('/register', UsersController.register);
-// router.post('/create', UsersController.create);
-
-
 router.post('/upload-avatar', (req, res) => {
   profileImgUpload(req, res, (error) => {
     if (error) {
@@ -66,30 +62,23 @@ router.post('/upload-avatar', (req, res) => {
         res.json('Error: No File Selected');
       } else {
 
-
-
-
-
         // If Success
         const imageName = req.file.key;
         const imageLocation = req.file.location;
         console.log('image location: ', imageLocation)
         // Save the file name into database into profile model
 
-        UserModel.findOne({ email: 'ryan@gmail.com' }).then(user => {
+        UserModel.findOne({
+          email: 'ryan@gmail.com'
+        }).then(user => {
           user.avatar = imageLocation
           user.save()
           res.json(user)
         });
-
-
-        // res.json({
-        //   image: imageName,
-        //   location: imageLocation
-        // });
       }
     }
   });
 });
+
 
 module.exports = router;
