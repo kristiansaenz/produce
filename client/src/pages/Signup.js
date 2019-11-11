@@ -1,30 +1,28 @@
-import React from 'react'
-import SignupForm from '../components/SignupForm';
+import React from "react";
+import SignupForm from "../components/SignupForm";
 
-
-const Signup = () => {
-    return(
-        <section class="section is-small">
-        <div class="container">
-            <div class="form-titles">
-                <h1 class="title">Sign Up</h1>
-                <h2 class="subtitle">
-                    Here you can sign up to become a farmer & create your booth!
-                </h2>
+function Signup() {
+  return (
+    <section className="section is-small">
+      <section className="hero">
+        <div className="hero-body">
+          <div className="columns">
+            <div className="form-titles">
+              <h1 className="title">Sign Up</h1>
+              <h2 className="subtitle">
+                Here you can sign up to become a farmer & create your booth!
+              </h2>
             </div>
+          </div>
+          <div className="columns">
+            <div className="column is-one-third">
+              <SignupForm />
+            </div>
+          </div>
         </div>
+      </section>
+    </section>
+  );
+};
 
-        <section class="hero">
-        <div class="hero-body">
-            <div class="columns">
-            <div class="column is-one-third">
-                <SignupForm />
-            </div>
-            </div>
-        </div>
-        </section>
-        </section>
-    )
-}
-
-export default Signup
+export default Signup;

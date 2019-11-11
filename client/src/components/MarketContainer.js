@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import FilterBooths from './FilterBooths'
-import Map from './Map'
+import FilterBar from './FilterBar'
 import BoothList from './BoothList'
 import debounce from 'lodash/debounce';
 import ProfileMap from './ProfileMap'
 
 const MarketContainer = () => {
-
   const [farmers, setFarmers] = useState([]);
-  const [mapStatus, setMapStatus] = useState(false)
+  const [mapStatus, setMapStatus] = useState(false);
+  const [toggleFilterButtonExpanded, setToggleFilterButtonExpanded] = useState(false);
+  const [categories, setCategories] = useState([
+    {id: 1, name: "fruits"},
+    {id: 2, name: "vegetables"},
+    {id: 3, name: "dairy"},
+    {id: 4, name: "bakery"}
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,9 +23,12 @@ const MarketContainer = () => {
     };
     fetchData();
   }, []);
+  
+  /* Functions that will be passed to children */
 
-  // functions which will be passed to children here
-  // -----------------------------------------------
+  const toggleFilterButtonExpand = () => {
+    setToggleFilterButtonExpanded(!toggleFilterButtonExpanded)
+  }
 
   const handleFilterSubmit = debounce((location) => {
     axios.get('/farmers/filter', {
@@ -53,10 +61,15 @@ const MarketContainer = () => {
       )
     }
   }
-  // -----------------------------------------------
+
     return(
       <div>
-        <FilterBooths handleMapClick={handleMapClick} handleFilterSubmit={handleFilterSubmit}/>
+        <FilterBar
+        toggleFilterButton={toggleFilterButtonExpanded}
+        handleToggleFilterButton={toggleFilterButtonExpand}
+        categoryList={categories}
+        handleMapClick={handleMapClick} 
+        handleFilterSubmit={handleFilterSubmit}/>
 
         {/* Render map if clicked */}
         {renderMap()}
