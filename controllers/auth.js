@@ -3,6 +3,7 @@ const ObjectId = require('mongodb').ObjectID;
 const UserModel = require('../models/user')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const auth = require('../middleware/auth')
 
 module.exports = {
   register: function (req, res) {
@@ -29,9 +30,9 @@ module.exports = {
             newUser
               .save()
               .then(user => {
-
+                console.log(user.id)
                 jwt.sign({
-                    id: user.name
+                    id: user.id
                   }, //payload
                   process.env.JWT_SECRET, {
                     expiresIn: 3600
@@ -78,5 +79,11 @@ module.exports = {
           })
         }
       })
+    },
+    // get the user and see if authenticated
+    user: function(req, res) {
+      UserModel.findById(req.user.id)
+        .select('-password')
+        .then(user => res.json(user))
     }
   }
