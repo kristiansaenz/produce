@@ -1,9 +1,10 @@
 import React from 'react'
 import logo from '../images/logo.svg';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 
-function Header() {
+const Header = (props) => {
     
     function expandNavMenu() {
         let menu = document.getElementsByClassName("navbar-menu")[0];
@@ -21,8 +22,8 @@ function Header() {
                     
                     {/* Produce + Logo */}
                     <Link to="/">
-                    <a class="navbar-item">
-                        <img src={logo} id="logo"></img>
+                    <a className="navbar-item">
+                        <img src={logo} id="logo" alt="logo"></img>
                         <div class="brand-name"><strong>Produce</strong></div>
                     </a>
                     </Link>
@@ -35,7 +36,8 @@ function Header() {
                     </a>
                 </div>
 
-                {/* Page Routes */}
+              {!props.isAuthenticated ? (
+                // Page Routes Authenticated
                 <div class="navbar-menu">
                     <div class="navbar-end">
                         <Link to="/about"><a class="navbar-item">About</a></Link>
@@ -44,10 +46,25 @@ function Header() {
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
                     </div>
                 </div>
+              ) : (
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <Link to="/about"><a class="navbar-item">About</a></Link>
+                        <Link to="/market"><a class="navbar-item">Market</a></Link>
+                        <Link to="/contact"><a class="navbar-item">Contact</a></Link>
+                        <h1>{props.user.name}</h1>
+                    </div>
+                </div>
+              )}
             </nav>
         </div>
       </section>
     )
 }
 
-export default Header
+const MapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+})
+
+export default connect(MapStateToProps)(Header)
