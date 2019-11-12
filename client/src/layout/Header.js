@@ -50,7 +50,7 @@ const Header = (props) => {
                 // Page Routes Authenticated
                 <div class="navbar-menu">
                     <div class="navbar-end">
-                        <Link to="/about"><a class="navbar-item">About</a></Link>
+                        {/* <Link to="/about"><a class="navbar-item">About</a></Link> */}
                         <Link to="/market"><a class="navbar-item">Market</a></Link>
                         <Link to="/login"><a class="navbar-item">Login</a></Link>
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
@@ -59,7 +59,7 @@ const Header = (props) => {
               ) : (
                 <div class="navbar-menu">
                     <div class="navbar-end">
-                        <Link to="/about"><a class="navbar-item">About</a></Link>
+                        {/* <Link to="/about"><a class="navbar-item">About</a></Link> */}
                         <Link to="/market"><a class="navbar-item">Market</a></Link>
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
                         <h1>{props.user.name}</h1>
