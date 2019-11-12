@@ -52,7 +52,9 @@ class LoginForm extends Component {
       } else {
       return(
         <div class="login-form">
-
+          {this.state.errorMsg !== null &&
+            <h2>{this.state.errorMsg}</h2>
+          }
           <form>
               
               {/* Email field */}
