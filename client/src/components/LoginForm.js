@@ -1,70 +1,107 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Redirect, Link } from "react-router-dom"
+import { connect } from 'react-redux'
+import { login } from '../actions/authActions'
+import { LOGIN_FAIL, LOGIN_SUCCESS } from '../actions/types';
 
 
-class LoginForm extends React.Component {
-            state = {
-                email: '',
-                password: ''
-            }
+class LoginForm extends Component {
 
-        // updateEmail(value) {
-        //     this.setState({
-        //         email: event.target.value
-        //     })
-        // }
+  state = {
+    email: '',
+    password: '',
+    errorMsg: null
+  }
 
-        // updatePassword(value) {
-        //     this.setState({
-        //         password: event.target.value
-        //     })
-        // }
+  componentDidUpdate(prevProps) {
+    const { error, isAuthenticated } = this.props
+    if(error !== prevProps.error) {
+      // check for login error
+      if(error.id === 'LOGIN_FAIL') {
+        this.setState({ errorMsg: error.msg.msg })
+      } else {
+        this.setState({ errorMsg: null })
+      }
+    }
+  }
 
-        render() {
-            return(
-                <div class="login-form">
-                <form>
-                    
-                    {/* Email field */}
-                    <div class="field">
-                        <label class="label">Email</label>
-                        <div class="control">
-                            <input 
-                            class="input is-success" 
-                            type="text" 
-                            placeholder="e.g Demelza Carne"
-                            // onChange={(event) => {this.updateEmail(event.target.value)}}
-                            value={this.state.email} />
-                        </div>
-                    </div>
+  handleChange = e => {
+    const value = e.target.value;
+    this.setState({
+      ...this.state,
+      [e.target.name]: value
+    });
+  }
 
-                    {/* Password field */}
-                    <div class="field">
-                        <label class="label">Password</label>
-                        <div class="control">
-                            <input 
-                            class="input is-success" 
-                            type="text" 
-                            placeholder="e.g judas"
-                            // onChange={(event) => {this.updatePassword(event.target.value)}}
-                            value={this.state.password} />
-                        </div>
-                    </div>
+  handleSubmit = e => {
+    e.preventDefault()
 
-                    {/* Buttons */}
-                    <div class="field is-grouped is-grouped-centered">
-                        <p class="control">
-                            <a class="button is-success">Submit</a>
-                        </p>
-                        <p class="control">
-                            <Link to="/signup"><button class="button is-light">Sign Up</button></Link>
-                        </p>
-                    </div>
+    const { email, password } = this.state
+    const user = {
+      email,
+      password
+    }
 
-                </form>
-                </div>
-            )
-        }
+    this.props.login(user)
+  
+  }
+
+    render() {
+      if(this.props.isAuthenticated) {
+        return (<Redirect to="/market" />)
+      } else {
+      return(
+        <div class="login-form">
+
+          <form>
+              
+              {/* Email field */}
+              <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control">
+                      <input 
+                      class="input is-success" 
+                      type="text" 
+                      name="email"
+                      placeholder="produce@gmail.com"
+                      onChange={this.handleChange}
+                      value={this.state.email} />
+                  </div>
+              </div>
+
+              {/* Password field */}
+              <div class="field">
+                  <label class="label">Password</label>
+                  <div class="control">
+                      <input
+                      class="input is-success"
+                      type="text"
+                      name="password"
+                      placeholder="********"
+                      onChange={this.handleChange}
+                      value={this.state.password} />
+                  </div>
+              </div>
+
+              {/* Buttons */}
+              <div class="field is-grouped is-grouped-centered">
+                  <p class="control">
+                      <button class="button is-success" onClick={(e) => this.handleSubmit(e)}>Login</button>
+                  </p>
+                  <p class="control">
+                      <Link to="/signup"><button class="button is-light">Sign Up</button></Link>
+                  </p>
+              </div>
+          </form>
+        </div>
+      )
+    }
+  }
 }
 
-export default LoginForm
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
+})
+
+export default connect(mapStateToProps, { login })(LoginForm)

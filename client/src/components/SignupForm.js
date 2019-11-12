@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import ImageUploader from './ImageUploader'
 import axios from 'axios'
 import { Redirect, Route } from 'react-router-dom'
