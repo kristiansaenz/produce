@@ -4,7 +4,7 @@ $secondary-font: helvetica;
 
 /* THEME COLORS */
 $primary-color: #41BA77;
-$secondary-color: #A3D060;
+$secondary-color: #A9E190;
 $card-color: #EBEBEB;
 $font-color: #464646;
 $lite-font-color: #707070;
@@ -24,6 +24,11 @@ $footer-font-color: $primary-color;
 $search-button-color: $card-color;
 $filter-button-color: $card-color;
 
+/* FONT SIZES */ 
+$navbar-brand-size: 1rem;
+$navbar-font-size: .85rem;
+
+
 .App {
   margin: 0;
   padding: 0;
@@ -40,11 +45,10 @@ p {
 .homepage {
   margin-top: 2rem;
   background-image: url("./images/produce-farmer-new.svg");
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 42rem;
+  height: 41rem;
 }
 
 .title, .subtitle {
@@ -65,22 +69,34 @@ p {
   padding: 0rem 0rem 0rem 0rem;
 }
 
+/* NAV BAR */
 .nav-banner {
   background-color: $navbar-background-color;
-  padding: 1rem 1rem;
+  padding: .5rem;
+}
+
+.navbar-menu {
+  margin: auto;
+  font-size: $navbar-font-size;
 }
 
 .navbar a {
   color: $primary-color;
   font: $primary-font;
 }
+
 .navbar a:hover {
   color: $secondary-color;
 }
 
+.navbar-brand {
+  font-size: $navbar-brand-size;
+  min-height: 0;
+  margin: auto;
+}
+
 .brand-name {
-  font-size: 1.3rem;
-  margin-left: 1rem;
+  margin-left: .6rem;
   color: $brandname-color;
 }
 
@@ -88,6 +104,11 @@ p {
   background-color: transparent;
 }
 
+.checkbox {
+  margin-left: 1rem;
+}
+
+/* FOOTER */
 .footer {
   background-color: $footer-background-color;
   padding: 3rem 1rem 3rem;
@@ -98,6 +119,10 @@ p {
   color: $footer-font-color;
 }
 
+.footer-text {
+  font-size: $navbar-font-size;
+}
+
 .map-button {
   cursor: pointer;
 }
@@ -106,23 +131,25 @@ p {
   border-color: $secondary-color;
 }
 
-// .filter-button {
-//   margin-left: .7rem;
-// }
-
-
+/* FILTER BUTTON */
 .filter-button {
   font: $primary-font;
   background-color: $filter-button-color;
-  color: $primary-color;
+  // color: $primary-color;
   border-radius: 3rem;
-  border-color: transparent;
-
+  border-color: $primary-color;
 }
 
-.filter-button:hover {
-  color: $secondary-color;
-  border-color: transparent;
+.filter-by-category-container {
+  background-color: $filter-button-color;
+  border-radius: 5rem;
+  padding: .2rem;
+  // padding-bottom: 1rem;
+}
+
+.categories {
+  padding-right: 1rem;
+  color: $font-color;
 }
 
 .is-produce-review-switch {
@@ -144,6 +171,12 @@ p {
   border-radius: 5rem;
   height: 10rem;
 
+}
+
+/* FILTER BAR */
+
+.level-item {
+  margin: auto;
 }
 
 .level img {
@@ -172,11 +205,10 @@ p {
 
 /* IMAGES */
 .git-icon {
-  height: 3rem;
+  height: 2rem;
 }
 
-//semantic ui tab menu
-
+/* Semantic ui tab menu */
 .ui.secondary.pointing.menu {
   margin-left: 0em;
   margin-right: 0em;
@@ -503,7 +535,7 @@ p {
   margin-right: .3rem;
 }
 
-#filter {
+.filter-bar {
   background-color: $primary-color;
   padding: 1rem;
   color: white;
@@ -546,10 +578,6 @@ p {
     padding: 0;
   }
 
-  // .is-map {
-  //   height: 15rem;
-  // }
-
   .homepage {
     margin-top: 0rem;
   }
@@ -587,7 +615,7 @@ p {
   }
 
   .form-titles {
-    padding-left: 2rem;
+    padding-left: 2.5rem;
   }
 
   .about-section, .home-section, .market-section {
@@ -600,11 +628,11 @@ p {
   }
 
   .is-home-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .is-home-subtitle{
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .to-market {

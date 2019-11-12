@@ -12,31 +12,41 @@ const Header = (props) => {
             menu.style.display = "none" : menu.style.display = "block";
     }
 
-    return(
-        <section className="hero">
-        <div className="hero-body nav-banner">
+  return (
+    <section className="hero">
+      <div className="hero-body nav-banner">
+      
+        {/* Navigation */}
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+          <div className="navbar-brand">
             
-            {/* Navigation */}
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    
-                    {/* Produce + Logo */}
-                    <Link to="/">
-                    <a className="navbar-item">
-                        <img src={logo} id="logo" alt="logo"></img>
-                        <div class="brand-name"><strong>Produce</strong></div>
-                    </a>
-                    </Link>
-
-                    {/* Hamburger menu */}
-                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar" onClick={expandNavMenu}>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
+            {/* Produce + Logo */}
+            <Link to="/">
+              <a className="navbar-item">
+                <img src={logo} id="logo"></img>
+                <div className="brand-name">
+                  <strong>Produce</strong>
                 </div>
+              </a>
+            </Link>
 
-              {!props.isAuthenticated ? (
+            {/* Hamburger menu */}
+            <a
+              role="button"
+              className="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbar"
+              onClick={expandNavMenu}
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          {/* Page Routes */}
+                  {!props.isAuthenticated ? (
                 // Page Routes Authenticated
                 <div class="navbar-menu">
                     <div class="navbar-end">
@@ -56,10 +66,10 @@ const Header = (props) => {
                     </div>
                 </div>
               )}
-            </nav>
-        </div>
-      </section>
-    )
+        </nav>
+      </div>
+    </section>
+  );
 }
 
 const MapStateToProps = state => ({

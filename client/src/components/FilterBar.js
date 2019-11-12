@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import FilterButton from "../images/filterbutton.svg";
 import MapIcon from "../images/map.svg";
-// import axios from 'axios'
-// import Map from './Map'
-// import BoothList from './BoothList'
+import FilterByCategory from "../components/Filter/FilterByCategory"
 
-class FilterBooths extends React.Component {
+class FilterBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { 
+      value: ""
+    };
   }
 
   handleChange = event => {
@@ -18,15 +17,18 @@ class FilterBooths extends React.Component {
 
   render() {
     return (
-      <nav class="level" id="filter">
-        <div class="level-left">
-          {/* Filter Button */}
+      <nav class="level filter-bar">
+        <div class="level-left filter-by-category-container">
+          
+          {/* Filter Button + Categories */}
           <div class="level-item">
-            {/* <p class="subtitle is-5">
-              <strong>Filter By</strong>
-            </p>
-            <div class="filter-button"><img src={FilterButton} alt="filter-button"></img></div> */}
-            <div className="button filter-button">Filter By</div>
+              <div className="button filter-button" 
+              onClick={() => this.props.handleToggleFilterButton()}
+              >Filter By
+              </div>
+          </div>
+          <div class="level-item">
+            {this.props.toggleFilterButton ? <FilterByCategory categoryList={this.props.categoryList} /> : null}
           </div>
         </div>
 
@@ -58,7 +60,8 @@ class FilterBooths extends React.Component {
                   onClick={() =>
                     this.props.handleFilterSubmit(this.state.value)
                   }
-                  className="button is-location-input-right">
+                  className="button is-location-input-right"
+                >
                   Search
                 </button>
               </p>
@@ -70,4 +73,4 @@ class FilterBooths extends React.Component {
   }
 }
 
-export default FilterBooths;
+export default FilterBar;
