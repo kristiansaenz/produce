@@ -52,7 +52,11 @@ export const register = ({ name, email, password }) => dispatch => {
         type: REGISTER_FAIL
       })
     })
+}
 
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT_SUCCESS })
+  console.log('user logged out')
 }
 
 export const tokenConfig = getState => {

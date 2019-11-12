@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ImageUploader from './ImageUploader'
 import axios from 'axios'
+import { Redirect, Route } from 'react-router-dom'
 import { register } from '../actions/authActions'
 
 
@@ -36,61 +37,66 @@ const handleSubmit = e => {
   props.register(newUser)
 }
 
-  return (
-      <div class="login-form">
-        <form>
-          {/* Name field */}
-          <div class="field">
-              <label class="label">Name</label>
+
+  if(props.isAuthenticated) {
+    return (<Redirect to="/market" />)
+  } else {
+    return (
+        <div class="login-form">
+          <form>
+            {/* Name field */}
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                  <input className="input is-success"
+                    type="text"
+                    name="name"
+                    value={state.name}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+            {/* Email field */}
+            <div class="field">
+              <label class="label">Email</label>
               <div class="control">
                 <input className="input is-success"
+                type="email"
+                name="email"
+                value={state.email}
+                onChange={handleChange}
+              />
+              </div>
+            </div>
+
+            {/* Password field */}
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input className="input is-success" 
                   type="text"
-                  name="name"
-                  value={state.name}
+                  name="password"
+                  value={state.password}
                   onChange={handleChange}
                 />
               </div>
             </div>
 
-          {/* Email field */}
-          <div class="field">
-            <label class="label">Email</label>
+            {/* Upload photo */}
+            {/* <ImageUploader /> */}
+
+            {/* Buttons */}
             <div class="control">
-              <input className="input is-success"
-              type="email"
-              name="email"
-              value={state.email}
-              onChange={handleChange}
-            />
+              <div class="button-area">
+                <button class="button is-success" onClick={(e) => handleSubmit(e)}>Register</button>
+              </div>
             </div>
-          </div>
 
-          {/* Password field */}
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <input className="input is-success" 
-                type="text"
-                name="password"
-                value={state.password}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-
-          {/* Upload photo */}
-          {/* <ImageUploader /> */}
-
-          {/* Buttons */}
-          <div class="control">
-            <div class="button-area">
-              <button class="button is-success" onClick={(e) => handleSubmit(e)}>Register</button>
-            </div>
-          </div>
-
-        </form>
-      </div>
-  );
+          </form>
+        </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({

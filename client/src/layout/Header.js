@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../images/logo.svg';
+import Logout from '../components/Logout'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -37,7 +38,7 @@ const Header = (props) => {
                 </div>
 
               {!props.isAuthenticated ? (
-                // Page Routes Authenticated
+                // Page Routes Not Authenticated
                 <div class="navbar-menu">
                     <div class="navbar-end">
                         <Link to="/about"><a class="navbar-item">About</a></Link>
@@ -52,6 +53,7 @@ const Header = (props) => {
                         <Link to="/about"><a class="navbar-item">About</a></Link>
                         <Link to="/market"><a class="navbar-item">Market</a></Link>
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
+                        <Logout />
                         <h1>{props.user.name}</h1>
                     </div>
                 </div>
