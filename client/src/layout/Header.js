@@ -1,22 +1,22 @@
-import React from "react";
-import { UserValue } from "../components/User/UserContext";
-import logo from "../images/logo.svg";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React from 'react'
+import logo from '../images/logo.svg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-function Header() {
-  const [{ loggedIn, name }] = UserValue();
 
-  function expandNavMenu() {
-    let menu = document.getElementsByClassName("navbar-menu")[0];
-    menu.style.display =
-      menu.style.display === "block"
-        ? (menu.style.display = "none")
-        : (menu.style.display = "block");
-  }
+const Header = (props) => {
+    
+    function expandNavMenu() {
+        let menu = document.getElementsByClassName("navbar-menu")[0];
+        menu.style.display = (menu.style.display === "block") ? 
+            menu.style.display = "none" : menu.style.display = "block";
+    }
 
   return (
     <section className="hero">
       <div className="hero-body nav-banner">
+      
+        {/* Navigation */}
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             
@@ -46,25 +46,35 @@ function Header() {
           </div>
 
           {/* Page Routes */}
-          <div className="navbar-menu">
-            <div className="navbar-end">
-              {/* <Link to="/about"><a className="navbar-item">About</a></Link> */}
-              <Link to="/market">
-                <a className="navbar-item">Market</a>
-              </Link>
-              <Link to="/login">
-                <a className="navbar-item">Login</a>
-              </Link>
-              <Link to="/contact">
-                <a className="navbar-item">Contact</a>
-              </Link>
-              {loggedIn && <div>Welcome, {name}</div>}
-            </div>
-          </div>
+                  {!props.isAuthenticated ? (
+                // Page Routes Authenticated
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <Link to="/about"><a class="navbar-item">About</a></Link>
+                        <Link to="/market"><a class="navbar-item">Market</a></Link>
+                        <Link to="/login"><a class="navbar-item">Login</a></Link>
+                        <Link to="/contact"><a class="navbar-item">Contact</a></Link>
+                    </div>
+                </div>
+              ) : (
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <Link to="/about"><a class="navbar-item">About</a></Link>
+                        <Link to="/market"><a class="navbar-item">Market</a></Link>
+                        <Link to="/contact"><a class="navbar-item">Contact</a></Link>
+                        <h1>{props.user.name}</h1>
+                    </div>
+                </div>
+              )}
         </nav>
       </div>
     </section>
   );
 }
 
-export default Header;
+const MapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+})
+
+export default connect(MapStateToProps)(Header)

@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './App.scss'
-import { UserProvider } from './components/User/UserContext'
-import { reducer, initialState } from './components/User/reducer'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import ScrollToTop from 'react-router-scroll-top'
+import { Provider } from "react-redux";
+import { loadUser } from './actions/authActions'
+import store from './store'
 import Home from './pages/Home'
 import About from './pages/About'
 import Market from './pages/Market'
@@ -15,13 +16,17 @@ import Contact from './pages/Contact'
 import BoothPage from './pages/BoothPage'
 
 
-const App = () => {
+class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser())
+  }
 
-  return (
-    <UserProvider initialState={initialState} reducer={reducer}>
-      <Router>
-        <ScrollToTop>
-        <div className="App">
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <ScrollToTop>
+          <div className="App">
             <Header />
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
@@ -31,11 +36,12 @@ const App = () => {
             <Route path="/contact" component={Contact} />
             <Route path="/boothpage/:id" component={BoothPage} />
             <Footer />
-        </div>
-        </ScrollToTop>
-      </Router>
-    </UserProvider>
-  );
+          </div>
+          </ScrollToTop>
+        </Router>
+      </Provider>
+    );
+  }
 }
 
 export default App;
