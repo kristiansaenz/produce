@@ -17,6 +17,7 @@ import BoothPage from './pages/BoothPage'
 
 
 class App extends Component {
+  
   componentDidMount() {
     store.dispatch(loadUser())
   }
