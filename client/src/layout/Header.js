@@ -13,35 +13,44 @@ const Header = (props) => {
             menu.style.display = "none" : menu.style.display = "block";
     }
 
-    return(
-        <section className="hero">
-        <div className="hero-body">
+  return (
+    <section className="hero">
+      <div className="hero-body nav-banner">
+      
+        {/* Navigation */}
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+          <div className="navbar-brand">
             
-            {/* Navigation */}
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    
-                    {/* Produce + Logo */}
-                    <Link to="/">
-                    <a className="navbar-item">
-                        <img src={logo} id="logo" alt="logo"></img>
-                        <div class="brand-name"><strong>Produce</strong></div>
-                    </a>
-                    </Link>
-
-                    {/* Hamburger menu */}
-                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar" onClick={expandNavMenu}>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
+            {/* Produce + Logo */}
+            <Link to="/">
+              <a className="navbar-item">
+                <img src={logo} id="logo"></img>
+                <div className="brand-name">
+                  <strong>Produce</strong>
                 </div>
+              </a>
+            </Link>
+
+            {/* Hamburger menu */}
+            <a
+              role="button"
+              className="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbar"
+              onClick={expandNavMenu}
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
 
               {!props.isAuthenticated ? (
                 // Page Routes Not Authenticated
                 <div class="navbar-menu">
                     <div class="navbar-end">
-                        <Link to="/about"><a class="navbar-item">About</a></Link>
+                        {/* <Link to="/about"><a class="navbar-item">About</a></Link> */}
                         <Link to="/market"><a class="navbar-item">Market</a></Link>
                         <Link to="/login"><a class="navbar-item">Login</a></Link>
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
@@ -50,7 +59,7 @@ const Header = (props) => {
               ) : (
                 <div class="navbar-menu">
                     <div class="navbar-end">
-                        <Link to="/about"><a class="navbar-item">About</a></Link>
+                        {/* <Link to="/about"><a class="navbar-item">About</a></Link> */}
                         <Link to="/market"><a class="navbar-item">Market</a></Link>
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
                         <Logout />
@@ -58,10 +67,10 @@ const Header = (props) => {
                     </div>
                 </div>
               )}
-            </nav>
-        </div>
-      </section>
-    )
+        </nav>
+      </div>
+    </section>
+  );
 }
 
 const MapStateToProps = state => ({

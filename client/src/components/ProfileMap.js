@@ -6,7 +6,6 @@ const GeoJSON = require('geojson')
 const ProfileMap = (props) => {
 
     const [viewport, setViewport] = useState({props})
-
     const MAP_TOKEN = "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
 
     useEffect(() => {

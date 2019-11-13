@@ -16,10 +16,10 @@ const BoothPage = () => {
       menuItem: 'Produce',
       render: () => <Tab.Pane attached={false}><ItemList produce={boothInfo.produce} /></Tab.Pane>,
     },
-    {
-      menuItem: 'Map',
-      render: () => <Tab.Pane attached={false}><ProfileMap farmers={farmer}/></Tab.Pane>,
-    },
+    // {
+    //   menuItem: 'Map',
+    //   render: () => <Tab.Pane attached={false}><ProfileMap farmers={farmer}/></Tab.Pane>,
+    // },
     {
       menuItem: 'Reviews',
       render: () => <Tab.Pane attached={false}>No reviews yet</Tab.Pane>,
@@ -75,6 +75,7 @@ const BoothPage = () => {
         <ProfileMap farmers={farmer}/> */}
 
       <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+    <ProfileMap farmers={farmer} />
     </section>
   );
 }

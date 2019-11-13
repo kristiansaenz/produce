@@ -1,18 +1,32 @@
-//fonts
+/* FONTS */
 $primary-font: helvetica bold;
 $secondary-font: helvetica;
 
-//colors
+/* THEME COLORS */
 $primary-color: #41BA77;
-$secondary-color: #A3D060;
+$secondary-color: #A9E190;
 $card-color: #EBEBEB;
 $font-color: #464646;
 $lite-font-color: #707070;
 $accent-color: #B12020;
 $app-bg: #FFFFFF;
-$navbar-item-hover-background-color: #FFFFFF !default;
-$navbar-item-active-background-color: transparent !default;
 $is-success: red !default;
+
+/* NAV BAR COLORS */
+$navbar-background-color: #383838;
+$brandname-color: $primary-color;
+
+/* FOOTER COLORS */
+$footer-background-color: $navbar-background-color;
+$footer-font-color: $primary-color;
+
+/* FILTER BAR COLORS */
+$search-button-color: $card-color;
+$filter-button-color: $card-color;
+
+/* FONT SIZES */ 
+$navbar-brand-size: 1rem;
+$navbar-font-size: .85rem;
 
 
 .App {
@@ -28,33 +42,115 @@ p {
   margin: 0;
 }
 
+.homepage {
+  margin-top: 2rem;
+  background-image: url("./images/produce-farmer-new.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 41rem;
+}
+
+.title, .subtitle {
+  color: $font-color;
+}
+
+.to-market {
+  background-color: $primary-color;
+  font: $primary-font;
+  color: $font-color;
+}
+
+.to-market:hover {
+  color: $font-color;
+}
+
 .homepage-image .section {
   padding: 0rem 0rem 0rem 0rem;
 }
 
-.navbar a {
-  color: $font-color;
+/* NAV BAR */
+.nav-banner {
+  background-color: $navbar-background-color;
+  padding: .5rem;
 }
-.navbar a:hover {
+
+.navbar-menu {
+  margin: auto;
+  font-size: $navbar-font-size;
+}
+
+.navbar a {
   color: $primary-color;
+  font: $primary-font;
+}
+
+.navbar a:hover {
+  color: $secondary-color;
+}
+
+.navbar-brand {
+  font-size: $navbar-brand-size;
+  min-height: 0;
+  margin: auto;
 }
 
 .brand-name {
-  font-size: 1.3rem;
+  margin-left: .6rem;
+  color: $brandname-color;
+}
+
+.navbar-link, a.navbar-item:hover {
+  background-color: transparent;
+}
+
+.checkbox {
   margin-left: 1rem;
 }
 
-.filter-button {
-  margin-left: .7rem;
+/* FOOTER */
+.footer {
+  background-color: $footer-background-color;
+  padding: 3rem 1rem 3rem;
+  color: $footer-font-color;
 }
 
-// .produce-box {
-//   height: 5rem;
-//   width: 100%;
-//   border-style: solid;
-//   border-color: #464646;
-//   // background-color: #464646;
-// }
+.footer-strong {
+  color: $footer-font-color;
+}
+
+.footer-text {
+  font-size: $navbar-font-size;
+}
+
+.map-button {
+  cursor: pointer;
+}
+
+.map-button:hover {
+  border-color: $secondary-color;
+}
+
+/* FILTER BUTTON */
+.filter-button {
+  font: $primary-font;
+  background-color: $filter-button-color;
+  // color: $primary-color;
+  border-radius: 3rem;
+  border-color: $primary-color;
+}
+
+.filter-by-category-container {
+  background-color: $filter-button-color;
+  border-radius: 5rem;
+  padding: .2rem;
+  // padding-bottom: 1rem;
+}
+
+.categories {
+  padding-right: 1rem;
+  color: $font-color;
+}
 
 .is-produce-review-switch {
   border-color: #707070;
@@ -77,6 +173,12 @@ p {
 
 }
 
+/* FILTER BAR */
+
+.level-item {
+  margin: auto;
+}
+
 .level img {
   height: 1.5rem;
 }
@@ -93,20 +195,20 @@ p {
   margin-top: .5rem
 }
 
-// .is-map {
-//   height: 20rem;
-// }
+.boothlist-area {
+  min-height: 25rem;
+}
 
 #profile-map-pin {
   height: 2rem;
 }
 
-.navbar-link, a.navbar-item:hover {
-  background-color: transparent;
+/* IMAGES */
+.git-icon {
+  height: 2rem;
 }
 
-//semantic ui tab menu
-
+/* Semantic ui tab menu */
 .ui.secondary.pointing.menu {
   margin-left: 0em;
   margin-right: 0em;
@@ -187,7 +289,8 @@ p {
 }
 
 .ui.segment.active.tab {
-  min-height: 25rem;
+  min-height: 22rem;
+  padding: 0rem 1rem;
 }
 
 //semantic ui star rating component
@@ -234,8 +337,9 @@ p {
 
 .ui.star.rating .active.icon {
   background: transparent !important;
-  color: #FFE623 !important;
-  text-shadow: 0px -1px 0px #DDC507, -1px 0px 0px #DDC507, 0px 1px 0px #DDC507, 1px 0px 0px #DDC507 !important;
+  // color: #FFE623 !important;
+  color: #e80000 !important;
+  // text-shadow: 0px -1px 0px #DDC507, -1px 0px 0px #DDC507, 0px 1px 0px #DDC507, 1px 0px 0px #DDC507 !important;
 }
 
 /* Selected Star */
@@ -243,8 +347,10 @@ p {
 .ui.star.rating .icon.selected,
 .ui.star.rating .icon.selected.active {
   background: transparent !important;
-  color: #FFCC00 !important;
-  text-shadow: 0px -1px 0px #E6A200, -1px 0px 0px #E6A200, 0px 1px 0px #E6A200, 1px 0px 0px #E6A200 !important;
+  // color: #FFCC00 !important;
+  color: #e80000 !important;
+
+  // text-shadow: 0px -1px 0px #E6A200, -1px 0px 0px #E6A200, 0px 1px 0px #E6A200, 1px 0px 0px #E6A200 !important;
 }
 
 /*-------------------
@@ -383,7 +489,7 @@ p {
 
 // .section.is-small {
 //   padding: 0rem 1.5rem;
-// }
+// 
 
 #form-image {
   height: 34.8rem;
@@ -429,7 +535,7 @@ p {
   margin-right: .3rem;
 }
 
-#filter {
+.filter-bar {
   background-color: $primary-color;
   padding: 1rem;
   color: white;
@@ -455,18 +561,26 @@ p {
 }
 
 .is-location-input-right {
+  background-color: $search-button-color;
+  color: $primary-color;
+  border-color: transparent;
   border-radius: 0rem 3rem 3rem 0rem;
 }
 
-// small devices
+.is-location-input-right:hover {
+  color: $secondary-color;
+  border-color: transparent;
+}
+
+/* SMALL DEVICES */
 @media only screen and (max-width: 731px) {
   .hero-body {
     padding: 0;
   }
 
-  // .is-map {
-  //   height: 15rem;
-  // }
+  .homepage {
+    margin-top: 0rem;
+  }
 
   //booth cards
   .card {
@@ -492,26 +606,16 @@ p {
 
 }
 
-// desktops
+/* DESKTOPS */
 @media only screen and (min-width: 742px) {
-  // .booth-header .columns {
-  //   min-height: 27.8rem;
-  // }
-  
-  // .booth-header .column {
-  //   min-height: inherit;
-  // }
-
-  // .booth-header {
-  //   padding: 0rem 15rem;
-  // }
 
   .section.is-small.is-farmer-page {
     padding: 0rem 15rem;
+    margin: 1.5rem 0rem 2rem 0rem;
   }
 
   .form-titles {
-    padding-left: 2rem;
+    padding-left: 2.5rem;
   }
 
   .about-section, .home-section, .market-section {
@@ -519,12 +623,31 @@ p {
     padding-right: 3.5rem;
   }
 
-  // .booth-items-section {
-  //   padding: 2rem 3.5rem;
-  // }
+  .home-intro {
+    padding: 0rem 3.5rem;
+  }
+
+  .is-home-title {
+    font-size: 2.5rem;
+  }
+
+  .is-home-subtitle{
+    font-size: 1.5rem;
+  }
+
+  .to-market {
+    padding: 2rem;
+    border-radius: .8rem;
+    font-size: 1.3rem;
+  }
+
+  .booth-images {
+    height: 17rem;
+    overflow: hidden;
+  }
 }
 
-// big desktops
+/* BIG DESKTOPS */
 @media screen and (min-width: 1024px) {
   .container {
     max-width: 1500px;
