@@ -65,7 +65,7 @@ module.exports = {
               if(!isMatch) return res.status(400).json({ msg: "Invalid Password" })
 
               jwt.sign(
-              { id: user.name }, //payload
+              { id: user.id }, //payload
               process.env.JWT_SECRET,
               { expiresIn: 3600 },
               (err, token) => {

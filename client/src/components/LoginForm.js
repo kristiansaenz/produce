@@ -13,17 +13,21 @@ class LoginForm extends Component {
     errorMsg: null
   }
 
-  componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props
-    if(error !== prevProps.error) {
-      // check for login error
-      if(error.id === 'LOGIN_FAIL') {
-        this.setState({ errorMsg: error.msg.msg })
-      } else {
-        this.setState({ errorMsg: null })
-      }
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { error } = this.props
+  //   if(error !== prevProps.error) {
+  //     // check for login error
+  //     if(error.id === 'LOGIN_FAIL') {
+  //       this.setState({ 
+  //         errorMsg: error.msg.msg,
+  //         password: ''
+  //       })
+  //       alert(error.msg.msg)
+  //     } else {
+  //       this.setState({ errorMsg: null })
+  //     }
+  //   }
+  // }
 
   handleChange = e => {
     const value = e.target.value;
@@ -52,9 +56,6 @@ class LoginForm extends Component {
       } else {
       return(
         <div class="login-form">
-          {this.state.errorMsg !== null &&
-            <h2>{this.state.errorMsg}</h2>
-          }
           <form>
               
               {/* Email field */}
@@ -77,9 +78,8 @@ class LoginForm extends Component {
                   <div class="control">
                       <input
                       class="input is-success"
-                      type="text"
+                      type="password"
                       name="password"
-                      placeholder="********"
                       onChange={this.handleChange}
                       value={this.state.password} />
                   </div>
