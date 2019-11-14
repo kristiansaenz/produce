@@ -22,7 +22,7 @@ const Header = (props) => {
           <div className="navbar-brand">
             
             {/* Produce + Logo */}
-            <Link to="/">
+            <Link to="/" class="nav-home-link">
               <a className="navbar-item">
                 <img src={logo} id="logo"></img>
                 <div className="brand-name">
