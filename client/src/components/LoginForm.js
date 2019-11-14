@@ -13,21 +13,21 @@ class LoginForm extends Component {
     errorMsg: null
   }
 
-  // componentDidUpdate(prevProps) {
-  //   const { error } = this.props
-  //   if(error !== prevProps.error) {
-  //     // check for login error
-  //     if(error.id === 'LOGIN_FAIL') {
-  //       this.setState({ 
-  //         errorMsg: error.msg.msg,
-  //         password: ''
-  //       })
-  //       alert(error.msg.msg)
-  //     } else {
-  //       this.setState({ errorMsg: null })
-  //     }
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    const { error } = this.props
+    if(error !== prevProps.error) {
+      // check for login error
+      if(error.id === 'LOGIN_FAIL') {
+        this.setState({ 
+          errorMsg: error.msg.msg,
+          password: ''
+        })
+        alert(error.msg.msg)
+      } else {
+        this.setState({ errorMsg: null })
+      }
+    }
+  }
 
   handleChange = e => {
     const value = e.target.value;

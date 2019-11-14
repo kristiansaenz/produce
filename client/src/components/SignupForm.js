@@ -74,7 +74,7 @@ const handleSubmit = e => {
               <label class="label">Password</label>
               <div class="control">
                 <input className="input is-success" 
-                  type="text"
+                  type="password"
                   name="password"
                   value={state.password}
                   onChange={handleChange}
