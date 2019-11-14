@@ -1,46 +1,57 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import PinIcon from '../images/pin.svg'
-import { Rating } from 'semantic-ui-react'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import PinIcon from "../images/map-pin.svg";
+import { Rating } from "semantic-ui-react";
+import ImageCarousel from "./Booth-Profile/ImageCarousel";
 
+function Booth(props) {
+  const [images, setImages] = useState([
+    "http://ecotalk.org/wp-content/uploads/2015/04/elite-vegetable-gardening-vegetable-garden.jpg",
+    "https://www.sunset.com/wp-content/uploads/df0d8f0c7ec82217b5ab30810a78cff2-1200x600-c-default.jpg",
+    "https://previews.123rf.com/images/sal73it/sal73it1904/sal73it190400003/125550712-lettuce-in-a-home-vegetable-garden.jpg",
+  ]);
 
-class Booth extends React.Component {
+  return (
+    <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop">
+        <div class="card is-equal-height">
 
-  render() {
-    return (
-      <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop">
-        <Link to={`boothpage/${this.props.id}`}>
-          <div class="card is-equal-height">
+          {/* Card Image */}
+          <div class="card-image">
+            <ImageCarousel image_size="image" booth_images={images} view="list" />
+          </div>
 
-            {/* Card Image */}
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src={this.props.booth_images} alt="Farmer"></img>
-              </figure>
-            </div>
-
-            {/* Card Content */}
-            <div class="card-content">
-              <div class="content">
-                <div class="subtitle"> {this.props.booth_name} </div>
-                <p> {this.props.booth_description} </p>
-                {/* <div className="farmer-rating">
-                  <Rating icon='star' defaultRating={5} maxRating={5} disabled/>
-                </div> */}
-              </div>
-            </div>
-
-             {/* Card Footer */}
-             <footer class="card-footer">
-               <div class="card-footer-item"><img src={PinIcon} className="pin" />{this.props.address.city}, {this.props.address.state}</div>
-             </footer>
+          {/* Card Content */}
+          <Link to={`boothpage/${props.id}`}>
+          <div class="card-content">
+            <div class="content">
+              <div class="subtitle">
+                {" "}
+                {props.booth_name}
+                <div className="booth-rating">
+                  <Rating
+                    icon="star"
+                    defaultRating={5}
+                    maxRating={5}
+                    disabled
+                  />
                 </div>
-             </Link>
-
+              </div>
+              {/* <p class="card-description"> {props.booth_description} </p> */}
+              {props.booth_description}
             </div>
+          </div>
 
-    )
-  }
+          {/* Card Footer */}
+          <footer class="card-footer">
+            <div class="card-footer-item">
+              <img src={PinIcon} className="pin" />
+              {props.address.city}, {props.address.state}
+            </div>
+          </footer>
+          </Link>
+        </div>
+    </div>
+  );
 }
 
-export default Booth
+export default Booth;
