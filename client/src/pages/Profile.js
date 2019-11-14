@@ -20,8 +20,7 @@ class Profile extends Component {
       )
     } else {
     return(
-      // <Redirect to="/login" />
-      "log in please"
+      <Redirect to="/login" />
     )
   }
   }

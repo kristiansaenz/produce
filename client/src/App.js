@@ -37,7 +37,7 @@ class App extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/contact" component={Contact} />
             <Route path="/boothpage/:id" component={BoothPage} />
-            {/* <Route path="/profile" component={Profile} /> */}
+            <Route path="/profile" component={Profile} />
             <Footer />
           </div>
           </ScrollToTop>
