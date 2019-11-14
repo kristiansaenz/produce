@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 
 module.exports = BoothSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String,
   address: Object,
   searchAddress: String,
-  avatar: String,
+  rating: Number,
+  reviews:[],
   booth: {
     booth_name: String,
     description: String,
