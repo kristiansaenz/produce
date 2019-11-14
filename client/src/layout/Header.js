@@ -63,7 +63,7 @@ const Header = (props) => {
                         <Link to="/market"><a class="navbar-item">Market</a></Link>
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
                         <Logout />
-                        <h2>{props.user.name}</h2>
+                        <Link to="/profile"><a class="navbar-item">{props.user.name}</a></Link>
                         {/* <img src={props.user.avatar} alt="avatar">{props.user.name}</img> */}
                     </div>
                 </div>

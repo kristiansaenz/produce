@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { loadUser } from '../actions/authActions'
+import { connect } from 'react-redux'
 
 class ImageUploader extends Component {
 
@@ -23,6 +25,9 @@ class ImageUploader extends Component {
           'accept': 'application/json',
           'Accept-Language': 'en-US,en;q=0.8',
           'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+        },
+        params: {
+          user: this.props.user
         }
       })
         .then((response) => {
@@ -41,6 +46,7 @@ class ImageUploader extends Component {
               let fileName = response.data;
               console.log('fileName', fileName);
               alert('File Uploaded');
+              this.props.loadUser();
             }
           }
         }).catch((error) => {
@@ -65,5 +71,5 @@ class ImageUploader extends Component {
 
 }
 
-export default ImageUploader
+export default connect(null, { loadUser })(ImageUploader)
 

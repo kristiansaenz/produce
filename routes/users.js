@@ -69,7 +69,8 @@ router.post('/upload-avatar', (req, res) => {
         // Save the file name into database into profile model
 
         UserModel.findOne({
-          email: 'ryan@gmail.com'
+          //  email: 'ryanjalufka@gmail.com'
+          email: req.query.user
         }).then(user => {
           user.avatar = imageLocation
           user.save()

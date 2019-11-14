@@ -66,7 +66,6 @@ class LoginForm extends Component {
                       class="input is-success" 
                       type="text" 
                       name="email"
-                      placeholder="produce@gmail.com"
                       onChange={this.handleChange}
                       value={this.state.email} />
                   </div>
@@ -101,7 +100,7 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
   error: state.error
 })
