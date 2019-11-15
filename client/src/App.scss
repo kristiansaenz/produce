@@ -265,7 +265,7 @@ p {
 
 .header-avatar {
   border-radius: 3rem;
-  height: 3rem;
+  height: 2.7rem;
 }
 
 .logo {
@@ -273,7 +273,15 @@ p {
 }
 
 .logout-button {
-  height: 1.5rem;
+  height: 1rem;
+}
+
+/* CHROME HIGHLIGHTS */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 /* Semantic ui tab menu */
@@ -751,6 +759,12 @@ p {
   .navbar-end a {
     margin: auto;
   }
+
+  .level-left .level-item:not(:last-child), 
+  .level-right .level-item:not(:last-child) {
+    margin: 0;
+  }
+
 }
 
 /* BIG DESKTOPS */
