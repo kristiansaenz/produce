@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { logout } from '../actions/authActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { withRouter } from "react-router";
+import { withRouter } from "react-router"
+import LogoutImage from '../images/logout.svg'
 
 class Logout extends Component {
 
@@ -12,9 +13,10 @@ class Logout extends Component {
 
   render() {
     return(
-      <Fragment>
-        <button onClick={this.handleLogout}>Logout</button>
-      </Fragment>
+      <div>
+        <img class="logout-button" src={LogoutImage} onClick={this.handleLogout}></img>
+        {/* <img src={LogoutImage}></img> */}
+      </div>
     )
   }
 }

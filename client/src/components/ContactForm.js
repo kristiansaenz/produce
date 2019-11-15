@@ -1,6 +1,50 @@
 import React from "react";
+import axios from 'axios'
 
 class ContactForm extends React.Component {
+
+  state = {
+    name: '',
+    email: '',
+    message: ''
+  }
+
+  handleChange = e => {
+    const value = e.target.value;
+    this.setState({
+      ...this.state,
+      [e.target.name]: value
+    });
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.setState({
+      name: '',
+      email: '',
+      message: ''
+    })
+
+    axios.post('/contact/sendMessage', {
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message
+    })
+    .then(function (response) {
+      console.log(response);
+      alert('Message Sent!')
+      this.setState({
+        name: '',
+        email: '',
+        message: ''
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+  }
+
   render() {
     return (
       <div class="contact-form">
@@ -12,7 +56,10 @@ class ContactForm extends React.Component {
               <input
                 class="input is-success"
                 type="text"
+                name="name"
                 placeholder="e.g Ross Poldark"
+                onChange={this.handleChange}
+                value={this.state.name}
               ></input>
             </div>
           </div>
@@ -24,7 +71,10 @@ class ContactForm extends React.Component {
               <input
                 class="input is-success"
                 type="text"
+                name="email"
                 placeholder="rosspoldark@pbs.com"
+                onChange={this.handleChange}
+                value={this.state.email}
               ></input>
             </div>
           </div>
@@ -34,8 +84,11 @@ class ContactForm extends React.Component {
             <label class="label">Message</label>
             <div class="control">
               <textarea
+                name="message"
                 class="textarea is-success"
                 placeholder="My dearest produce.."
+                onChange={this.handleChange}
+                value={this.state.message}
               ></textarea>
             </div>
           </div>
@@ -43,7 +96,9 @@ class ContactForm extends React.Component {
           {/* Buttons */}
           <div class="control">
             <div class="button-area">
-              <button class="button is-success">Submit</button>
+              <button 
+                onClick={this.handleSubmit} 
+                class="button is-success">Submit</button>
             </div>
           </div>
         </form>
