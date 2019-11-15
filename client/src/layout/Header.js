@@ -24,7 +24,7 @@ const Header = (props) => {
             {/* Produce + Logo */}
             <Link to="/">
               <a className="navbar-item">
-                <img src={logo} id="logo"></img>
+                <img src={logo} className="logo"></img>
                 <div className="brand-name">
                   <strong>Produce</strong>
                 </div>
@@ -62,9 +62,8 @@ const Header = (props) => {
                         {/* <Link to="/about"><a class="navbar-item">About</a></Link> */}
                         <Link to="/market"><a class="navbar-item">Market</a></Link>
                         <Link to="/contact"><a class="navbar-item">Contact</a></Link>
-                        <Logout />
-                        <Link to="/profile"><a class="navbar-item">{props.user.name}</a></Link>
-                        {/* <img src={props.user.avatar} alt="avatar">{props.user.name}</img> */}
+                        <Link to="/profile"><a class="navbar-item"><img class="header-avatar" src={props.user.avatar}></img></a></Link>
+                        <a class="navbar-item"><Logout /></a>
                     </div>
                 </div>
               )}

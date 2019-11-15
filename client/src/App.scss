@@ -104,6 +104,10 @@ p {
   background-color: transparent;
 }
 
+.navbar-item img {
+  max-height: none;
+}
+
 .checkbox {
   margin-left: 1rem;
 }
@@ -206,6 +210,19 @@ p {
 /* IMAGES */
 .git-icon {
   height: 2rem;
+}
+
+.header-avatar {
+  border-radius: 3rem;
+  height: 3rem;
+}
+
+.logo {
+  height: 1.5rem;
+}
+
+.logout-button {
+  height: 1.5rem;
 }
 
 /* Semantic ui tab menu */
@@ -644,6 +661,10 @@ p {
   .booth-images {
     height: 17rem;
     overflow: hidden;
+  }
+
+  .navbar-end a {
+    margin: auto;
   }
 }
 
