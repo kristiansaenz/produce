@@ -1,39 +1,45 @@
-import React, { useState, useContext } from 'react'
-import { UserValue } from '../components/User/UserContext'
+import React, { useState } from 'react'
+import { connect } from 'react-redux';
 import ImageUploader from './ImageUploader'
 import axios from 'axios'
+import { Redirect, Route } from 'react-router-dom'
+import { register } from '../actions/authActions'
 
 
-const SignupForm = () => {
+const SignupForm = (props) => {
 
-  const [{ loggedIn, name }, dispatch] = UserValue();
+const [state, setState] = useState({
+  email: '',
+  password: '',
+  name: ''
+})
 
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-    name: ''
-  })
+const handleChange = e => {
+  const value = e.target.value;
+  setState({
+    ...state,
+    [e.target.name]: value
+  });
+}
 
-  const handleChange = e => {
-    const value = e.target.value;
-    setState({
-      ...state,
-      [e.target.name]: value
-    });
+const handleSubmit = e => {
+  e.preventDefault()
+  
+  const { name, email, password } = state
+
+  const newUser = {
+    name,
+    email,
+    password
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("STATE: ", state)
-    dispatch({ type: 'login', payload: state.name})
-  }
+  props.register(newUser)
+}
 
-  if(loggedIn) {
-    return (
-      <h1>Welcome, {name}</h1>
-    );
+
+  if(props.isAuthenticated) {
+    return (<Redirect to="/market" />)
   } else {
-
     return (
         <div class="login-form">
           <form>
@@ -55,7 +61,7 @@ const SignupForm = () => {
               <label class="label">Email</label>
               <div class="control">
                 <input className="input is-success"
-                type="text"
+                type="email"
                 name="email"
                 value={state.email}
                 onChange={handleChange}
@@ -68,7 +74,7 @@ const SignupForm = () => {
               <label class="label">Password</label>
               <div class="control">
                 <input className="input is-success" 
-                  type="text"
+                  type="password"
                   name="password"
                   value={state.password}
                   onChange={handleChange}
@@ -76,27 +82,13 @@ const SignupForm = () => {
               </div>
             </div>
 
-            {/* Confirm password field */}
-            {/* <div class="field">
-              <label class="label">Confirm Password</label>
-              <div class="control">
-                <input
-                  type="text"
-                  name="password"
-                  value={state.password}
-                  onChange={handleChange}
-                />
-              </div>
-            </div> */}
-
             {/* Upload photo */}
             {/* <ImageUploader /> */}
-
 
             {/* Buttons */}
             <div class="control">
               <div class="button-area">
-                <button class="button is-success" onClick={(e) => handleSubmit(e)}>Submit</button>
+                <button class="button is-success" onClick={(e) => handleSubmit(e)}>Register</button>
               </div>
             </div>
 
@@ -105,6 +97,11 @@ const SignupForm = () => {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
+});
   
 
-export default SignupForm
+export default connect(mapStateToProps, { register })(SignupForm)

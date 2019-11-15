@@ -1,10 +1,11 @@
+
 /* FONTS */
 $primary-font: helvetica bold;
 $secondary-font: helvetica;
 
 /* THEME COLORS */
 $primary-color: #41BA77;
-$secondary-color: #A3D060;
+$secondary-color: #A9E190;
 $card-color: #EBEBEB;
 $font-color: #464646;
 $lite-font-color: #707070;
@@ -24,6 +25,16 @@ $footer-font-color: $primary-color;
 $search-button-color: $card-color;
 $filter-button-color: $card-color;
 
+/* FONT SIZES */ 
+$navbar-brand-size: 1rem;
+$navbar-font-size: .85rem;
+
+/* MAP MARKER */
+$map-marker-color: #df2727;
+
+
+
+
 .App {
   margin: 0;
   padding: 0;
@@ -40,11 +51,10 @@ p {
 .homepage {
   margin-top: 2rem;
   background-image: url("./images/produce-farmer-new.svg");
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 42rem;
+  height: 41rem;
 }
 
 .title, .subtitle {
@@ -65,22 +75,40 @@ p {
   padding: 0rem 0rem 0rem 0rem;
 }
 
+/* NAV BAR */
 .nav-banner {
   background-color: $navbar-background-color;
-  padding: 1rem 1rem;
+  padding: .5rem;
+}
+
+.navbar-menu {
+  margin: auto;
+  font-size: $navbar-font-size;
+  background-color: $navbar-background-color;
+}
+
+.nav-home-link{
+  margin: auto;
+  margin-left: 0;
 }
 
 .navbar a {
   color: $primary-color;
   font: $primary-font;
 }
+
 .navbar a:hover {
   color: $secondary-color;
 }
 
+.navbar-brand {
+  font-size: $navbar-brand-size;
+  min-height: 0;
+  margin: auto;
+}
+
 .brand-name {
-  font-size: 1.3rem;
-  margin-left: 1rem;
+  margin-left: .6rem;
   color: $brandname-color;
 }
 
@@ -88,6 +116,15 @@ p {
   background-color: transparent;
 }
 
+.navbar-item img {
+  max-height: none;
+}
+
+.checkbox {
+  margin-left: 1rem;
+}
+
+/* FOOTER */
 .footer {
   background-color: $footer-background-color;
   padding: 3rem 1rem 3rem;
@@ -98,31 +135,50 @@ p {
   color: $footer-font-color;
 }
 
+.footer-text {
+  font-size: $navbar-font-size;
+}
+
 .map-button {
   cursor: pointer;
+  margin-right: .75rem;
 }
 
 .map-button:hover {
   border-color: $secondary-color;
 }
 
-// .filter-button {
-//   margin-left: .7rem;
-// }
+.map-marker {
+  height: .5rem;
+  width: .5rem;
+  background-color: $map-marker-color;
+  border-radius: 1rem;
+}
 
-
+/* FILTER BUTTON */
 .filter-button {
   font: $primary-font;
   background-color: $filter-button-color;
-  color: $primary-color;
+  // color: $primary-color;
   border-radius: 3rem;
-  border-color: transparent;
-
+  color: $font-color;
+  border-color: $primary-color;
 }
 
-.filter-button:hover {
-  color: $secondary-color;
-  border-color: transparent;
+.filter-by-category-container {
+  background-color: $filter-button-color;
+  border-radius: 5rem;
+  padding: .2rem;
+  // padding-bottom: 1rem;
+}
+
+.checkbox input, .radio input {
+  margin-right: .25rem;
+}
+
+.categories {
+  padding-right: 1rem;
+  color: $font-color;
 }
 
 .is-produce-review-switch {
@@ -146,6 +202,12 @@ p {
 
 }
 
+/* FILTER BAR */
+
+.level-item {
+  margin: auto;
+}
+
 .level img {
   height: 1.5rem;
 }
@@ -156,6 +218,10 @@ p {
 
 .is-equal-column {
   display: flex;
+}
+
+.level.filter-bar {
+  margin-bottom: 1.2rem;
 }
 
 .booth-list {
@@ -170,13 +236,55 @@ p {
   height: 2rem;
 }
 
-/* IMAGES */
-.git-icon {
-  height: 3rem;
+.booth-rating {
+  font-size: .8rem;
+  margin: .5rem 0rem 0rem 0rem;
+
 }
 
-//semantic ui tab menu
+.booth-rating-profile {
+  font-size: 1rem;
 
+}
+
+.search-by-location {
+  border-radius: 3rem;
+  width: 15rem;
+}
+
+/* BOOTH LIST */
+
+.card-description {
+  height: inherit;
+}
+
+/* IMAGES */
+.git-icon {
+  height: 2rem;
+}
+
+.header-avatar {
+  border-radius: 3rem;
+  height: 2.7rem;
+}
+
+.logo {
+  height: 1.5rem;
+}
+
+.logout-button {
+  height: 1rem;
+}
+
+/* CHROME HIGHLIGHTS */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+/* Semantic ui tab menu */
 .ui.secondary.pointing.menu {
   margin-left: 0em;
   margin-right: 0em;
@@ -427,11 +535,12 @@ p {
   height: fit-content;
   // overflow: hidden;
   flex: auto;
-
+  color: $font-color;
 }
 
 .card .content {
-  height: 100%;
+  // height: 100%;
+  height: 10rem;
   overflow: hidden;
 }
 
@@ -446,7 +555,9 @@ p {
 }
 
 .card-footer {
+  color: $font-color;
   border-top: none;
+  font-size: .8rem;
 }
 
 .card-footer-item {
@@ -454,10 +565,6 @@ p {
   align-items: initial;
   justify-content: left;
 }
-
-// .section.is-small {
-//   padding: 0rem 1.5rem;
-// 
 
 #form-image {
   height: 34.8rem;
@@ -503,7 +610,7 @@ p {
   margin-right: .3rem;
 }
 
-#filter {
+.filter-bar {
   background-color: $primary-color;
   padding: 1rem;
   color: white;
@@ -530,13 +637,12 @@ p {
 
 .is-location-input-right {
   background-color: $search-button-color;
-  color: $primary-color;
+  color: $font-color;
   border-color: transparent;
   border-radius: 0rem 3rem 3rem 0rem;
 }
 
 .is-location-input-right:hover {
-  color: $secondary-color;
   border-color: transparent;
 }
 
@@ -545,10 +651,6 @@ p {
   .hero-body {
     padding: 0;
   }
-
-  // .is-map {
-  //   height: 15rem;
-  // }
 
   .homepage {
     margin-top: 0rem;
@@ -559,11 +661,16 @@ p {
     font-size: 3vw;
   }
 
+  .card-image {
+    height: 7rem;
+    overflow: hidden;
+  }
+
   .card-content {
     padding: 1rem;
-    height: 50%;
+    /* height: 50%; */
     min-height: 45%;
-    // max-height: 50%;
+    overflow: hidden;
   }
 
   .card .subtitle {
@@ -576,7 +683,38 @@ p {
     justify-content: left;
   }
 
+  .filter-by-category-container {
+    background-color: transparent;
+  }
+
+  .form-titles {
+    margin-left: 1.5rem;
+  }
+
+  .login-form, .contact-form {
+    padding: 1rem;
+  }
+
 }
+
+/* TABLETS */
+@media only screen and (max-width: 768px) {
+
+  .filter-by-category-container {
+    background-color: transparent;
+  }
+
+  .categories {
+    margin: 1rem;
+  }
+
+  .map-button {
+    margin-bottom: .8rem;
+  }
+
+}
+
+
 
 /* DESKTOPS */
 @media only screen and (min-width: 742px) {
@@ -587,7 +725,7 @@ p {
   }
 
   .form-titles {
-    padding-left: 2rem;
+    padding-left: 2.5rem;
   }
 
   .about-section, .home-section, .market-section {
@@ -600,11 +738,11 @@ p {
   }
 
   .is-home-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .is-home-subtitle{
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .to-market {
@@ -617,6 +755,16 @@ p {
     height: 17rem;
     overflow: hidden;
   }
+
+  .navbar-end a {
+    margin: auto;
+  }
+
+  .level-left .level-item:not(:last-child), 
+  .level-right .level-item:not(:last-child) {
+    margin: 0;
+  }
+
 }
 
 /* BIG DESKTOPS */

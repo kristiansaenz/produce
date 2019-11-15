@@ -1,12 +1,11 @@
 import  React, { useState, useEffect } from 'react'
 import ReactMapGl, {Marker, Popup} from 'react-map-gl'
-import Pin from '../images/pin.svg'
+import Pin from '../images/map-pin.svg'
 const GeoJSON = require('geojson')
 
 const ProfileMap = (props) => {
 
     const [viewport, setViewport] = useState({props})
-
     const MAP_TOKEN = "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
 
     useEffect(() => {
@@ -26,7 +25,7 @@ const ProfileMap = (props) => {
                     longitude: Number(props.farmers.address.longitude),
                     width: "100%",
                     height: "40vh",
-                    zoom: 12
+                    zoom: 13
                 })
             }
         }
@@ -38,7 +37,7 @@ const ProfileMap = (props) => {
                props.farmers.map(farmer => (
                  farmer.address ? 
                     <Marker latitude={Number(farmer.address.latitude)} longitude={Number(farmer.address.longitude)}>
-                        <img src={Pin} id="profile-map-pin" alt="location"/>
+                      <div class="map-marker"></div>
                     </Marker> 
                     : 
                     null
@@ -50,6 +49,7 @@ const ProfileMap = (props) => {
             props.farmers.address ? 
                 <Marker latitude={Number(props.farmers.address.latitude)} longitude={Number(props.farmers.address.longitude)}>
                     <img src={Pin} id="profile-map-pin" alt="location"/>
+                    {/* <div class="map-marker"></div> */}
                 </Marker> 
                 : 
                 null 

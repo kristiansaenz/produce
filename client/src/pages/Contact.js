@@ -3,18 +3,17 @@ import ContactForm from "../components/ContactForm";
 
 function Contact() {
   return (
-    <section class="section is-small">
-      <div class="container">
-        <div class="form-titles">
-          <h1 class="title">Contact</h1>
-          <h2 class="subtitle"> Send us a message! </h2>
-        </div>
-      </div>
-
-      <section class="hero">
-        <div class="hero-body">
-          <div class="columns">
-            <div class="column is-one-third">
+    <section className="section is-small">
+      <section className="hero">
+        <div className="hero-body">
+          <div className="columns">
+            <div className="form-titles">
+              <h1 className="title">Contact</h1>
+              <h2 className="subtitle"> Send us a message! </h2>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column is-one-third">
               <ContactForm />
             </div>
           </div>

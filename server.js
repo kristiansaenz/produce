@@ -7,7 +7,10 @@ import path from 'path';
 const app = express();
 import farmers from './routes/farmers'
 import users from './routes/users'
+import auth from './routes/auth'
+import contact from './routes/contact'
 const PORT = process.env.PORT || 4000;
+
 
 app.disable('x-powered-by');
 app.use(cors());
@@ -18,11 +21,14 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.use('/farmers', farmers);
 app.use('/users', users);
+app.use('/auth', auth);
+app.use('/contact', contact);
 
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
+
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`)
