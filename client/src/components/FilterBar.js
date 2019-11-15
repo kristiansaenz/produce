@@ -45,17 +45,18 @@ class FilterBar extends React.Component {
 
           {/* Location field + Search button */}
           <div class="level-item">
-            <div class="field has-addons">
+            {/* <div class="field has-addons"> */}
+            <div class="field">
               <p class="control">
                 <input
-                  class="input is-location-input-left"
+                  class="input search-by-location"
                   type="text"
                   placeHolder="Austin, Texas"
                   value={this.state.value}
                   onChange={this.handleChange}
                 />
               </p>
-              <p class="control">
+              {/* <p class="control">
                 <button
                   onClick={() =>
                     this.props.handleFilterSubmit(this.state.value)
@@ -64,7 +65,7 @@ class FilterBar extends React.Component {
                 >
                   Search
                 </button>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

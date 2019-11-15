@@ -18,7 +18,7 @@ function FarmerCard (props) {
                     <div className="subtitle">{props.farmerName}</div>
                 </div>
 
-                <div className="farmer-rating">
+                <div className="booth-rating-profile">
                 <Rating icon='star' defaultRating={5} maxRating={5} disabled/>
                 </div>
 
