@@ -14,6 +14,8 @@ const [state, setState] = useState({
   name: ''
 })
 
+const isEnabled = state.email.length > 0 && state.password.length > 0 && state.name.length > 0;
+
 const handleChange = e => {
   const value = e.target.value;
   setState({
@@ -24,16 +26,21 @@ const handleChange = e => {
 
 const handleSubmit = e => {
   e.preventDefault()
-  
-  const { name, email, password } = state
 
-  const newUser = {
-    name,
-    email,
-    password
+  if(!isEnabled) { 
+    alert('Please enter all fields')
+  } else {
+    
+    const { name, email, password } = state
+
+    const newUser = {
+      name,
+      email,
+      password
+    }
+
+    props.register(newUser)
   }
-
-  props.register(newUser)
 }
 
 
@@ -88,7 +95,7 @@ const handleSubmit = e => {
             {/* Buttons */}
             <div class="control">
               <div class="button-area">
-                <button class="button is-success" onClick={(e) => handleSubmit(e)}>Register</button>
+                <button disabled={!isEnabled} class="button is-success" onClick={(e) => handleSubmit(e)}>Register</button>
               </div>
             </div>
 
