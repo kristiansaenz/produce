@@ -1,6 +1,7 @@
 import  React, { useState, useEffect } from 'react'
 import ReactMapGl, {Marker, Popup} from 'react-map-gl'
 import Pin from '../images/map-pin.svg'
+import _ from 'lodash'
 const GeoJSON = require('geojson')
 
 const ProfileMap = (props) => {
@@ -9,13 +10,31 @@ const ProfileMap = (props) => {
     const MAP_TOKEN = "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
 
     useEffect(() => {
-        if (Array.isArray(props.farmers)) {
+        if (Array.isArray(props.farmers) && props.farmers.length > 0) {
+            let latSum = 0
+            let lngSum = 0
+            let zoom = 3
+
+            props.farmers.map(c => {
+              latSum += Number(c.address.latitude)
+              lngSum += Number(c.address.longitude)
+            })
+            let latAvg = latSum / props.farmers.length
+            let lngAvg = lngSum / props.farmers.length
+            console.log(latAvg, lngAvg)
+            if(props.farmers.length < 5) { 
+              zoom = 6
+            }
+
+
             setViewport({
-                latitude: 32.82531528692721,
-                longitude: -100.53567794721157,
+                // latitude: 32.82531528692721,
+                // longitude: -100.53567794721157,
+                latitude: latAvg,
+                longitude: lngAvg,
                 width: "100%",
                 height: "40vh",
-                zoom: 3
+                zoom: zoom
             })
         }
         else {
