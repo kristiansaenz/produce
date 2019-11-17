@@ -23,7 +23,7 @@ const ProfileMap = (props) => {
             let lngAvg = lngSum / props.farmers.length
             console.log(latAvg, lngAvg)
             if(props.farmers.length < 5) { 
-              zoom = 6
+              zoom = 4
             }
 
 
