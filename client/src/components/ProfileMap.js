@@ -85,7 +85,7 @@ const ProfileMap = (props) => {
               <Popup 
                 latitude={Number(active.address.latitude)}
                 longitude={Number(active.address.longitude)}
-                closeOnClick={true}
+                closeOnClick={false}
                 onClose={() => setPopupVisible(false)}
                 >
                 <MapPopup 
