@@ -10,7 +10,7 @@ module.exports = {
     const { name, email, password } = req.body
     if(!name || !email || !password) {
       return res.status(400).json({ msg: "Please enter all fields" })
-    }
+    } 
 
     UserModel.findOne({
       email: req.body.email
