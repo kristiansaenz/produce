@@ -30,7 +30,7 @@ module.exports = {
         reviews: [],
         booth_name: req.body.booth_name,
         description: req.body.description,
-        produce: req.body.produce,
+        produce: [],
         images: []
       })
 

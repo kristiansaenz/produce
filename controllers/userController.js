@@ -5,5 +5,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 module.exports = {
+  addBoothToUser: function(req, res) {
 
+  }
 }
