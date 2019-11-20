@@ -1,6 +1,6 @@
 require("dotenv").config()
 const ObjectId = require('mongodb').ObjectID;
-const UserModel = require('../models/user')
+const UserModel = require('../models/userModel')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const auth = require('../middleware/auth')

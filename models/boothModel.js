@@ -1,16 +1,19 @@
 const mongoose = require('mongoose');
 
+const ProduceSchema = new mongoose.Schema({
+  category: String,
+  items: Array
+})
+
 module.exports = BoothSchema = new mongoose.Schema({
   address: Object,
   searchAddress: String,
   rating: Number,
-  reviews:[],
-  booth: {
-    booth_name: String,
-    description: String,
-    produce: [Object],
-    images: String
-  },
+  reviews: Array,
+  booth_name: String,
+  description: String,
+  produce: [ProduceSchema],
+  images: Array
 }, {
   collection: 'booths'
 });

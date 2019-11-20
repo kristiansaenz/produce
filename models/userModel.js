@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
+const ObjectID = require('mongodb').ObjectID
 
 module.exports = UserSchema = new mongoose.Schema(
     {
         name: String,
         email: String,
         password: String,
-        avatar: String
+        location: String,
+        saved_booths: Array,
+        written_reviews: Array, 
+        avatar: String,
+        booth: ObjectID
     },
     {
         collection: 'users'

@@ -1,13 +1,13 @@
 require("dotenv").config()
 const express = require('express');
 const router = express.Router();
-const UsersController = require('../controllers/user.js');
+const UserController = require('../controllers/userController.js');
 const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
 const multer = require('multer');
 const path = require('path');
 const url = require('url');
-const UserModel = require('../models/user')
+const UserModel = require('../models/userModel');
 
 
 const s3 = new aws.S3({
