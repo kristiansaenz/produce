@@ -14,8 +14,8 @@ function FarmerCard (props) {
                 </div>
 
                 <div className="farmer-title">
-                    <div className="subtitle">{props.name}</div>
-                    <div className="subtitle">{props.farmerName}</div>
+                    <div className="subtitle">{props.boothName}</div>
+                    <div className="subtitle">{props.boothOwnerName}</div>
                 </div>
 
                 <div className="booth-rating-profile">

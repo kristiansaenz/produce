@@ -5,7 +5,19 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 module.exports = {
-  addBoothToUser: function(req, res) {
+  getUserByBoothId: function (req, res) {
+    let id = req.params.id;
 
+    UserModel.findOne({
+      _id: id
+    }, function (err, user) {
+      if (err) {
+        console.log(err);
+      }
+      if (user) {
+        console.log(user)
+        res.json(user);
+      }
+    });
   }
 }

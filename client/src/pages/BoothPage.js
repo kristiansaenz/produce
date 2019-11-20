@@ -11,10 +11,11 @@ import { Tab } from 'semantic-ui-react'
 
 const BoothPage = () => {
 
+
   const panes = [
     {
       menuItem: 'Produce',
-      render: () => <Tab.Pane attached={false}><ItemList produce={boothInfo.produce} /></Tab.Pane>,
+      render: () => <Tab.Pane attached={false}><ItemList produce={booth.produce} /></Tab.Pane>,
     },
     // {
     //   menuItem: 'Map',
@@ -26,19 +27,30 @@ const BoothPage = () => {
     },
   ]
 
-  const [farmer, setFarmer] = useState({})
-  const [boothInfo, setBoothInfo] = useState({})
+  const [boothOwner, setBoothOwner] = useState({})
+  const [booth, setBooth] = useState({})
   const [addressInfo, setAddressInfo] = useState({})
-  const [farmerName, setFarmerName] = useState("")
+
   let id = useParams()
 
   useEffect(() => {  
+    //console.log("ID IS: ", id.id)
     const fetchData = async () => {
-      const result = await axios.get(`/farmers/booth/${id.id}`)
-      setFarmer(result.data);
-      setFarmerName(result.data.name);
-      setBoothInfo(result.data.booth);
+      const result = await axios.get(`/booths/${id.id}`)
+      setBooth(result.data.booth);
       setAddressInfo(result.data.address);
+
+      console.log("RESULT DATA: ", result.data)
+      // axios.all([
+      //   axios.get(`/booths/${id.id}`),
+      //   axios.get(`/users/getUserByBoothId/${id.id}`)
+
+      // ])
+      // .then(responseArr => {
+      //   setBooth(responseArr[0].data);
+      //   setBoothOwner(responseArr[1].data);
+      //   setAddressInfo(responseArr[0].data.address);
+      // });
     };
     fetchData();
   }, []);
@@ -46,11 +58,11 @@ const BoothPage = () => {
     return(
       <section class="section is-small is-farmer-page">
         <BoothHeader 
-          farmerName={farmerName}
-          avatar={farmer.avatar}
-          booth_images={boothInfo.images}
-          name={boothInfo.booth_name}
-          description={boothInfo.description}
+          boothOwnerName={boothOwner.name}
+          avatar={boothOwner.avatar}
+          boothImages={booth.images}
+          boothName={booth.booth_name}
+          description={booth.description}
           city={addressInfo.city}
           state={addressInfo.state}
         />
@@ -75,7 +87,7 @@ const BoothPage = () => {
         <ProfileMap farmers={farmer}/> */}
 
       <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-    <ProfileMap farmers={farmer} />
+    <ProfileMap booths={booth} />
     </section>
   );
 }

@@ -14,7 +14,7 @@ class BoothHeader extends React.Component {
                 {/* Booth Images Component */}
                 <div class="columns">
                     <div class="column">
-                        <BoothImages booth_images={this.props.booth_images}/>
+                        <BoothImages booth_images={this.props.boothImages}/>
                     </div>
                 </div>
 
@@ -22,9 +22,9 @@ class BoothHeader extends React.Component {
                 <div class="columns">
                     <div className="column is-two-fifths is-equal-column">
                         <FarmerCard 
-                            farmerName={this.props.farmerName}
+                            boothOwnerName={this.props.boothOwnerName}
                             avatar={this.props.avatar}
-                            name={this.props.name}
+                            boothName={this.props.boothName}
                             city={this.props.city}
                             state={this.props.state}
                         />

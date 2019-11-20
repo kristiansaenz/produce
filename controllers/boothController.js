@@ -35,10 +35,16 @@ module.exports = {
       })
 
 
+
+
       Booth.save(Booth, function (err, result) {
         if (err) throw err;
         if (result) console.log('Booth Created Successfully!')
         return res.json(Booth)
+
+      // include a req body field with the logged in user's _id to search mongo
+      // then add the Booth response object id to the UserModel id field.
+
       })
     })
   },

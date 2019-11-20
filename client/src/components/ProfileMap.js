@@ -13,19 +13,19 @@ const ProfileMap = (props) => {
     const MAP_TOKEN = "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
 
     useEffect(() => {
-        if (Array.isArray(props.farmers) && props.farmers.length > 0) {
+        if (Array.isArray(props.booths) && props.booths.length > 0) {
             let latSum = 0
             let lngSum = 0
             let zoom = 3
 
-            props.farmers.map(c => {
+            props.booths.map(c => {
               latSum += Number(c.address.latitude)
               lngSum += Number(c.address.longitude)
             })
-            let latAvg = latSum / props.farmers.length
-            let lngAvg = lngSum / props.farmers.length
+            let latAvg = latSum / props.booths.length
+            let lngAvg = lngSum / props.booths.length
             console.log(latAvg, lngAvg)
-            if(props.farmers.length < 5) { 
+            if(props.booths.length < 5) { 
               zoom = 4
             }
 
@@ -38,28 +38,28 @@ const ProfileMap = (props) => {
             })
         }
         else {
-            if (props.farmers.address){
+            if (props.booths.address){
                 setViewport({
-                    latitude: Number(props.farmers.address.latitude),
-                    longitude: Number(props.farmers.address.longitude),
+                    latitude: Number(props.booths.address.latitude),
+                    longitude: Number(props.booths.address.longitude),
                     width: "100%",
                     height: "40vh",
                     zoom: 13
                 })
             }
         }
-    }, [props.farmers]);
+    }, [props.booths]);
 
     const renderMarkers = () => {
-        if (Array.isArray(props.farmers)) {
+        if (Array.isArray(props.booths)) {
           return (
-               props.farmers.map(farmer => (
-                 farmer.address ? 
+               props.booths.map(booth => (
+                 booth.address ? 
                     <Marker 
-                      latitude={Number(farmer.address.latitude)}
-                      longitude={Number(farmer.address.longitude)}
+                      latitude={Number(booth.address.latitude)}
+                      longitude={Number(booth.address.longitude)}
                     >
-                      <div onClick={() => {setPopupVisible(true); setActive(farmer)}} class="map-marker"></div>
+                      <div onClick={() => {setPopupVisible(true); setActive(booth)}} class="map-marker"></div>
                     </Marker>
                     : 
                     null
@@ -68,8 +68,8 @@ const ProfileMap = (props) => {
         }
         else {
           return (
-            props.farmers.address ? 
-                <Marker latitude={Number(props.farmers.address.latitude)} longitude={Number(props.farmers.address.longitude)}>
+            props.booths.address ? 
+                <Marker latitude={Number(props.booths.address.latitude)} longitude={Number(props.booths.address.longitude)}>
                     <img src={Pin} id="profile-map-pin" alt="location"/>
                     {/* <div class="map-marker"></div> */}
                 </Marker> 

@@ -21,7 +21,7 @@ function Booth(props) {
           </div>
 
           {/* Card Content */}
-          <Link to={`boothpage/${props.id}`}>
+          <Link to={`booth/${props.id}`}>
           <div class="card-content">
             <div class="content">
               <div class="subtitle">
