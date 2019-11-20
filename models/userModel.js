@@ -10,7 +10,7 @@ module.exports = UserSchema = new mongoose.Schema(
         saved_booths: Array,
         written_reviews: Array, 
         avatar: String,
-        booth: ObjectID
+        booth: String
     },
     {
         collection: 'users'

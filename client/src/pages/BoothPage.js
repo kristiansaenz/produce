@@ -11,7 +11,6 @@ import { Tab } from 'semantic-ui-react'
 
 const BoothPage = () => {
 
-
   const panes = [
     {
       menuItem: 'Produce',
@@ -30,31 +29,29 @@ const BoothPage = () => {
   const [boothOwner, setBoothOwner] = useState({})
   const [booth, setBooth] = useState({})
   const [addressInfo, setAddressInfo] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
   let id = useParams()
 
-  useEffect(() => {  
-    //console.log("ID IS: ", id.id)
+  useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`/booths/${id.id}`)
-      setBooth(result.data.booth);
+      const result2 = await axios.post('/users/getUserByBoothId', {
+        id: id.id
+      })
+
+      setBooth(result.data);
+      setBoothOwner(result2.data[0]);
       setAddressInfo(result.data.address);
+      setIsLoading(false);
 
-      console.log("RESULT DATA: ", result.data)
-      // axios.all([
-      //   axios.get(`/booths/${id.id}`),
-      //   axios.get(`/users/getUserByBoothId/${id.id}`)
-
-      // ])
-      // .then(responseArr => {
-      //   setBooth(responseArr[0].data);
-      //   setBoothOwner(responseArr[1].data);
-      //   setAddressInfo(responseArr[0].data.address);
-      // });
     };
     fetchData();
   }, []);
 
+  if(isLoading) {
+    return <div></div>
+  } else {
     return(
       <section class="section is-small is-farmer-page">
         <BoothHeader 
@@ -90,6 +87,7 @@ const BoothPage = () => {
     <ProfileMap booths={booth} />
     </section>
   );
+  }
 }
 
 export default BoothPage

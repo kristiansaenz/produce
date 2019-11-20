@@ -6,18 +6,31 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
   getUserByBoothId: function (req, res) {
-    let id = req.params.id;
+    let id = req.body.id;
 
-    UserModel.findOne({
-      _id: id
-    }, function (err, user) {
+    UserModel.find({
+      'booth' : id
+    }).exec(function (err, results) {
       if (err) {
-        console.log(err);
+        return res.status(500).json({
+          message: "Error when finding User...",
+          error: err
+        });
       }
-      if (user) {
-        console.log(user)
-        res.json(user);
+      console.log(results);
+      return res.json(results);
+    })
+  },
+
+  getUsers: function (req, res) {
+    UserModel.find(function (err, users) {
+      if (err) {
+        return res.status(500).json({
+          message: 'Error when getting users :(',
+          error: err
+        });
       }
+      return res.json(users);
     });
   }
 }
