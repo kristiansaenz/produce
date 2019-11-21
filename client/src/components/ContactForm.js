@@ -1,11 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from 'axios'
+import { connect } from 'react-redux'
 
-class ContactForm extends React.Component {
+class ContactForm extends Component {
 
+
+  
   state = {
-    name: '',
-    email: '',
+    name: this.props.user.name || '',
+    email: this.props.user.email || '',
     message: ''
   }
 
@@ -107,4 +110,8 @@ class ContactForm extends React.Component {
   }
 }
 
-export default ContactForm;
+const mapStateToProps = state => ({
+  user: state.auth.user
+})
+
+export default connect(mapStateToProps)(ContactForm);
