@@ -1,6 +1,6 @@
 const ObjectId = require('mongodb').ObjectID;
 const zipToCoordinates = require('./helpers')
-const BoothModel = require('../models/BoothModel.js')
+const BoothModel = require('../models/boothModel.js')
 
 module.exports = {
   getAllBooths: function (req, res) {
