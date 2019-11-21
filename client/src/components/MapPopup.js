@@ -5,7 +5,7 @@ const MapPopup = (props) => {
 
   return(
     props.id ? (
-      <Link to={`boothpage/${props.id}`}>{props.boothName}</Link> 
+      <Link to={`booth/${props.id}`}>{props.boothName}</Link> 
     ) : null
   )
 }

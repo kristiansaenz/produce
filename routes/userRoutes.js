@@ -48,7 +48,6 @@ function checkFileType(file, cb) {
 }
 
 // router.get('/getUserByBoothId/:id', UserController.getUserByBoothId)
-// router.get('/getUserByBoothId', UserController.getUserByBoothId)
 router.post('/getUserByBoothId', UserController.getUserByBoothId)
 router.post('/upload-avatar', (req, res) => {
   profileImgUpload(req, res, (error) => {
