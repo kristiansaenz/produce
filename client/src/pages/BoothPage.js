@@ -6,6 +6,8 @@ import {
 import BoothHeader from '../components/BoothHeader'
 import ItemList from '../components/ItemList'
 import ProfileMap from '../components/ProfileMap'
+import Reviews from '../components/Reviews'
+import { Loader } from 'semantic-ui-react'
 import { Tab } from 'semantic-ui-react'
 
 
@@ -22,7 +24,7 @@ const BoothPage = () => {
     // },
     {
       menuItem: 'Reviews',
-      render: () => <Tab.Pane attached={false}>No reviews yet</Tab.Pane>,
+      render: () => <Tab.Pane attached={false}><Reviews /></Tab.Pane>,
     },
   ]
 
@@ -50,10 +52,14 @@ const BoothPage = () => {
   }, []);
 
   if(isLoading) {
-    return <div></div>
+    return (
+      <section className="section is-large">
+        <Loader active inline='centered' />
+      </section>
+    )
   } else {
     return(
-      <section class="section is-small is-farmer-page">
+      <section className="section is-small is-farmer-page">
         <BoothHeader 
           boothOwnerName={boothOwner.name}
           avatar={boothOwner.avatar}

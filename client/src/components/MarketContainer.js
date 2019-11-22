@@ -4,6 +4,7 @@ import FilterBar from './FilterBar'
 import BoothList from './BoothList'
 import debounce from 'lodash/debounce';
 import ProfileMap from './ProfileMap'
+import Geocoder from 'react-mapbox-gl-geocoder'
 
 const MarketContainer = () => {
   const [farmers, setFarmers] = useState([]);
@@ -69,7 +70,8 @@ const MarketContainer = () => {
         handleToggleFilterButton={toggleFilterButtonExpand}
         categoryList={categories}
         handleMapClick={handleMapClick} 
-        handleFilterSubmit={handleFilterSubmit}/>
+        handleFilterSubmit={handleFilterSubmit}
+        />
 
         {/* Render map if clicked */}
         {renderMap()}

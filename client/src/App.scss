@@ -155,6 +155,11 @@ p {
   border-radius: 1rem;
 }
 
+/* REVIEW FORMATTING */
+.ui.header:first-child {
+  margin-top: 1rem;
+}
+
 /* FILTER BUTTON */
 .filter-button {
   font: $primary-font;
@@ -166,7 +171,6 @@ p {
 }
 
 .filter-by-category-container {
-  background-color: $filter-button-color;
   border-radius: 5rem;
   padding: .2rem;
   // padding-bottom: 1rem;
@@ -234,6 +238,11 @@ p {
 
 #profile-map-pin {
   height: 2rem;
+}
+
+.map-popup {
+  height: 8rem;
+  width: 8rem;
 }
 
 .booth-rating {

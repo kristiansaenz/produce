@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Dropdown } from 'semantic-ui-react'
+import _ from 'lodash'
+import faker from 'faker'
 import MapIcon from "../images/map.svg";
 import FilterByCategory from "../components/Filter/FilterByCategory"
 
@@ -9,6 +12,20 @@ class FilterBar extends React.Component {
       value: ""
     };
   }
+
+  options = [
+    { key: 1, text: 'Fruits', value: 1 },
+    { key: 2, text: 'Vegetables', value: 2 },
+    { key: 3, text: 'Dairy', value: 3 },
+  ]
+
+  addressDefinitions = faker.definitions.address
+
+  stateOptions = _.map(this.addressDefinitions.state, (state, index) => ({
+    key: this.addressDefinitions.state_abbr[index],
+    text: state,
+    value: this.addressDefinitions.state_abbr[index],
+  }))
 
   handleChange = event => {
     this.setState({ value: event.target.value });
@@ -22,13 +39,14 @@ class FilterBar extends React.Component {
           
           {/* Filter Button + Categories */}
           <div class="level-item">
-              <div className="button filter-button" 
-              onClick={() => this.props.handleToggleFilterButton()}
-              >Filter By
-              </div>
-          </div>
-          <div class="level-item">
-            {this.props.toggleFilterButton ? <FilterByCategory categoryList={this.props.categoryList} /> : null}
+            <Dropdown
+              multiple
+              search
+              selection
+              closeOnChange
+              options={this.options}
+              placeholder='Filter...'
+            />
           </div>
         </div>
 
@@ -44,9 +62,11 @@ class FilterBar extends React.Component {
           </div>
 
           {/* Location field + Search button */}
+
+          
           <div class="level-item">
             {/* <div class="field has-addons"> */}
-            <div class="field">
+            {/* <div class="field">
               <p class="control">
                 <input
                   class="input search-by-location"
@@ -55,7 +75,9 @@ class FilterBar extends React.Component {
                   value={this.state.value}
                   onChange={this.handleChange}
                 />
-              </p>
+              </p> */}
+              <Dropdown placeholder='State' search selection options={this.stateOptions} />
+
               {/* <p class="control">
                 <button
                   onClick={() =>
@@ -66,7 +88,7 @@ class FilterBar extends React.Component {
                   Search
                 </button>
               </p> */}
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </nav>
