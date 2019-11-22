@@ -97,7 +97,7 @@ const ProfileMap = (props) => {
                 >
                 <MapPopup 
                   id={active._id}
-                  boothName={active.booth_name}
+                  booth={active}
                   visible={true}
                 />
               </Popup>
