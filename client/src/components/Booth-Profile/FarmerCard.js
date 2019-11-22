@@ -19,7 +19,7 @@ function FarmerCard (props) {
                 </div>
 
                 <div className="booth-rating-profile">
-                <Rating icon='star' defaultRating={5} maxRating={5} disabled/>
+                <Rating icon='star' defaultRating={props.rating} maxRating={5} disabled/>
                 </div>
 
                 <div className="farmer-location">

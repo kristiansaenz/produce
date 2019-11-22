@@ -27,6 +27,7 @@ class BoothHeader extends React.Component {
                             boothName={this.props.boothName}
                             city={this.props.city}
                             state={this.props.state}
+                            rating={this.props.rating}
                         />
                     </div>
                     <div className="column is-equal-column">

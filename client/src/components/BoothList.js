@@ -18,6 +18,7 @@ function BoothList(props) {
               // name={booth.name}
               // email={booth.email}
               address={booth.address}
+              rating={booth.rating}
               // avatar={booth.avatar}
               booth_name={booth.booth_name}
               booth_description={booth.description}

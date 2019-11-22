@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { Rating } from "semantic-ui-react";
 
 const MapPopup = (props) => {
 
@@ -12,6 +13,12 @@ const MapPopup = (props) => {
           <img src={image} alt="booth display"/>
           <br />
           {props.booth.booth_name} 
+          <Rating
+            icon="star"
+            defaultRating={props.rating}
+            maxRating={5}
+            disabled
+          />
         </div>
       </Link>
     ) : null

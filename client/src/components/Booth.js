@@ -30,7 +30,7 @@ function Booth(props) {
                 <div className="booth-rating">
                   <Rating
                     icon="star"
-                    defaultRating={5}
+                    defaultRating={props.rating}
                     maxRating={5}
                     disabled
                   />

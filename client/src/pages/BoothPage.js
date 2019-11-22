@@ -68,6 +68,7 @@ const BoothPage = () => {
           description={booth.description}
           city={addressInfo.city}
           state={addressInfo.state}
+          rating={booth.rating}
         />
         <br/>
 

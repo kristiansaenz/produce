@@ -99,6 +99,7 @@ const ProfileMap = (props) => {
                   id={active._id}
                   booth={active}
                   visible={true}
+                  rating={active.rating}
                 />
               </Popup>
           )
