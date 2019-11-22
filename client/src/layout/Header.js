@@ -3,7 +3,6 @@ import logo from "../images/logo.svg";
 import Logout from "../components/Logout";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import ProfileDropMenu from "../components/ProfileDropMenu";
 
 const Header = props => {
   function expandNavMenu() {
