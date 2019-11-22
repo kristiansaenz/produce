@@ -12,7 +12,7 @@ function Booth(props) {
   ]);
 
   return (
-    <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop">
+    <div class="column is-half-mobile is-one-quarter-tablet is-one-fifth-desktop">
         <div class="card is-equal-height">
 
           {/* Card Image */}
