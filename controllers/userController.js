@@ -22,6 +22,20 @@ module.exports = {
     })
   },
 
+  getUserById: function(req, res) {
+    let id = req.params.id
+
+    UserModel.findById(id, {password: 0}, function (err, user) {
+      if (err) {
+        return res.status(500).json({
+          message: 'Could not find user by id',
+          error: err
+        });
+      }
+      return res.json(user);
+    });
+  },
+
   getUsers: function (req, res) {
     UserModel.find(function (err, users) {
       if (err) {
@@ -32,5 +46,34 @@ module.exports = {
       }
       return res.json(users);
     });
+  },
+
+  updateUser: function(req, res) {
+    let id = req.params.id
+    // res.json('request for updateUser :' + id)
+
+    UserModel.findByIdAndUpdate(id, req.body, { new: true })
+    .then(user => {
+      if(!user) {
+        return res.status(500).json({
+          message: 'User not found with id ' + id
+        })
+      }
+      res.json(user);
+    })
+  },
+
+  deleteUser: function(req, res) {
+    let id = req.params.id
+
+    UserModel.findByIdAndRemove(id)
+      .then(user => {
+        if(!user) {
+          return res.status(500).json({
+            message: 'User not found with id ' + id
+          })
+        }
+        res.json(user);
+      })
   }
 }

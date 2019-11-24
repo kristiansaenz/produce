@@ -10,6 +10,46 @@ const url = require('url');
 const UserModel = require('../models/userModel');
 
 
+// router.get('/getUserByBoothId/:id', UserController.getUserByBoothId)
+router.get('/', UserController.getUsers);
+router.get('/:id', UserController.getUserById);
+router.patch('/:id', UserController.updateUser);
+router.delete('/:id', UserController.deleteUser);
+router.post('/getUserByBoothId', UserController.getUserByBoothId);
+router.post('/upload-avatar', (req, res) => {
+  profileImgUpload(req, res, (error) => {
+    if (error) {
+      console.log('errors', error);
+      res.json({
+        error: error
+      });
+    } else {
+      // If File not found
+      if (req.file === undefined) {
+        console.log('Error: No File Selected!');
+        res.json('Error: No File Selected');
+      } else {
+
+        // If Success
+        const imageName = req.file.key;
+        const imageLocation = req.file.location;
+        console.log('image location: ', imageLocation)
+        // Save the file name into database into profile model
+
+        UserModel.findOne({
+          //  email: 'ryanjalufka@gmail.com'
+          email: req.query.user
+        }).then(user => {
+          user.avatar = imageLocation
+          user.save()
+          res.json(user)
+        });
+      }
+    }
+  });
+});
+
+
 const s3 = new aws.S3({
   accessKeyId: process.env.ACCESSKEYID,
   secretAccessKey: process.env.SECRETACCESSKEY,
@@ -46,42 +86,6 @@ function checkFileType(file, cb) {
     cb('Error: Images Only!');
   }
 }
-
-// router.get('/getUserByBoothId/:id', UserController.getUserByBoothId)
-router.get('/', UserController.getUsers);
-router.post('/getUserByBoothId', UserController.getUserByBoothId)
-router.post('/upload-avatar', (req, res) => {
-  profileImgUpload(req, res, (error) => {
-    if (error) {
-      console.log('errors', error);
-      res.json({
-        error: error
-      });
-    } else {
-      // If File not found
-      if (req.file === undefined) {
-        console.log('Error: No File Selected!');
-        res.json('Error: No File Selected');
-      } else {
-
-        // If Success
-        const imageName = req.file.key;
-        const imageLocation = req.file.location;
-        console.log('image location: ', imageLocation)
-        // Save the file name into database into profile model
-
-        UserModel.findOne({
-          //  email: 'ryanjalufka@gmail.com'
-          email: req.query.user
-        }).then(user => {
-          user.avatar = imageLocation
-          user.save()
-          res.json(user)
-        });
-      }
-    }
-  });
-});
 
 
 module.exports = router;

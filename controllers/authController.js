@@ -23,7 +23,8 @@ module.exports = {
         const newUser = new UserModel({
           name: req.body.name,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          avatar: process.env.DEFAULT_AVATAR
         });
 
         // Hash password before saving in database
@@ -87,7 +88,6 @@ module.exports = {
     // get the user and see if authenticated
     user: function(req, res) {
       UserModel.findById(req.user.id)
-        .select('-password')
         .then(user => res.json(user))
     }
   }
