@@ -1,6 +1,7 @@
 require("dotenv").config()
 const ObjectId = require('mongodb').ObjectID;
 const UserModel = require('../models/userModel')
+const BoothModel = require('../models/boothModel')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -75,5 +76,6 @@ module.exports = {
         }
         res.json(user);
       })
+
   }
 }
