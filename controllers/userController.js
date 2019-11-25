@@ -66,6 +66,7 @@ module.exports = {
 
   deleteUser: function(req, res) {
     let id = req.params.id
+    let boothId;
 
     UserModel.findByIdAndRemove(id)
       .then(user => {
@@ -76,6 +77,5 @@ module.exports = {
         }
         res.json(user);
       })
-
   }
 }
