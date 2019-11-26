@@ -50,7 +50,7 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 41rem;
+  height: 48rem;
 }
 
 .title,
@@ -189,6 +189,13 @@ a.navbar-item:hover {
   margin-top: 1rem;
 }
 
+/* PROFILE MAP */
+.booth-map {
+  max-width: 41rem;
+  border-radius: .3rem;
+  overflow: hidden;
+}
+
 /* FILTER BUTTON */
 .filter-button {
   font: $primary-font;
@@ -230,9 +237,17 @@ a.navbar-item:hover {
   padding-bottom: 0.3rem;
 }
 
-.profile-pic {
-  border-radius: 5rem;
-  height: 10rem;
+// .profile-pic {
+//   // border-radius: 5rem;
+//   height: 12rem;
+// }
+
+.farmer-image {
+  width: 50%;
+  border-radius: 5.5rem;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 1rem;
 }
 
 /* FILTER BAR */
@@ -272,7 +287,7 @@ a.navbar-item:hover {
 .map-popup {
   height: 10rem;
   width: 10rem;
-  margin-top: .75rem;
+  margin-top: 0.75rem;
 }
 
 .booth-rating {
@@ -313,6 +328,11 @@ a.navbar-item:hover {
   height: 1rem;
 }
 
+.farmer-badge {
+  width: 1rem;
+  float: right;
+}
+
 /* CHROME HIGHLIGHTS */
 input:focus,
 select:focus,
@@ -336,7 +356,7 @@ button:focus {
 .ui.star.rating .active.icon {
   background: transparent !important;
   color: #e80000 !important;
-  text-shadow: none;
+  text-shadow: none !important;
 }
 
 /* Selected Star */
@@ -352,7 +372,7 @@ button:focus {
 .farmer-description {
   width: 100%;
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   border: #464646;
   border-radius: 0.5rem;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
@@ -385,6 +405,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-radius: .3rem;
 }
 
 .card-footer {
@@ -421,13 +442,47 @@ button:focus {
   padding-top: 0;
 }
 
-// booth header
+/* BOOTH PAGE */
 .booth-info {
   background-color: #f2f2f2;
   color: white;
   min-height: inherit;
   padding: 1rem;
   font-style: $secondary-font;
+}
+
+.ui.segment {
+  position: relative;
+  background: #fff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin: 1rem 0;
+  padding: 1em 1em;
+  border-radius: none;
+  border: none;
+}
+
+.ui.segment.active.tab {
+  min-height: 25rem;
+}
+
+.booth-content {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  border: #464646;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
+    0 0 0 1px rgba(10, 10, 10, 0.02);
+}
+
+.produce-card {
+  margin: 3rem 1rem;
+}
+
+.farmer-contact-button {
+  margin: 1rem 0;
+  background-color: $primary-color;
 }
 
 .navbar-burger span {
@@ -535,6 +590,10 @@ button:focus {
     padding: 1rem;
   }
 
+  .section.is-small.is-farmer-page {
+    padding: 1.5rem 1.5rem;
+  }
+
   .navbar-dropdown .navbar-item {
     color: $primary-color;
   }
@@ -610,7 +669,7 @@ button:focus {
   }
 
   .booth-images {
-    height: 17rem;
+    height: 22rem;
     overflow: hidden;
   }
 

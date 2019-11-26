@@ -8,15 +8,16 @@ function FarmerCard (props) {
             <div class="farmer-card">
                 
                 <div className="farmer-image">
-                    {/* <figure className="image is-4by5"> */}
-                        <img src={props.avatar} className="profile-pic"></img>  
-                    {/* </figure>  */}
+                    <figure class="image is-1by1">
+                        <img class="is-rounded" src={props.avatar}></img>
+                    </figure>
                 </div>
 
-                <div className="farmer-title">
-                    <div className="subtitle">{props.boothName}</div>
-                    <div className="subtitle">{props.boothOwnerName}</div>
-                </div>
+                {/* <div className="farmer-title"> */}
+                    <div className="text is-size-4">{props.boothName}</div>
+                    <button class="button is-success farmer-contact-button">Send Message</button>
+                    <div className="text">{props.boothOwnerName}</div>
+                {/* </div> */}
 
                 <div className="booth-rating-profile">
                 <Rating icon='star' defaultRating={props.rating} maxRating={5} disabled/>

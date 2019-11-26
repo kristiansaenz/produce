@@ -17,7 +17,11 @@ function Booth(props) {
 
           {/* Card Image */}
           <div class="card-image">
-            <ImageCarousel image_size="image" booth_images={images} view="list" />
+            {props.boothImages && props.boothImages.length ?
+            <ImageCarousel image_size="image" boothImages={props.boothImages} view="list" />
+            :
+            <ImageCarousel image_size="image" boothImages={images} view="list" />
+            }
           </div>
 
           {/* Card Content */}

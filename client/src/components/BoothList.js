@@ -22,7 +22,7 @@ function BoothList(props) {
               // avatar={booth.avatar}
               booth_name={booth.booth_name}
               booth_description={booth.description}
-              // booth_images={booth.images}
+              boothImages={booth.images}
             />
           ))}
         </div>

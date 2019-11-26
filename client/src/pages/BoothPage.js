@@ -46,7 +46,6 @@ const BoothPage = () => {
       setBoothOwner(result2.data[0]);
       setAddressInfo(result.data.address);
       setIsLoading(false);
-
     };
     fetchData();
   }, []);
@@ -69,29 +68,13 @@ const BoothPage = () => {
           city={addressInfo.city}
           state={addressInfo.state}
           rating={booth.rating}
+          booth={booth}
         />
         <br/>
-
-        {/* <nav class="level is-mobile is-produce-review-switch">
-          <div class="level-left">
-            <div class="level-item">
-              <p class="subtitle is-5">Produce</p>
-            </div>
-            <div class="level-item">
-              <p class="subtitle is-5">Reviews</p>
-            </div>
-          </div>
-      </nav>
-        
-
-      <div class="booth-items-section">
-        <ItemList produce={boothInfo.produce} />
+      {/* <ProfileMap booths={booth} /> */}
+      <div className="booth-content">
+        <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
       </div>
-
-        <ProfileMap farmers={farmer}/> */}
-
-      <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-    <ProfileMap booths={booth} />
     </section>
   );
   }

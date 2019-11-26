@@ -1,17 +1,17 @@
-require("dotenv").config()
-const ObjectId = require('mongodb').ObjectID;
-const UserModel = require('../models/userModel')
-const BoothModel = require('../models/boothModel')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+require("dotenv").config();
+const ObjectId = require("mongodb").ObjectID;
+const UserModel = require("../models/userModel");
+const BoothModel = require("../models/boothModel");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
-  getUserByBoothId: function (req, res) {
+  getUserByBoothId: function(req, res) {
     let id = req.body.id;
 
     UserModel.find({
-      'booth' : id
-    }).exec(function (err, results) {
+      booth: id
+    }).exec(function(err, results) {
       if (err) {
         return res.status(500).json({
           message: "Error when finding User...",
@@ -20,16 +20,16 @@ module.exports = {
       }
       console.log(results);
       return res.json(results);
-    })
+    });
   },
 
   getUserById: function(req, res) {
-    let id = req.params.id
+    let id = req.params.id;
 
-    UserModel.findById(id, {password: 0}, function (err, user) {
+    UserModel.findById(id, { password: 0 }, function(err, user) {
       if (err) {
         return res.status(500).json({
-          message: 'Could not find user by id',
+          message: "Could not find user by id",
           error: err
         });
       }
@@ -37,11 +37,11 @@ module.exports = {
     });
   },
 
-  getUsers: function (req, res) {
-    UserModel.find(function (err, users) {
+  getUsers: function(req, res) {
+    UserModel.find(function(err, users) {
       if (err) {
         return res.status(500).json({
-          message: 'Error when getting users :(',
+          message: "Error when getting users :(",
           error: err
         });
       }
@@ -50,32 +50,28 @@ module.exports = {
   },
 
   updateUser: function(req, res) {
-    let id = req.params.id
-    // res.json('request for updateUser :' + id)
+    let id = req.params.id;
 
-    UserModel.findByIdAndUpdate(id, req.body, { new: true })
-    .then(user => {
-      if(!user) {
+    UserModel.findByIdAndUpdate(id, req.body, { new: true }).then(user => {
+      if (!user) {
         return res.status(500).json({
-          message: 'User not found with id ' + id
-        })
+          message: "User not found with id " + id
+        });
       }
       res.json(user);
-    })
+    });
   },
 
   deleteUser: function(req, res) {
-    let id = req.params.id
-    let boothId;
+    let id = req.params.id;
 
-    UserModel.findByIdAndRemove(id)
-      .then(user => {
-        if(!user) {
-          return res.status(500).json({
-            message: 'User not found with id ' + id
-          })
-        }
-        res.json(user);
-      })
+    UserModel.findByIdAndRemove(id).then(user => {
+      if (!user) {
+        return res.status(500).json({
+          message: "User not found with id " + id
+        });
+      }
+      res.json(user);
+    });
   }
-}
+};

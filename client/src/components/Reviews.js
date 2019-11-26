@@ -4,9 +4,9 @@ import { Button, Comment, Form, Header } from 'semantic-ui-react'
 const Reviews = () => {
   return(
   <Comment.Group>
-  <Header as='h3' dividing>
+  {/* <Header as='h3' dividing>
     Reviews
-  </Header>
+  </Header> */}
 
   <Comment>
     <Comment.Content>
