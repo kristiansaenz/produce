@@ -67,8 +67,8 @@ const ProfileMap = props => {
           >
             <div
               onClick={() => {
-                setPopupVisible(true);
                 setActive(booth);
+                setPopupVisible(true);
               }}
               class="map-marker"
             ></div>
@@ -101,6 +101,7 @@ const ProfileMap = props => {
             booth={active}
             visible={true}
             rating={active.rating}
+            boothImages={active.images}
           />
         </Popup>
       );
