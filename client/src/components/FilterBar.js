@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Dropdown } from 'semantic-ui-react'
-import _ from 'lodash'
-import faker from 'faker'
+import { Dropdown } from "semantic-ui-react";
+import _ from "lodash";
+import faker from "faker";
 import MapIcon from "../images/map.svg";
-import FilterByCategory from "../components/Filter/FilterByCategory"
+import FilterByCategory from "./Filter/FilterByCategory";
 
 class FilterBar extends React.Component {
   constructor(props) {
@@ -20,13 +20,13 @@ class FilterBar extends React.Component {
     { key: 3, text: 'Dairy', value: 'dairy' },
   ]
 
-  addressDefinitions = faker.definitions.address
+  addressDefinitions = faker.definitions.address;
 
   stateOptions = _.map(this.addressDefinitions.state, (state, index) => ({
     key: this.addressDefinitions.state_abbr[index],
     text: state,
-    value: this.addressDefinitions.state_abbr[index],
-  }))
+    value: this.addressDefinitions.state_abbr[index]
+  }));
 
   handleChange = event => {
     this.setState({ value: event.target.value });
@@ -40,11 +40,10 @@ class FilterBar extends React.Component {
 
   render() {
     return (
-      <nav class="level filter-bar">
-        <div class="level-left filter-by-category-container">
-          
+      <nav className="level filter-bar">
+        <div className="level-left filter-by-category-container">
           {/* Filter Button + Categories */}
-          <div class="level-item">
+          <div className="level-item">
             <Dropdown
               multiple
               search
@@ -52,26 +51,25 @@ class FilterBar extends React.Component {
               closeOnChange
               onChange={this.handleProduceFilterChange}
               options={this.options}
-              placeholder='Filter...'
+              placeholder="Filter..."
             />
           </div>
         </div>
 
-        <div class="level-right">
+        <div className="level-right">
           {/* Map Button */}
-          <div class="level-item">
+          {/* <div class="level-item">
             <img
               src={MapIcon}
               className="map-button"
               onClick={() => this.props.handleMapClick()}
               alt="map"
             ></img>
-          </div>
+          </div> */}
 
           {/* Location field + Search button */}
 
-          
-          <div class="level-item">
+          <div className="level-item">
             {/* <div class="field has-addons"> */}
             {/* <div class="field">
               <p class="control">
@@ -83,9 +81,22 @@ class FilterBar extends React.Component {
                   onChange={this.handleChange}
                 />
               </p> */}
-              <Dropdown placeholder='State' search selection options={this.stateOptions} />
+            <div className="button map-button">
+              <img
+                src={MapIcon}
+                className="map-icon"
+                onClick={() => this.props.handleMapClick()}
+                alt="map"
+              ></img>
+            </div>
+            <Dropdown
+              placeholder="State"
+              search
+              selection
+              options={this.stateOptions}
+            />
 
-              {/* <p class="control">
+            {/* <p class="control">
                 <button
                   onClick={() =>
                     this.props.handleFilterSubmit(this.state.value)

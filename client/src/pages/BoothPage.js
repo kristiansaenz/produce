@@ -6,7 +6,8 @@ import {
 import BoothHeader from '../components/BoothHeader'
 import ItemList from '../components/ItemList'
 import ProfileMap from '../components/ProfileMap'
-import Reviews from '../components/Reviews'
+// import Reviews from '../components/Reviews'
+import ReviewList from '../components/reviews/ReviewList'
 import { Loader } from 'semantic-ui-react'
 import { Tab } from 'semantic-ui-react'
 
@@ -24,7 +25,7 @@ const BoothPage = () => {
     // },
     {
       menuItem: 'Reviews',
-      render: () => <Tab.Pane attached={false}><Reviews /></Tab.Pane>,
+      render: () => <Tab.Pane attached={false}><ReviewList /></Tab.Pane>,
     },
   ]
 
