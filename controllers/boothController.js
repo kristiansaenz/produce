@@ -96,6 +96,7 @@ module.exports = {
 
   updateBooth: function(req, res) {
     let id = req.params.id;
+    console.log('req.body: ', req.body)
 
     BoothModel.findByIdAndUpdate(id, req.body, { new: true }).then(booth => {
       if (!booth) {

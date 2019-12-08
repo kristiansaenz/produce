@@ -78,7 +78,9 @@ const Header = props => {
                       <a className="navbar-item">Edit Profile</a>
                     </Link>
                     {props.user.booth != null ? (
-                      <a className="navbar-item">Manage Booth</a>
+                      <Link to="/manage-booth">
+                        <a className="navbar-item">Manage Booth</a>
+                      </Link>
                     ) : (
                       <a className="navbar-item">Create Booth</a>
                     )}

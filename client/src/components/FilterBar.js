@@ -8,16 +8,17 @@ import FilterByCategory from "./Filter/FilterByCategory";
 class FilterBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: ""
+    this.state = { 
+      value: "",
+      produceValue: ""
     };
   }
 
   options = [
-    { key: 1, text: "Fruits", value: 1 },
-    { key: 2, text: "Vegetables", value: 2 },
-    { key: 3, text: "Dairy", value: 3 }
-  ];
+    { key: 1, text: 'Fruits', value: 'fruits' },
+    { key: 2, text: 'Vegetables', value: 'vegetables' },
+    { key: 3, text: 'Dairy', value: 'dairy' },
+  ]
 
   addressDefinitions = faker.definitions.address;
 
@@ -29,8 +30,13 @@ class FilterBar extends React.Component {
 
   handleChange = event => {
     this.setState({ value: event.target.value });
+    console.log(event.target.value)
     this.props.handleFilterSubmit(event.target.value);
   };
+
+  handleProduceFilterChange = event => {
+    
+  }
 
   render() {
     return (
@@ -43,6 +49,7 @@ class FilterBar extends React.Component {
               search
               selection
               closeOnChange
+              onChange={this.handleProduceFilterChange}
               options={this.options}
               placeholder="Filter..."
             />

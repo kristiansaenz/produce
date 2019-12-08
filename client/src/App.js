@@ -15,6 +15,7 @@ import Signup from './pages/Signup'
 import Contact from './pages/Contact'
 import BoothPage from './pages/BoothPage'
 import Profile from './pages/Profile'
+import ManageBooth from './pages/ManageBooth'
 
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
             <Route path="/contact" component={Contact} />
             <Route path="/booth/:id" component={BoothPage} />
             <Route path="/profile" component={Profile} />
+            <Route path="/manage-booth" component={ManageBooth} />
             <Footer />
           </div>
           </ScrollToTop>
