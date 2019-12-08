@@ -31,7 +31,7 @@ class BoothHeader extends React.Component {
             </div>
 
             {/* Farmer Description + Map Location */}
-            <div className="column is-equal-column">
+            <div className="column is-three-fifths is-equal-column">
               <FarmerDescription
                 description={this.props.description}
                 booth={this.props.booth}
