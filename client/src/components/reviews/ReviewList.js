@@ -2,18 +2,20 @@ import React from "react";
 import Review from "./Review";
 import AddReview from "./AddReview";
 
-const ReviewList = () => {
+const ReviewList = (props) => {
   return (
     <React.Fragment>
       <div className="review-list">
-        <Review />
-        <Review />
-        <Review />
-        <Review />
-        <Review />
+      {props.reviews.map(review => (
+        <Review 
+          avatar={review.reviewer_avatar}
+          review={review.message}
+          name={review.reviewer_name}
+        />
+      ))}
       </div>
       <div className="add-review-form">
-        <AddReview />
+        <AddReview booth_id={props.booth_id}/>
       </div>
     </React.Fragment>
   );

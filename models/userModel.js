@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const ObjectID = require('mongodb').ObjectID
 
 module.exports = UserSchema = new mongoose.Schema(
     {
