@@ -18,10 +18,6 @@ const BoothPage = () => {
       menuItem: 'Produce',
       render: () => <Tab.Pane attached={false}><ItemList produce={booth.produce} /></Tab.Pane>,
     },
-    // {
-    //   menuItem: 'Map',
-    //   render: () => <Tab.Pane attached={false}><ProfileMap farmers={farmer}/></Tab.Pane>,
-    // },
     {
       menuItem: 'Reviews',
       render: () => <Tab.Pane attached={false}><ReviewList booth_id={booth._id} reviews={booth.reviews}/></Tab.Pane>,
