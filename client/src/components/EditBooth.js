@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import MultipleImageUploader from './MultipleImageUploader'
 import axios from 'axios'
 
 function EditBooth(props) {
@@ -28,25 +30,33 @@ function EditBooth(props) {
     console.log(boothUpdate.data)
   }
 
-  return(
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Booth Name:
-          <input name="boothName" type="text" value={state.boothName} onChange={handleChange}/>
-        </label>
-        <label>
-          Description:
-          <textarea name="description"value={state.description} onChange={handleChange} />
-        </label>
-        <input type="submit" value="Save Changes" />
-      </form>
-    </div>
-  )
+  if(props.isAuthenticated) {
+    return(
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Booth Name:
+            <input name="boothName" type="text" value={state.boothName} onChange={handleChange}/>
+          </label>
+          <label>
+            Description:
+            <textarea name="description"value={state.description} onChange={handleChange} />
+          </label>
+          <input type="submit" value="Save Changes" />
+        </form>
+        <MultipleImageUploader />
+      </div>
+    )
+  } else {
+    return(
+      <Redirect to="/login" />
+    )
+  }
 }
 
 const mapStateToProps = state => ({
-  user: state.auth.user
+  user: state.auth.user,
+  isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps)(EditBooth)

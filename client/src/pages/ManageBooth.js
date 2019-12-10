@@ -11,4 +11,4 @@ class ManageBooth extends Component {
   }
 }
 
-export default ManageBooth;
+export default ManageBooth
