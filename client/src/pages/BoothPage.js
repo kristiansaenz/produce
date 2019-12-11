@@ -1,57 +1,47 @@
 import  React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
 import {
   useParams
 } from 'react-router-dom'
 import BoothHeader from '../components/BoothHeader'
 import ItemList from '../components/ItemList'
 import ProfileMap from '../components/ProfileMap'
-// import Reviews from '../components/Reviews'
 import ReviewList from '../components/reviews/ReviewList'
+import { setSelectedBooth, clearSelectedBooth } from '../actions/selectedBoothAction'
 import { Loader } from 'semantic-ui-react'
 import { Tab } from 'semantic-ui-react'
 
 
-const BoothPage = () => {
+const BoothPage = (props) => {
 
   const panes = [
     {
       menuItem: 'Produce',
-      render: () => <Tab.Pane attached={false}><ItemList produce={booth.produce} /></Tab.Pane>,
+      render: () => <Tab.Pane attached={false}><ItemList produce={props.booth.produce} /></Tab.Pane>,
     },
-    // {
-    //   menuItem: 'Map',
-    //   render: () => <Tab.Pane attached={false}><ProfileMap farmers={farmer}/></Tab.Pane>,
-    // },
     {
       menuItem: 'Reviews',
-      render: () => <Tab.Pane attached={false}><ReviewList /></Tab.Pane>,
+      render: () => <Tab.Pane attached={false}><ReviewList booth_id={props.booth._id} /></Tab.Pane>,
     },
   ]
 
-  const [boothOwner, setBoothOwner] = useState({})
-  const [booth, setBooth] = useState({})
-  const [addressInfo, setAddressInfo] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
+  // const [boothOwner, setBoothOwner] = useState({})
+  // const [booth, setBooth] = useState({})
+  // const [addressInfo, setAddressInfo] = useState({})
+  // const [isLoading, setIsLoading] = useState(true)
 
   let id = useParams()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(`/booths/${id.id}`)
-      const result2 = await axios.post('/users/getUserByBoothId', {
-        id: id.id
-      })
+    props.setSelectedBooth(id);
 
-      setBooth(result.data);
-      setBoothOwner(result2.data[0]);
-      setAddressInfo(result.data.address);
-      setIsLoading(false);
-    };
-    fetchData();
+
+    return () => { props.clearSelectedBooth(); }
+
   }, []);
 
-  if(isLoading) {
+  if(!props.booth.address) {
     return (
       <section className="section is-large">
         <Loader active inline='centered' />
@@ -61,15 +51,15 @@ const BoothPage = () => {
     return(
       <section className="section is-small is-farmer-page">
         <BoothHeader 
-          boothOwnerName={boothOwner.name}
-          avatar={boothOwner.avatar}
-          boothImages={booth.images}
-          boothName={booth.booth_name}
-          description={booth.description}
-          city={addressInfo.city}
-          state={addressInfo.state}
-          rating={booth.rating}
-          booth={booth}
+          boothOwnerName={props.booth.name}
+          avatar={props.booth.avatar}
+          boothImages={props.booth.images}
+          boothName={props.booth.booth_name}
+          description={props.booth.description}
+          city={props.booth.address.city}
+          state={props.booth.address.state}
+          rating={props.booth.rating}
+          booth={props.booth}
         />
         <br/>
       {/* <ProfileMap booths={booth} /> */}
@@ -81,4 +71,8 @@ const BoothPage = () => {
   }
 }
 
-export default BoothPage
+const mapStateToProps = state => ({
+  booth: state.selectedBooth
+})
+
+export default connect(mapStateToProps, { setSelectedBooth, clearSelectedBooth })(BoothPage)
