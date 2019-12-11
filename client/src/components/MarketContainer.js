@@ -4,10 +4,8 @@ import FilterBar from './FilterBar'
 import BoothList from './BoothList'
 import debounce from 'lodash/debounce';
 import ProfileMap from './ProfileMap'
-import Geocoder from 'react-mapbox-gl-geocoder'
 
 const MarketContainer = () => {
-  const [farmers, setFarmers] = useState([]);
   const [booths, setBooths] = useState([])
   const [mapStatus, setMapStatus] = useState(false);
   const [toggleFilterButtonExpanded, setToggleFilterButtonExpanded] = useState(false);
@@ -57,20 +55,18 @@ const MarketContainer = () => {
       )
     }
     else {
-      return (
-        <div></div>
-      )
+      return (<div />)
     }
   }
 
     return(
       <div>
         <FilterBar
-        toggleFilterButton={toggleFilterButtonExpanded}
-        handleToggleFilterButton={toggleFilterButtonExpand}
-        categoryList={categories}
-        handleMapClick={handleMapClick} 
-        handleFilterSubmit={handleFilterSubmit}
+          toggleFilterButton={toggleFilterButtonExpanded}
+          handleToggleFilterButton={toggleFilterButtonExpand}
+          categoryList={categories}
+          handleMapClick={handleMapClick} 
+          handleFilterSubmit={handleFilterSubmit}
         />
 
         {/* Render map if clicked */}

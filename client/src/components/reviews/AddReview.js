@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { addReview } from '../../actions/selectedBoothAction'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -8,18 +9,8 @@ const AddReview = (props) => {
   const [value, setValue] = useState('')
 
   const handleSubmit = () => {
-
-    axios.post('/reviews/add-review', {
-      reviewer: props.user._id,
-      reviewer_name: props.user.name,
-      reviewer_avatar: props.user.avatar,
-      message: value,
-      booth_id: props.booth_id
-    })
-    .then(res => {
-      alert(res)
-    })
-
+    props.addReview(props.user._id, props.user.name, props.user.avatar, value, props.booth_id);
+    setValue('')
   }
 
   if(props.isAuthenticated) {
@@ -68,4 +59,4 @@ const mapStateToProps = state => ({
   user: state.auth.user
 })
 
-export default connect(mapStateToProps)(AddReview);
+export default connect(mapStateToProps, { addReview })(AddReview);

@@ -8,7 +8,6 @@ module.exports = {
     const today = new Date()
     const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-
     const Review = {
       reviewer: req.body.reviewer,
       reviewer_name: req.body.reviewer_name,
@@ -20,12 +19,12 @@ module.exports = {
     BoothModel.findOneAndUpdate(
       { _id: req.body.booth_id },
       { $push: { reviews: Review  } },
-      {useFindAndModify: false},
+      { useFindAndModify: false, returnOriginal: false },
       function (error, success) {
         if (error) {
-            console.log(error);
+            console.log("this is the error : ", error);
         } else {
-            res.json(success)
+            res.json(success.reviews)
         }
     });
   }
