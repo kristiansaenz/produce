@@ -50,7 +50,8 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 48rem;
+  // height: 48rem;
+  height: 85vh;
 }
 
 .title,
@@ -101,7 +102,6 @@ p {
 .navbar-brand {
   font-size: $navbar-brand-size;
   min-height: 0;
-  margin: auto;
 }
 
 .brand-name {
@@ -202,7 +202,7 @@ a.navbar-item:hover {
 
 /* PROFILE MAP */
 .booth-map {
-  max-width: 41rem;
+  max-width: 100%;
   border-radius: .3rem;
   overflow: hidden;
 }
@@ -487,8 +487,15 @@ button:focus {
     0 0 0 1px rgba(10, 10, 10, 0.02);
 }
 
+/* PRODUCE CARDS */
+
 .produce-card {
-  margin: 3rem 1rem;
+  margin: 0;
+}
+
+.produce-card-category {
+  text-align: left;
+  margin-bottom: 2rem;
 }
 
 .farmer-contact-button {
@@ -641,10 +648,14 @@ button:focus {
     margin: 1rem;
   }
 
+  // .section {
+  //   padding: 0;
+  // }
+
 }
 
 /* DESKTOPS */
-@media only screen and (min-width: 742px) {
+@media only screen and (min-width: 952px) {
   .section.is-small.is-farmer-page {
     padding: 0rem 15rem;
     margin: 1.5rem 0rem 2rem 0rem;
@@ -685,7 +696,7 @@ button:focus {
   }
 
   .navbar-end a {
-    margin: auto;
+    margin: auto 0;
   }
 
   .navbar-item.has-dropdown.is-active .navbar-link,

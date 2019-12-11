@@ -9,10 +9,10 @@
 
         @keyframes x {
            from { 
-                transform: translateX(0px) translateY(15px)
+                transform: translateX(0px) translateY(25px)
             }
             to {
-                transform: translateX(0px) translateY(25px)
+                transform: translateX(0px) translateY(35px)
   }
         }
     </style>
