@@ -78,13 +78,15 @@ const Header = props => {
                       <a className="navbar-item">Edit Profile</a>
                     </Link>
                     {props.user.booth != null ? (
-                      <Link to="/manage-booth">
+                      <Link to="/yourbooth">
                         <a className="navbar-item">Manage Booth</a>
                       </Link>
                     ) : (
                       <a className="navbar-item">Create Booth</a>
                     )}
-                    <a className="navbar-item">Saved Booths</a>
+                    <Link to="/favorites">
+                      <a className="navbar-item">Saved Booths</a>
+                    </Link>
                     <hr className="navbar-divider" />
                     <Logout />
                   </div>
