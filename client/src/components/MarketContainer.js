@@ -6,7 +6,7 @@ import debounce from 'lodash/debounce';
 import ProfileMap from './ProfileMap'
 
 const MarketContainer = () => {
-  const [farmers, setFarmers] = useState([]);
+  const [booths, setBooths] = useState([])
   const [mapStatus, setMapStatus] = useState(false);
   const [toggleFilterButtonExpanded, setToggleFilterButtonExpanded] = useState(false);
   const [categories, setCategories] = useState([
@@ -18,8 +18,8 @@ const MarketContainer = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('/farmers')
-      setFarmers(result.data);
+      const booths = await axios.get('/booths')
+      setBooths(booths.data);
     };
     fetchData();
   }, []);
@@ -31,14 +31,14 @@ const MarketContainer = () => {
   }
 
   const handleFilterSubmit = debounce((location) => {
-    axios.get('/farmers/filter', {
+    axios.get('/booths/filterByLocation', {
       params: {
         city: location
       }
     })
     .then(response => response.data)
     .then(data => {
-      setFarmers(data)
+      setBooths(data)
     })
   }, 400)
 
@@ -49,32 +49,30 @@ const MarketContainer = () => {
   const renderMap = () => {
     if (mapStatus) {
       return (
-        // <Map farmers={farmers} />
         <div className="container is-map">
-          <ProfileMap farmers={farmers} />
+          <ProfileMap booths={booths} />
         </div>
       )
     }
     else {
-      return (
-        <div></div>
-      )
+      return (<div />)
     }
   }
 
     return(
       <div>
         <FilterBar
-        toggleFilterButton={toggleFilterButtonExpanded}
-        handleToggleFilterButton={toggleFilterButtonExpand}
-        categoryList={categories}
-        handleMapClick={handleMapClick} 
-        handleFilterSubmit={handleFilterSubmit}/>
+          toggleFilterButton={toggleFilterButtonExpanded}
+          handleToggleFilterButton={toggleFilterButtonExpand}
+          categoryList={categories}
+          handleMapClick={handleMapClick} 
+          handleFilterSubmit={handleFilterSubmit}
+        />
 
         {/* Render map if clicked */}
         {renderMap()}
 
-        <BoothList farmers={farmers}/>
+        <BoothList booths={booths}/>
       </div>
     );
 }

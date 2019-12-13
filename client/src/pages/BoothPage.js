@@ -1,83 +1,78 @@
 import  React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
 import {
   useParams
 } from 'react-router-dom'
 import BoothHeader from '../components/BoothHeader'
 import ItemList from '../components/ItemList'
 import ProfileMap from '../components/ProfileMap'
+import ReviewList from '../components/reviews/ReviewList'
+import { setSelectedBooth, clearSelectedBooth } from '../actions/selectedBoothAction'
+import { Loader } from 'semantic-ui-react'
 import { Tab } from 'semantic-ui-react'
 
 
-const BoothPage = () => {
+const BoothPage = (props) => {
 
   const panes = [
     {
       menuItem: 'Produce',
-      render: () => <Tab.Pane attached={false}><ItemList produce={boothInfo.produce} /></Tab.Pane>,
+      render: () => <Tab.Pane attached={false}><ItemList produce={props.booth.produce} /></Tab.Pane>,
     },
-    // {
-    //   menuItem: 'Map',
-    //   render: () => <Tab.Pane attached={false}><ProfileMap farmers={farmer}/></Tab.Pane>,
-    // },
     {
       menuItem: 'Reviews',
-      render: () => <Tab.Pane attached={false}>No reviews yet</Tab.Pane>,
+      render: () => <Tab.Pane attached={false}><ReviewList booth_id={props.booth._id} /></Tab.Pane>,
     },
   ]
 
-  const [farmer, setFarmer] = useState({})
-  const [boothInfo, setBoothInfo] = useState({})
-  const [addressInfo, setAddressInfo] = useState({})
-  const [farmerName, setFarmerName] = useState("")
+  // const [boothOwner, setBoothOwner] = useState({})
+  // const [booth, setBooth] = useState({})
+  // const [addressInfo, setAddressInfo] = useState({})
+  // const [isLoading, setIsLoading] = useState(true)
+
   let id = useParams()
 
-  useEffect(() => {  
-    const fetchData = async () => {
-      const result = await axios.get(`/farmers/booth/${id.id}`)
-      setFarmer(result.data);
-      setFarmerName(result.data.name);
-      setBoothInfo(result.data.booth);
-      setAddressInfo(result.data.address);
-    };
-    fetchData();
+  useEffect(() => {
+    props.setSelectedBooth(id);
+
+
+    return () => { props.clearSelectedBooth(); }
+
   }, []);
 
+  if(!props.booth.address) {
+    return (
+      <section className="section is-large">
+        <Loader active inline='centered' />
+      </section>
+    )
+  } else {
     return(
-      <section class="section is-small is-farmer-page">
+      <section className="section is-small is-farmer-page">
         <BoothHeader 
-          farmerName={farmerName}
-          avatar={farmer.avatar}
-          booth_images={boothInfo.images}
-          name={boothInfo.booth_name}
-          description={boothInfo.description}
-          city={addressInfo.city}
-          state={addressInfo.state}
+          boothOwnerName={props.booth.name}
+          avatar={props.booth.avatar}
+          boothImages={props.booth.images}
+          boothName={props.booth.booth_name}
+          description={props.booth.description}
+          city={props.booth.address.city}
+          state={props.booth.address.state}
+          rating={props.booth.rating}
+          booth={props.booth}
         />
         <br/>
-
-        {/* <nav class="level is-mobile is-produce-review-switch">
-          <div class="level-left">
-            <div class="level-item">
-              <p class="subtitle is-5">Produce</p>
-            </div>
-            <div class="level-item">
-              <p class="subtitle is-5">Reviews</p>
-            </div>
-          </div>
-      </nav>
-        
-
-      <div class="booth-items-section">
-        <ItemList produce={boothInfo.produce} />
+      {/* <ProfileMap booths={booth} /> */}
+      <div className="booth-content">
+        <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
       </div>
-
-        <ProfileMap farmers={farmer}/> */}
-
-      <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-    <ProfileMap farmers={farmer} />
     </section>
   );
+  }
 }
 
-export default BoothPage
+const mapStateToProps = state => ({
+  booth: state.selectedBooth
+})
+
+export default connect(mapStateToProps, { setSelectedBooth, clearSelectedBooth })(BoothPage)

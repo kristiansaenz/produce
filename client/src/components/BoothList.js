@@ -1,27 +1,28 @@
 import React from "react";
 import Booth from "../components/Booth";
+import { Loader } from 'semantic-ui-react';
 
 function BoothList(props) {
-  if (props.farmers.length === 0) {
+  if (props.booths.length === 0) {
     return (
       <div className="boothlist-area">
-        <h1>Hmm... There aren't any booths here :(</h1>
+        <section className="section is-large">
+          <Loader active inline='centered' />
+        </section>
       </div>
     );
   } else {
     return (
       <div>
         <div className="columns is-mobile booth-list">
-          {props.farmers.map(farmer => (
+          {props.booths.map(booth => (
             <Booth
-              id={farmer._id}
-              name={farmer.name}
-              email={farmer.email}
-              address={farmer.address}
-              avatar={farmer.avatar}
-              booth_name={farmer.booth.booth_name}
-              booth_description={farmer.booth.description}
-              booth_images={farmer.booth.images}
+              id={booth._id}
+              address={booth.address}
+              rating={booth.rating}
+              booth_name={booth.booth_name}
+              booth_description={booth.description}
+              boothImages={booth.images}
             />
           ))}
         </div>

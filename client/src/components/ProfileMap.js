@@ -1,116 +1,140 @@
-import  React, { useState, useEffect } from 'react'
-import ReactMapGl, {Marker, Popup} from 'react-map-gl'
-import MapPopup from './MapPopup'
-import Pin from '../images/map-pin.svg'
-const GeoJSON = require('geojson')
+import React, { useState, useEffect } from "react";
+import ReactMapGl, { Marker, Popup } from "react-map-gl";
+import MapPopup from "./MapPopup";
+import Geocoder from "react-mapbox-gl-geocoder";
+import Pin from "../images/map-pin.svg";
+const GeoJSON = require("geojson");
 
-const ProfileMap = (props) => {
+const ProfileMap = props => {
+  const [viewport, setViewport] = useState({ props });
+  let [popupVisible, setPopupVisible] = useState(false);
+  let [active, setActive] = useState(null);
 
-    const [viewport, setViewport] = useState({props})
-    let [popupVisible, setPopupVisible] = useState(false)
-    let [active, setActive] = useState(null)
+  //const MAP_TOKEN = "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
+  const mapAccess = {
+    mapboxApiAccessToken:
+      "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
+  };
+  const queryParams = {
+    country: "us",
+    types: "place"
+  };
 
-    const MAP_TOKEN = "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
+  useEffect(() => {
+    if (Array.isArray(props.booths) && props.booths.length > 0) {
+      let latSum = 0;
+      let lngSum = 0;
+      let zoom = 3;
 
-    useEffect(() => {
-        if (Array.isArray(props.farmers) && props.farmers.length > 0) {
-            let latSum = 0
-            let lngSum = 0
-            let zoom = 3
-
-            props.farmers.map(c => {
-              latSum += Number(c.address.latitude)
-              lngSum += Number(c.address.longitude)
-            })
-            let latAvg = latSum / props.farmers.length
-            let lngAvg = lngSum / props.farmers.length
-            console.log(latAvg, lngAvg)
-            if(props.farmers.length < 5) { 
-              zoom = 4
-            }
-
-            setViewport({
-                latitude: latAvg,
-                longitude: lngAvg,
-                width: "100%",
-                height: "40vh",
-                zoom: zoom
-            })
-        }
-        else {
-            if (props.farmers.address){
-                setViewport({
-                    latitude: Number(props.farmers.address.latitude),
-                    longitude: Number(props.farmers.address.longitude),
-                    width: "100%",
-                    height: "40vh",
-                    zoom: 13
-                })
-            }
-        }
-    }, [props.farmers]);
-
-    const renderMarkers = () => {
-        if (Array.isArray(props.farmers)) {
-          return (
-               props.farmers.map(farmer => (
-                 farmer.address ? 
-                    <Marker 
-                      latitude={Number(farmer.address.latitude)}
-                      longitude={Number(farmer.address.longitude)}
-                    >
-                      <div onClick={() => {setPopupVisible(true); setActive(farmer)}} class="map-marker"></div>
-                    </Marker>
-                    : 
-                    null
-            ))
-          )
-        }
-        else {
-          return (
-            props.farmers.address ? 
-                <Marker latitude={Number(props.farmers.address.latitude)} longitude={Number(props.farmers.address.longitude)}>
-                    <img src={Pin} id="profile-map-pin" alt="location"/>
-                    {/* <div class="map-marker"></div> */}
-                </Marker> 
-                : 
-                null 
-          )
-        }
+      props.booths.map(c => {
+        latSum += Number(c.address.latitude);
+        lngSum += Number(c.address.longitude);
+      });
+      let latAvg = latSum / props.booths.length;
+      let lngAvg = lngSum / props.booths.length;
+      console.log(latAvg, lngAvg);
+      if (props.booths.length < 5) {
+        zoom = 4;
       }
 
-    const renderPopups = () => {
-      if (popupVisible) {
-        return (
-              <Popup 
-                latitude={Number(active.address.latitude)}
-                longitude={Number(active.address.longitude)}
-                closeOnClick={false}
-                onClose={() => setPopupVisible(false)}
-                >
-                <MapPopup 
-                  id={active._id}
-                  boothName={active.booth.booth_name}
-                  visible={true}
-                />
-              </Popup>
-          )
+      setViewport({
+        latitude: latAvg,
+        longitude: lngAvg,
+        width: "100%",
+        height: "40vh",
+        zoom: zoom
+      });
+    } else {
+      if (props.booths.address) {
+        setViewport({
+          latitude: Number(props.booths.address.latitude),
+          longitude: Number(props.booths.address.longitude),
+          width: "auto",
+          height: "25vh",
+          zoom: 12
+        });
       }
     }
+  }, [props.booths]);
 
-    return (
-        <div class="map-container">
-        <ReactMapGl
-          {...viewport}
-          mapboxApiAccessToken={MAP_TOKEN}
-          onViewportChange={viewport => { setViewport(viewport) }}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
+  const renderMarkers = () => {
+    if (Array.isArray(props.booths)) {
+      return props.booths.map(booth =>
+        booth.address ? (
+          <Marker
+            latitude={Number(booth.address.latitude)}
+            longitude={Number(booth.address.longitude)}
+          >
+            <div
+              onClick={() => {
+                setActive(booth);
+                setPopupVisible(true);
+              }}
+              class="map-marker"
+            ></div>
+          </Marker>
+        ) : null
+      );
+    } else {
+      return props.booths.address ? (
+        <Marker
+          latitude={Number(props.booths.address.latitude)}
+          longitude={Number(props.booths.address.longitude)}
         >
-          {renderMarkers()}
-          {renderPopups()}
-        </ReactMapGl>
-        </div>
-    );
-}
+          <img src={Pin} id="profile-map-pin" alt="location" />
+        </Marker>
+      ) : null;
+    }
+  };
+
+  const renderPopups = () => {
+    if (popupVisible) {
+      return (
+        <Popup
+          latitude={Number(active.address.latitude)}
+          longitude={Number(active.address.longitude)}
+          closeOnClick={false}
+          onClose={() => setPopupVisible(false)}
+        >
+          <MapPopup
+            id={active._id}
+            booth={active}
+            visible={true}
+            rating={active.rating}
+            boothImages={active.images}
+          />
+        </Popup>
+      );
+    }
+  };
+
+  const onSelected = (viewport, item) => {
+    setViewport(viewport);
+    console.log("Selected: ", item);
+  };
+
+  return (
+    <div class="map-container">
+      {Array.isArray(props.booths) && (
+        <Geocoder
+          {...mapAccess}
+          onSelected={onSelected}
+          viewport={viewport}
+          hideOnSelect={true}
+          queryParams={queryParams}
+        />
+      )}
+      <ReactMapGl
+        {...mapAccess}
+        {...viewport}
+        onViewportChange={newViewport => setViewport(newViewport)}
+        mapStyle="mapbox://styles/mapbox/streets-v9"
+      >
+        {renderMarkers()}
+        {renderPopups()}
+      </ReactMapGl>
+    </div>
+  );
+};
 
 export default ProfileMap;
