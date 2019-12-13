@@ -30,16 +30,18 @@ class App extends Component {
           <ScrollToTop>
             <div className="App">
               <Header />
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route path="/market" component={Market} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/booth/:id" component={BoothPage} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/yourbooth" component={ManageBooth} />
-              <Route path="/favorites" component={SavedBooths} />
+              <main className="App-content">
+                <Route exact path="/" component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/market" component={Market} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/booth/:id" component={BoothPage} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/yourbooth" component={ManageBooth} />
+                <Route path="/favorites" component={SavedBooths} />
+              </main>
               <Footer />
             </div>
           </ScrollToTop>

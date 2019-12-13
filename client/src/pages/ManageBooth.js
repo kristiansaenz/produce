@@ -13,7 +13,7 @@ class ManageBooth extends Component {
                 </div>
               </div>
               <div className="columns">
-                <div className="column is-one-third">
+                <div className="column is-half">
                   <EditBoothForm />
                 </div>
               </div>

@@ -2,11 +2,11 @@ import React from "react";
 
 const TextAreaField = props => {
   return (
-    <div class="field">
-      <label class="label">{props.label}</label>
-      <p class="control">
+    <div className="field">
+      <label className="label">{props.label}</label>
+      <p className="control">
         <textarea
-          class="textarea is-success"
+          className="textarea"
           name={props.name}
           value={props.value}
           onChange={props.handleChange}

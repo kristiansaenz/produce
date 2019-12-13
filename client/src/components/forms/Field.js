@@ -2,11 +2,11 @@ import React from "react";
 
 const Field = props => {
   return (
-    <div class="field">
-      <label class="label">{props.label}</label>
-      <div class="control">
+    <div className="field">
+      <label className="label">{props.label}</label>
+      <div className="control">
         <input
-          class="input is-success"
+          className="input"
           type="text"
           name={props.name}
           onChange={props.handleChange}

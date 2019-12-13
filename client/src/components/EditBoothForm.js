@@ -4,12 +4,15 @@ import axios from "axios";
 import Field from "../components/forms/Field";
 import TextAreaField from "./forms/TextAreaField";
 import SubmitButton from "./forms/SubmitButton";
+import AddItemField from "./forms/AddItemField";
+import AddItemBox from "./produce/AddItemBox";
 
 function EditBoothForm(props) {
   const [state, setState] = useState({
     boothName: "",
     description: ""
   });
+  const [addItemClicked, setAddItemClicked] = useState(false);
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -44,6 +47,9 @@ function EditBoothForm(props) {
           value={state.description}
           handleChange={handleChange}
         />
+        <AddItemField label="Add Items" />
+        <AddItemBox />
+        <AddItemBox />
         <SubmitButton label="Save Changes" />
       </form>
     </div>
