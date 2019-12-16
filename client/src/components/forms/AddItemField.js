@@ -4,7 +4,7 @@ const AddItemField = props => {
   return (
     <div className="field add-item-field">
       <label className="label add-item-label">{props.label}</label>
-      <div className="button">
+      <div className="button" onClick={props.handleAddItemClick}>
         <span className="icon is-small">
           <i className="fas fa-plus"></i>
         </span>
