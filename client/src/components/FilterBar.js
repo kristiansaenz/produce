@@ -28,15 +28,11 @@ class FilterBar extends React.Component {
     value: this.addressDefinitions.state_abbr[index]
   }));
 
-  handleChange = event => {
-    this.setState({ value: event.target.value });
-    console.log(event.target.value)
-    this.props.handleFilterSubmit(event.target.value);
+  handleChange = (e, value) => {
+    e.persist()
+    this.props.handleFilterSubmit(value.value);
+    console.log(value.value)
   };
-
-  handleProduceFilterChange = event => {
-    
-  }
 
   render() {
     return (
@@ -93,6 +89,8 @@ class FilterBar extends React.Component {
               placeholder="State"
               search
               selection
+              clearable={true}
+              onChange={this.handleChange}
               options={this.stateOptions}
             />
 

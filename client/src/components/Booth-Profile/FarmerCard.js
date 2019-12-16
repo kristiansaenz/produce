@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button, Popup } from 'semantic-ui-react'
 import { connect, useSelector } from 'react-redux'
 import { favoriteBooth, unFavoriteBooth } from '../../actions/favoriteBoothActions'
 import { Rating } from 'semantic-ui-react'
@@ -49,7 +50,8 @@ function FarmerCard (props) {
 
       {/* <div className="farmer-title"> */}
       <div className="text is-size-4">{props.boothName}</div>
-      <button class="button is-success farmer-contact-button">Send Message</button>
+      <Popup inverted content='Messaging coming soon!' trigger={<Button>Send Message</Button>} />
+      {/* <button class="button is-success farmer-contact-button">Send Message</button> */}
       {isAuthenticated &&
         <button onClick={submit} class="button is-info farmer-contact-button">{favoriteButtonStatus}</button>
       }

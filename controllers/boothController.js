@@ -62,13 +62,12 @@ module.exports = {
   },
 
   filterByLocation: function(req, res) {
-    let city = req.query.city;
-    console.log(city);
+    let state = req.body.state;
+    console.log(state, 'from boothController');
 
-    if (city !== "") {
+    if (state !== "") {
       BoothModel.find({
-        "address.city": new RegExp(city, "i")
-        // 'searchAddress': new RegExp(city, 'i')
+        "address.state_abbr": new RegExp(state, "i")
       }).exec(function(err, results) {
         if (err) {
           return res.status(500).json({
