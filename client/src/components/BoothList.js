@@ -17,9 +17,10 @@ function BoothList(props) {
         <div className="columns is-mobile booth-list">
           {props.booths.map(booth => (
             <Booth
+              booth={booth}
               id={booth._id}
               address={booth.address}
-              rating={booth.rating}
+              rating={booth.rating || 0}
               booth_name={booth.booth_name}
               booth_description={booth.description}
               boothImages={booth.images}
