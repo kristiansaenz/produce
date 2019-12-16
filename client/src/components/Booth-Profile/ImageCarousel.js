@@ -12,7 +12,7 @@ function ImageCarousel(props) {
         setIndex(i);
       }}
     >
-      {props.booth_images && props.booth_images.map(image => (
+      {props.boothImages && props.boothImages.map(image => (
         props.view === "profile" ?
             <figure class={props.image_size}>
                 <GalleryImage objectFit="fit" src={image} />

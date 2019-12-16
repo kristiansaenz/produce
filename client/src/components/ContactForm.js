@@ -1,13 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from 'axios'
+import { Message } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
-class ContactForm extends React.Component {
+class ContactForm extends Component {
 
-  state = {
-    name: '',
-    email: '',
-    message: ''
-  }
+      state = {
+        name: '',
+        email: '',
+        message: ''
+      }
 
   handleChange = e => {
     const value = e.target.value;
@@ -22,7 +24,7 @@ class ContactForm extends React.Component {
     this.setState({
       name: '',
       email: '',
-      message: ''
+      message: '',
     })
 
     axios.post('/contact/sendMessage', {
@@ -31,8 +33,8 @@ class ContactForm extends React.Component {
       message: this.state.message
     })
     .then(function (response) {
+      alert("Message Sent!");
       console.log(response);
-      alert('Message Sent!')
       this.setState({
         name: '',
         email: '',
@@ -107,4 +109,8 @@ class ContactForm extends React.Component {
   }
 }
 
-export default ContactForm;
+const mapStateToProps = state => ({
+  user: state.auth.user
+})
+
+export default connect(mapStateToProps)(ContactForm);

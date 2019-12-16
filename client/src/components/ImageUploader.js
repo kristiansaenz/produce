@@ -62,7 +62,6 @@ class ImageUploader extends Component {
   render() {
     return(
       <div>
-        <h1>File Upload</h1>
         <input type="file" onChange={this.singleFileChangedHandler}/>
         <button onClick={this.singleFileUploadHandler}>Upload!</button>
       </div>

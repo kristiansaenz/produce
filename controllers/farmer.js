@@ -66,7 +66,8 @@ module.exports = {
 
     if (city !== '') {
       FarmerModel.find({
-        'address.city': new RegExp(city, 'i')
+        'address.city' : new RegExp(city, 'i')
+        // 'searchAddress': new RegExp(city, 'i')
       }).exec(function (err, results) {
         if (err) {
           return res.status(500).json({

@@ -12,16 +12,20 @@ function Booth(props) {
   ]);
 
   return (
-    <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop">
+    <div class="column is-half-mobile is-one-quarter-tablet is-one-fifth-desktop">
         <div class="card is-equal-height">
 
           {/* Card Image */}
           <div class="card-image">
-            <ImageCarousel image_size="image" booth_images={images} view="list" />
+            {props.boothImages && props.boothImages.length ?
+            <ImageCarousel image_size="image" boothImages={props.boothImages} view="list" />
+            :
+            <ImageCarousel image_size="image" boothImages={images} view="list" />
+            }
           </div>
 
           {/* Card Content */}
-          <Link to={`boothpage/${props.id}`}>
+          <Link to={`booth/${props.id}`}>
           <div class="card-content">
             <div class="content">
               <div class="subtitle">
@@ -30,7 +34,7 @@ function Booth(props) {
                 <div className="booth-rating">
                   <Rating
                     icon="star"
-                    defaultRating={5}
+                    defaultRating={props.rating}
                     maxRating={5}
                     disabled
                   />
