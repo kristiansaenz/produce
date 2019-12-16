@@ -13,7 +13,7 @@ function SavedBooths() {
           <div className="container">
             <h1 className="title">Saved Booths</h1>
             <h2 className="subtitle">
-              Add booths your saved list to get updates from your favorite booths.
+              Add booths to your saved list to get easy access to your favorite farmers!
             </h2>
             <BoothList booths={savedBooths} />
           </div>
