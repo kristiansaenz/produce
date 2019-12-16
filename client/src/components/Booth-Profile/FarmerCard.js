@@ -1,34 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { connect, useSelector } from 'react-redux'
-import { favoriteBooth } from '../../actions/favoriteBoothActions'
+import { favoriteBooth, unFavoriteBooth } from '../../actions/favoriteBoothActions'
 import { Rating } from 'semantic-ui-react'
 
 
 function FarmerCard (props) {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const selectedBooth = useSelector(state => state.selectedBooth)
-  const savedBooths = useSelector(state => state.auth.user.saved_booths)
-
-  const [favoriteButtonStatus, setButtonStatus] = useState(true)
-
+  const user = useSelector(state => state.auth.user)
+  const [favoriteButtonStatus, setButtonStatus] = useState('Add to Favorites')
+  let submit
 
 
   useEffect(() => {
     if(isAuthenticated) {
-      let checkBooths = savedBooths.filter(booth => (booth._id === selectedBooth._id));
+      let checkBooths = user.saved_booths.filter(booth => (booth._id === selectedBooth._id));
       if(checkBooths.length > 0) {
-        console.log('booth is already saved')
-        setButtonStatus(false)
+        setButtonStatus('Remove From Favorites')
       }
     }
   }, [])
 
   const handleFavoriteClick = () => {
-    props.favoriteBooth(selectedBooth)
+    props.favoriteBooth(user._id, selectedBooth)
+    setButtonStatus('Remove From Favorites')
   }
 
   const handleUnFavoriteClick = () => {
-    alert('Removed from Favorites')
+    props.unFavoriteBooth(user._id, selectedBooth)
+    setButtonStatus('Add to Favorites')
+  }
+
+  if(favoriteButtonStatus === 'Add to Favorites') {
+    submit = handleFavoriteClick
+  } else {
+    submit = handleUnFavoriteClick
   }
   
 
@@ -44,10 +50,8 @@ function FarmerCard (props) {
       {/* <div className="farmer-title"> */}
       <div className="text is-size-4">{props.boothName}</div>
       <button class="button is-success farmer-contact-button">Send Message</button>
-      {favoriteButtonStatus &&
-        <button onClick={handleFavoriteClick} class="button is-info farmer-contact-button">Add to Favorites</button>
-      } : {
-        <button onClick={handleUnFavoriteClick} class="button is-info farmer-contact-button">Remove From Favorites</button>
+      {isAuthenticated &&
+        <button onClick={submit} class="button is-info farmer-contact-button">{favoriteButtonStatus}</button>
       }
       <div className="text">{props.boothOwnerName}</div>
       {/* </div> */}
@@ -63,4 +67,4 @@ function FarmerCard (props) {
   )
 }
 
-export default connect(null, { favoriteBooth })(FarmerCard)
+export default connect(null, { favoriteBooth, unFavoriteBooth })(FarmerCard)

@@ -10,12 +10,13 @@ const url = require('url');
 const UserModel = require('../models/userModel');
 
 
-// router.get('/getUserByBoothId/:id', UserController.getUserByBoothId)
 router.get('/', UserController.getUsers);
 router.get('/:id', UserController.getUserById);
 router.patch('/:id', UserController.updateUser);
 router.delete('/:id', UserController.deleteUser);
 router.post('/getUserByBoothId', UserController.getUserByBoothId);
+router.post('/addFavoriteBooth', UserController.addFavoriteBooth);
+router.post('/removeFavoriteBooth', UserController.removeFavoriteBooth);
 router.post('/upload-avatar', (req, res) => {
   profileImgUpload(req, res, (error) => {
     if (error) {

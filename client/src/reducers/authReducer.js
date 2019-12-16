@@ -7,7 +7,8 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  FAVORITE_BOOTH
+  FAVORITE_BOOTH,
+  UNFAVORITE_BOOTH
 } from '../actions/types';
 
 const initialState = {
@@ -56,6 +57,16 @@ export default function(state = initialState, action) {
       let newState = state
       newState.user.saved_booths.push(action.payload)
       return newState
+    case UNFAVORITE_BOOTH:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          saved_booths: [
+            ...state.user.saved_booths = action.payload
+          ]
+        }
+      }
     default:
       return state;
   }

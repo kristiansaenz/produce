@@ -6,7 +6,7 @@ function SavedBooths() {
   const savedBooths = useSelector(state => state.auth.user.saved_booths)
   console.log('SAVED BOOTHS: ', savedBooths)
 
-  if(savedBooths) {
+  if(savedBooths.length > 0) {
     return (
       <section className="section is-small">
         <section className="hero">
@@ -25,7 +25,14 @@ function SavedBooths() {
         </section>
       </section>
     );
+  } else {
+    return (
+      <div>
+        <p>No Favorite Booths added yet...</p>
+      </div>
+    );
   }
 }
+
 
 export default SavedBooths;
