@@ -401,8 +401,13 @@ button:focus {
 }
 
 // booth cards
+
 .card:hover {
   background-color: #ebecec;
+}
+
+.card-image {
+  height: 13.5rem;
 }
 
 .card-content {
@@ -584,9 +589,15 @@ button:focus {
 }
 
 .category-dropdown-section {
-  display: flex;
-  margin-bottom: 1rem;
-  width: 30%;
+  margin-bottom: .5rem;
+}
+
+.category-dropdown {
+  width: 35%;
+}
+
+.delete-item-box-button {
+  margin-bottom: 2rem;
 }
 
 /* SMALL DEVICES */
@@ -602,11 +613,6 @@ button:focus {
   //booth cards
   .card {
     font-size: 3vw;
-  }
-
-  .card-image {
-    height: 7rem;
-    overflow: hidden;
   }
 
   .card-content {
