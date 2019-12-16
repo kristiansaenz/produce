@@ -204,6 +204,11 @@ a.navbar-item:hover {
   padding-top: 1rem;
 }
 
+.review-pic {
+  overflow: hidden;
+  border-radius: 5rem;
+}
+
 /* PROFILE MAP */
 .booth-map {
   max-width: 100%;
@@ -400,6 +405,14 @@ button:focus {
     0 0 0 1px rgba(10, 10, 10, 0.02);
 }
 
+.farmer-card-button-group {
+  padding: 1rem;
+}
+
+.ui.button.contact-farmer-button {
+  margin: 0;
+}
+
 // booth cards
 
 .card:hover {
@@ -513,10 +526,10 @@ button:focus {
   margin-bottom: 2rem;
 }
 
-.farmer-contact-button {
-  margin: 1rem 0;
-  background-color: $primary-color;
-}
+// .farmer-contact-button {
+//   margin: 1rem 0;
+//   background-color: $primary-color;
+// }
 
 .navbar-burger span {
   height: 0.1rem;
@@ -615,6 +628,10 @@ button:focus {
     font-size: 3vw;
   }
 
+  .card-image {
+    height: 35vw;
+  }
+
   .card-content {
     padding: 1rem;
     min-height: 45%;
@@ -629,6 +646,10 @@ button:focus {
     padding: 0rem 1rem 1rem 1rem;
     align-items: initial;
     justify-content: left;
+  }
+
+  .ui.button.contact-farmer-button {
+    margin-bottom: .5rem;
   }
 
   .filter-by-category-container {

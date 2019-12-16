@@ -3,26 +3,21 @@ import { useSelector } from "react-redux";
 import BoothList from "../components/BoothList";
 
 function SavedBooths() {
-  const savedBooths = useSelector(state => state.auth.user.saved_booths)
-  console.log('SAVED BOOTHS: ', savedBooths)
+  const savedBooths = useSelector(state => state.auth.user.saved_booths);
+  console.log("SAVED BOOTHS: ", savedBooths);
 
-  if(savedBooths.length > 0) {
+  if (savedBooths.length > 0) {
     return (
       <section className="section is-small">
-        <section className="hero">
-          <div className="hero-body">
-            <div className="columns">
-              <div className="form-titles">
-                <h1 className="title">Here are your saved booths!</h1>
-              </div>
-            </div>
-            <div className="columns">
-              <div className="column is-one-third">
-              <BoothList booths={savedBooths} />
-              </div>
-            </div>
+        <div className="market-section">
+          <div className="container">
+            <h1 className="title">Saved Booths</h1>
+            <h2 className="subtitle">
+              Add booths your saved list to get updates from your favorite booths.
+            </h2>
+            <BoothList booths={savedBooths} />
           </div>
-        </section>
+        </div>
       </section>
     );
   } else {
@@ -33,6 +28,5 @@ function SavedBooths() {
     );
   }
 }
-
 
 export default SavedBooths;

@@ -16,7 +16,7 @@ const AddReview = (props) => {
   if(props.isAuthenticated) {
     return (
       <article class="media">
-        <figure class="media-left">
+        <figure class="media-left review-pic">
           <p class="image is-64x64">
             <img src={props.user.avatar} alt="avatar"></img>
             <sm>{props.user.name}</sm>
@@ -38,7 +38,7 @@ const AddReview = (props) => {
           <nav class="level">
             <div class="level-left">
               <div class="level-item">
-                <a class="button is-info" onClick={handleSubmit}>Submit</a>
+                <a class="button is-success" onClick={handleSubmit}>Submit</a>
               </div>
             </div>
           </nav>

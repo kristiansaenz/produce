@@ -3,7 +3,7 @@ import React from "react";
 const Review = (props) => {
   return (
     <article class="media">
-      <figure class="media-left">
+      <figure class="media-left review-pic">
         <p class="image is-64x64">
           {/* <img src="https://bulma.io/images/placeholders/128x128.png"></img> */}
           <img src={props.avatar}></img>
