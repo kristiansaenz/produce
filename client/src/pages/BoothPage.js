@@ -26,11 +26,6 @@ const BoothPage = (props) => {
     },
   ]
 
-  // const [boothOwner, setBoothOwner] = useState({})
-  // const [booth, setBooth] = useState({})
-  // const [addressInfo, setAddressInfo] = useState({})
-  // const [isLoading, setIsLoading] = useState(true)
-
   let id = useParams()
 
   useEffect(() => {

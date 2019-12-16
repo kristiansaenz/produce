@@ -10,7 +10,6 @@ const ProfileMap = props => {
   let [popupVisible, setPopupVisible] = useState(false);
   let [active, setActive] = useState(null);
 
-  //const MAP_TOKEN = "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
   const mapAccess = {
     mapboxApiAccessToken:
       "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
@@ -115,7 +114,7 @@ const ProfileMap = props => {
 
   return (
     <div class="map-container">
-      {Array.isArray(props.booths) && (
+      {/* {Array.isArray(props.booths) && (
         <Geocoder
           {...mapAccess}
           onSelected={onSelected}
@@ -123,11 +122,11 @@ const ProfileMap = props => {
           hideOnSelect={true}
           queryParams={queryParams}
         />
-      )}
+      )} */}
       <ReactMapGl
         {...mapAccess}
         {...viewport}
-        onViewportChange={newViewport => setViewport(newViewport)}
+        transitionDuration={1000}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >
         {renderMarkers()}

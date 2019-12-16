@@ -31,10 +31,8 @@ const MarketContainer = () => {
   }
 
   const handleFilterSubmit = debounce((location) => {
-    axios.get('/booths/filterByLocation', {
-      params: {
-        city: location
-      }
+    axios.post('/booths/filterByLocation', {
+      state: location
     })
     .then(response => response.data)
     .then(data => {
