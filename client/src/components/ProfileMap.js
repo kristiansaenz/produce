@@ -127,6 +127,7 @@ const ProfileMap = props => {
         {...mapAccess}
         {...viewport}
         transitionDuration={1000}
+        onViewportChange={viewport => { setViewport(viewport) }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >
         {renderMarkers()}
