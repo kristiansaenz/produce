@@ -31,7 +31,6 @@ class FilterBar extends React.Component {
   handleChange = (e, value) => {
     e.persist()
     this.props.handleFilterSubmit(value.value);
-    console.log(value.value)
   };
 
   render() {

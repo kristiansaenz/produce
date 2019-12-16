@@ -30,7 +30,7 @@ const MarketContainer = () => {
     setToggleFilterButtonExpanded(!toggleFilterButtonExpanded)
   }
 
-  const handleFilterSubmit = debounce((location) => {
+  const handleFilterSubmit = (location) => {
     axios.post('/booths/filterByLocation', {
       state: location
     })
@@ -38,7 +38,7 @@ const MarketContainer = () => {
     .then(data => {
       setBooths(data)
     })
-  }, 400)
+  }
 
   const handleMapClick = () => {
     setMapStatus(!mapStatus)

@@ -34,7 +34,7 @@ const ProfileMap = props => {
       let lngAvg = lngSum / props.booths.length;
       console.log(latAvg, lngAvg);
       if (props.booths.length < 5) {
-        zoom = 4;
+        zoom = 5;
       }
 
       setViewport({
