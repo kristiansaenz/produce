@@ -24,9 +24,17 @@ function SavedBooths() {
       );
     } else {
       return (
-        <div>
-          <p>No Favorite Booths added yet...</p>
-        </div>
+        <section className="section is-small">
+          <div className="market-section">
+            <div className="container">
+              <h1 className="title">Saved Booths</h1>
+              <h2 className="subtitle">
+                Add booths to your saved list to get easy access to your favorite farmers!
+              </h2>
+              <p>No Favorite Booths added yet...</p>
+            </div>
+          </div>
+        </section>
       );
     }
   } else {
