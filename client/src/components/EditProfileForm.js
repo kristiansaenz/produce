@@ -9,8 +9,6 @@ function EditProfileForm(props) {
   const [update, setUpdate] = useState(false);
 
   function updateProfile() {
-    console.log("submitting ", props.user.name);
-    console.log(values.name, values.email);
     axios.patch(`/users/${props.user._id}`, {
       name: values.name,
       email: values.email
@@ -18,8 +16,6 @@ function EditProfileForm(props) {
     .then(response => {
       console.log(response)
       setUpdate(true);
-      //figure out better way to do this refresh
-      window.location.reload(true);
     })
   }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
 
-const AddItemBox = () => {
+const AddItemBox = props => {
   const itemCategories = [
     { key: "fruit", text: "Fruit", value: "fruit" },
     { key: "vegetables", text: "Vegetables", value: "vegetables" }
@@ -16,15 +16,19 @@ const AddItemBox = () => {
   return (
     <div className="add-item-box is-shadow-box">
       <div className="category-dropdown-section">
-        {/* <div className="category-dropdown"> */}
-        <Dropdown
-          placeholder="Select Category"
-          fluid
-          selection
-          options={itemCategories}
-        />
-        {/* </div> */}
-        <a class="delete"></a>
+        <nav className="level">
+          <div className="level-left category-dropdown">
+            <Dropdown
+              placeholder="Select Category"
+              fluid
+              selection
+              options={itemCategories}
+            />
+          </div>
+          <div className="level-right">
+            <a class="delete delete-item-box-button" onClick={() => props.handleDeleteItemBox(props.id)}></a>
+          </div>
+        </nav>
       </div>
       <div className="item-dropdown">
         <Dropdown

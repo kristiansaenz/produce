@@ -584,9 +584,15 @@ button:focus {
 }
 
 .category-dropdown-section {
-  display: flex;
-  margin-bottom: 1rem;
-  width: 30%;
+  margin-bottom: .5rem;
+}
+
+.category-dropdown {
+  width: 35%;
+}
+
+.delete-item-box-button {
+  margin-bottom: 2rem;
 }
 
 /* SMALL DEVICES */
