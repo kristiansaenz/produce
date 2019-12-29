@@ -36,6 +36,7 @@ const MarketContainer = () => {
     })
     .then(response => response.data)
     .then(data => {
+      console.log(data)
       setBooths(data)
     })
   }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Rating } from "semantic-ui-react";
+import StarRatingComponent from 'react-star-rating-component';
 import ImageCarousel from './Booth-Profile/ImageCarousel'
 
 const MapPopup = (props) => {
@@ -21,11 +22,19 @@ const MapPopup = (props) => {
         </div>
         <Link to={`booth/${props.id}`}>
           {props.booth.booth_name} 
-          <Rating
+          {/* <Rating
             icon="star"
             defaultRating={props.rating}
             maxRating={5}
             disabled
+          /> */}
+          <StarRatingComponent
+            name="rate1"
+            starCount={5}
+            starColor={'#e80000'}
+            emptyStarColor={'rgba(0, 0, 0, 0.15)'}
+            value={props.rating}
+            editing={false}
           />
         </Link>
       </div>

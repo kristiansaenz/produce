@@ -1,21 +1,25 @@
 import React from "react";
+import { Rating } from "semantic-ui-react";
 
 const Review = (props) => {
   return (
     <article class="media">
       <figure class="media-left review-pic">
         <p class="image is-64x64">
-          {/* <img src="https://bulma.io/images/placeholders/128x128.png"></img> */}
-          <img src={props.avatar}></img>
+          <img src={props.avatar} alt="avatar"></img>
         </p>
       </figure>
       <div class="media-content">
         <div class="content">
           <p>
-            {/* <strong>John Smith</strong> <small>@johnsmith</small>{" "} */}
-            {/* <strong>John Smith</strong>{"  "} */}
-            {/* <small>Today at 5:42PM</small> */}
             <strong>{props.name}</strong>{"  "}
+            <Rating
+            icon="star"
+            defaultRating={props.rating}
+            maxRating={5}
+            size="mini"
+            disabled
+          />
             <small></small>
             <br />
             {props.review}

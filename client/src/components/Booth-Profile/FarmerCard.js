@@ -12,6 +12,7 @@ function FarmerCard(props) {
   const selectedBooth = useSelector(state => state.selectedBooth);
   const user = useSelector(state => state.auth.user);
   const [favoriteButtonStatus, setButtonStatus] = useState("Add to Favorites");
+  const [userRating, setUserRating] = useState(0)
   let submit;
 
   useEffect(() => {
@@ -24,6 +25,10 @@ function FarmerCard(props) {
       }
     }
   }, []);
+
+  const handleRate = (e, { rating, maxRating }) => {
+    console.log('rating is: ', rating)
+  }
 
   const handleFavoriteClick = () => {
     props.favoriteBooth(user._id, selectedBooth);
@@ -68,7 +73,7 @@ function FarmerCard(props) {
       {/* </div> */}
 
       <div className="booth-rating-profile">
-        <Rating
+          <Rating
           icon="star"
           defaultRating={props.rating}
           maxRating={5}

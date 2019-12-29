@@ -4,6 +4,7 @@ const ReviewSchema = new mongoose.Schema({
   reviewer: String,
   reviewer_name: String,
   reviewer_avatar: String,
+  rating: Number,
   message: String,
   created_at: Date
 })

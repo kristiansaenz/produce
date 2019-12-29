@@ -20,6 +20,7 @@ export default function(state = initialState, action) {
         reviewsLoading: true
       }
     case ADD_REVIEW:
+    console.log(action.payload)
       const newState = state
       state.reviews = action.payload
       state.reviewsLoading = false
