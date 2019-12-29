@@ -1,15 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PinIcon from "../images/map-pin.svg";
-import { Rating } from "semantic-ui-react";
 import StarRatingComponent from 'react-star-rating-component';
 import ImageCarousel from "./Booth-Profile/ImageCarousel";
 
 class Booth extends React.Component {
 
   render() {
-
-    console.log(this.props.rating)
   return (
     <div class="column is-half-mobile is-one-quarter-tablet is-one-fifth-desktop">
         <div class="card is-equal-height">
@@ -27,13 +24,6 @@ class Booth extends React.Component {
                 {" "}
                 {this.props.booth_name}
                 <div className="booth-rating">
-                {this.props.rating}
-                  {/* <Rating
-                    icon="star"
-                    defaultRating={this.props.rating}
-                    maxRating={5}
-                    disabled
-                  /> */}
                   <StarRatingComponent
                     name="rate1"
                     starCount={5}

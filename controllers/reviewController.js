@@ -1,6 +1,4 @@
 const BoothModel = require('../models/boothModel')
-const ReviewModel = require('../models/reviewModel')
-
 
 module.exports = {
   addReview: function(req, res) {
@@ -12,6 +10,7 @@ module.exports = {
       reviewer: req.body.reviewer,
       reviewer_name: req.body.reviewer_name,
       reviewer_avatar: req.body.reviewer_avatar,
+      rating: req.body.rating,
       message: req.body.message,
       created_at: date
     }

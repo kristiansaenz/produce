@@ -17,8 +17,7 @@ export const clearSelectedBooth = () => dispatch => {
   })
 }
 
-export const addReview = ( reviewer, reviewer_name, reviewer_avatar, message, booth_id ) => dispatch => {
-  // console.log(reviewer, reviewer_name, reviewer_avatar, message, booth_id)
+export const addReview = ( reviewer, reviewer_name, reviewer_avatar, rating, message, booth_id ) => dispatch => {
   dispatch({
     type: REVIEW_LOADING
   })
@@ -27,6 +26,7 @@ export const addReview = ( reviewer, reviewer_name, reviewer_avatar, message, bo
     reviewer: reviewer,
     reviewer_name: reviewer_name,
     reviewer_avatar: reviewer_avatar,
+    rating: rating,
     message: message,
     booth_id: booth_id
   })

@@ -17,6 +17,7 @@ const ReviewList = (props) => {
             avatar={review.reviewer_avatar}
             review={review.message}
             name={review.reviewer_name}
+            rating={review.rating}
           />
         ))}
         </div>

@@ -2,15 +2,23 @@ import React, { useState } from 'react'
 import { addReview } from '../../actions/selectedBoothAction'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Rating } from "semantic-ui-react";
 import axios from 'axios'
 
 const AddReview = (props) => {
 
   const [value, setValue] = useState('')
+  const [userRating, setUserRating] = useState(null)
 
   const handleSubmit = () => {
-    props.addReview(props.user._id, props.user.name, props.user.avatar, value, props.booth_id);
+    console.log('submitting rating: ', userRating)
+    props.addReview(props.user._id, props.user.name, props.user.avatar, userRating, value, props.booth_id);
     setValue('')
+  }
+
+  const handleRating = (e, {rating, maxRating}) => {
+    console.log('HANDLERATING')
+    setUserRating(rating)
   }
 
   if(props.isAuthenticated) {
@@ -23,6 +31,13 @@ const AddReview = (props) => {
           </p>
         </figure>
         <div class="media-content">
+        Overall Rating
+          <Rating
+            icon="star"
+            defaultRating={0}
+            onRate={handleRating}
+            maxRating={5}
+          />
           <div class="field">
             <p class="control">
               <form>
