@@ -61,68 +61,68 @@ module.exports = {
     );
   },
 
-  // filterByLocation: function(req, res) {
-  //   let state = req.body.state;
-  //   console.log(state, 'from boothController');
+  filterByLocation: function(req, res) {
+    let state = req.body.state;
+    console.log(state, 'from boothController');
 
-  //   if (state !== "") {
-  //     BoothModel.find({
-  //       "address.state_abbr": new RegExp(state, "i")
-  //     }).exec(function(err, results) {
-  //       if (err) {
-  //         return res.status(500).json({
-  //           message: "Error when filtering Booths...",
-  //           error: err
-  //         });
-  //       }
-  //       console.log(results);
-  //       return res.json(results);
-  //     });
-  //   } else {
-  //     // Temporary fix: when submitting search with no value, return all booths
-  //     BoothModel.find(function(err, Booths) {
-  //       if (err) {
-  //         return res.status(500).json({
-  //           message: "Error when getting Booths.",
-  //           error: err
-  //         });
-  //       }
-  //       return res.json(Booths);
-  //     });
-  //   }
-  // },
+    if (state !== "") {
+      BoothModel.find({
+        "address.state_abbr": new RegExp(state, "i")
+      }).exec(function(err, results) {
+        if (err) {
+          return res.status(500).json({
+            message: "Error when filtering Booths...",
+            error: err
+          });
+        }
+        console.log(results);
+        return res.json(results);
+      });
+    } else {
+      // Temporary fix: when submitting search with no value, return all booths
+      BoothModel.find(function(err, Booths) {
+        if (err) {
+          return res.status(500).json({
+            message: "Error when getting Booths.",
+            error: err
+          });
+        }
+        return res.json(Booths);
+      });
+    }
+  },
 
-  // filterByProduce: function(req, res) {
-  //   let produce = req.body.produce
-  //   BoothModel.find({ 'produce.category': { $in: produce } }, function(err, Booths) {
-  //     if (err) {
-  //       return res.status(500).json({
-  //         message: "Error when filtering produce.",
-  //         error: err
-  //       });
-  //     }
-  //     return res.json(Booths);
-  //   })
-  // },
+  filterByProduce: function(req, res) {
+    let produce = req.body.produce
+    BoothModel.find({ 'produce.category': { $in: produce } }, function(err, Booths) {
+      if (err) {
+        return res.status(500).json({
+          message: "Error when filtering produce.",
+          error: err
+        });
+      }
+      return res.json(Booths);
+    })
+  },
 
-  // filterByMultiple: function (req, res) {
-  //   let produce = req.body.produce
-  //   let location = req.body.location
-  //   BoothModel.find(
-  //     {
-  //       'produce.category': { $in: produce },
-  //       'address.state_abbr': new RegExp(location, "i")
-  //     },
-  //     function (err, Booths) {
-  //       if (err) {
-  //         return res.status(500).json({
-  //           message: "Error when filtering location and produce.",
-  //           error: err
-  //         });
-  //       }
-  //       return res.json(Booths);
-  //     })
-  // },
+  filterByMultiple: function (req, res) {
+    let produce = req.body.produce
+    let location = req.body.location
+    BoothModel.find(
+      {
+        'produce.category': { $in: produce },
+        'address.state_abbr': new RegExp(location, "i")
+      },
+      function (err, Booths) {
+        if (err) {
+          return res.status(500).json({
+            message: "Error when filtering location and produce.",
+            error: err
+          });
+        }
+        return res.json(Booths);
+      })
+  },
 
   filter: function(req, res) {
     let produce = req.body.produce
@@ -154,7 +154,7 @@ module.exports = {
         return res.json(Booths);
       })
     } else if(location !== '' && produce.length < 1) {
-      BoothModel.find({ 'address.state_abbr': new RegExp(state, 'i') }, function(err, Booths) { 
+      BoothModel.find({ 'address.state_abbr': new RegExp(location, 'i') }, function(err, Booths) { 
         if (err) {
           return res.status(500).json({
             message: "Error when filtering Booths...",
@@ -163,17 +163,16 @@ module.exports = {
         }
         return res.json(Booths);
       })
-    } else {
-      BoothModel.find(function(err, Booths) {
-        if (err) {
-          return res.status(500).json({
-            message: "Error when getting Booths.",
-            error: err
-          });
-        }
-        return res.json(Booths);
-      });
     }
+      // BoothModel.find(function(err, Booths) {
+      //   if (err) {
+      //     return res.status(500).json({
+      //       message: "Error when getting Booths.",
+      //       error: err
+      //     });
+      //   }
+      //   return res.json(Booths);
+      // });
   },
 
   updateBooth: function(req, res) {

@@ -28,10 +28,19 @@ class FilterBar extends React.Component {
     value: this.addressDefinitions.state_abbr[index]
   }));
 
-  handleChange = (e, value) => {
+  handleLocationChange = (e, value) => {
     e.persist()
-    this.props.handleFilterSubmit(value.value);
+    let location = value.value
+    this.setState({ location: location })
+    this.props.handleFilterSubmit(location, this.state.produce);
   };
+
+  handleProduceChange = (e, value) => {
+    e.persist()
+    let produce = value.value
+    this.setState({ produce: produce })
+    this.props.handleFilterSubmit(this.state.location, produce)
+  }
 
   render() {
     return (
@@ -44,7 +53,7 @@ class FilterBar extends React.Component {
               search
               selection
               closeOnChange
-              onChange={this.handleChange}
+              onChange={this.handleProduceChange}
               options={this.options}
               placeholder="Filter..."
             />
@@ -89,7 +98,7 @@ class FilterBar extends React.Component {
               search
               selection
               clearable={true}
-              onChange={this.handleChange}
+              onChange={this.handleLocationChange}
               options={this.stateOptions}
             />
 

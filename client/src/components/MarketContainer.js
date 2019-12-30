@@ -8,6 +8,7 @@ import ProfileMap from './ProfileMap'
 const MarketContainer = () => {
   const [booths, setBooths] = useState([])
   const [mapStatus, setMapStatus] = useState(false);
+  const [firstRender, setFirstRender] = useState(null)
   const [toggleFilterButtonExpanded, setToggleFilterButtonExpanded] = useState(false);
   const [categories, setCategories] = useState([
     {id: 1, name: "fruits"},
@@ -19,6 +20,7 @@ const MarketContainer = () => {
   useEffect(() => {
     const fetchData = async () => {
       const booths = await axios.get('/booths')
+      setFirstRender(booths.data)
       setBooths(booths.data);
     };
     fetchData();
@@ -30,15 +32,21 @@ const MarketContainer = () => {
     setToggleFilterButtonExpanded(!toggleFilterButtonExpanded)
   }
 
-  const handleFilterSubmit = (location) => {
-    axios.post('/booths/filter', {
-      location: location,
-    })
-    .then(response => response.data)
-    .then(data => {
-      console.log(data)
-      setBooths(data)
-    })
+  const handleFilterSubmit = (location, produce) => {
+
+    if(location === '' && produce.length < 1) {
+      setBooths(firstRender)
+    } else {
+      axios.post('/booths/filter', {
+        location: location,
+        produce: produce
+      })
+      .then(response => response.data)
+      .then(data => {
+        console.log(data)
+        setBooths(data)
+      })
+    }
   }
 
   const handleMapClick = () => {
