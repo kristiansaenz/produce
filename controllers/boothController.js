@@ -92,37 +92,6 @@ module.exports = {
     }
   },
 
-  filterByProduce: function(req, res) {
-    let produce = req.body.produce
-    BoothModel.find({ 'produce.category': { $in: produce } }, function(err, Booths) {
-      if (err) {
-        return res.status(500).json({
-          message: "Error when filtering produce.",
-          error: err
-        });
-      }
-      return res.json(Booths);
-    })
-  },
-
-  filterByMultiple: function (req, res) {
-    let produce = req.body.produce
-    let location = req.body.location
-    BoothModel.find(
-      {
-        'produce.category': { $in: produce },
-        'address.state_abbr': new RegExp(location, "i")
-      },
-      function (err, Booths) {
-        if (err) {
-          return res.status(500).json({
-            message: "Error when filtering location and produce.",
-            error: err
-          });
-        }
-        return res.json(Booths);
-      })
-  },
 
   filter: function(req, res) {
     let produce = req.body.produce
@@ -164,15 +133,6 @@ module.exports = {
         return res.json(Booths);
       })
     }
-      // BoothModel.find(function(err, Booths) {
-      //   if (err) {
-      //     return res.status(500).json({
-      //       message: "Error when getting Booths.",
-      //       error: err
-      //     });
-      //   }
-      //   return res.json(Booths);
-      // });
   },
 
   updateBooth: function(req, res) {
