@@ -10,6 +10,7 @@ var BoothController = require("../controllers/boothController.js");
 router.get("/", BoothController.getAllBooths);
 router.get("/:id", BoothController.getBoothById);
 router.post("/filterByLocation", BoothController.filterByLocation);
+router.post("/filter", BoothController.filter);
 router.post("/create", BoothController.create);
 router.patch("/:id", BoothController.updateBooth);
 router.delete("/:id", BoothController.deleteBooth);
