@@ -44,7 +44,7 @@ class FilterBar extends React.Component {
               search
               selection
               closeOnChange
-              onChange={this.handleProduceFilterChange}
+              onChange={this.handleChange}
               options={this.options}
               placeholder="Filter..."
             />
