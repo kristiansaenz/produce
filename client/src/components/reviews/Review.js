@@ -1,5 +1,6 @@
 import React from "react";
 import { Rating } from "semantic-ui-react";
+import TimeAgo from 'timeago-react';
 
 const Review = (props) => {
   return (
@@ -23,6 +24,10 @@ const Review = (props) => {
             <small></small>
             <br />
             {props.review}
+            <br />
+            <TimeAgo 
+              datetime={props.created_at}
+            />
           </p>
         </div>
         <nav class="level is-mobile">
