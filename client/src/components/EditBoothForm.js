@@ -14,6 +14,10 @@ function EditBoothForm(props) {
   const [ItemBoxList, setItemBoxList] = useState([]);
   const [items, updateItems] = useState([]);
 
+  // addItemToList(value) {
+  //   updateItems(value)
+  // }
+
   function updateBooth() {
     axios
       .patch(`/booths/${props.user.booth}`, {

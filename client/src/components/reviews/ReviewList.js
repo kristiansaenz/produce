@@ -18,6 +18,7 @@ const ReviewList = (props) => {
             review={review.message}
             name={review.reviewer_name}
             rating={review.rating}
+            created_at={review.created_at}
           />
         ))}
         </div>
