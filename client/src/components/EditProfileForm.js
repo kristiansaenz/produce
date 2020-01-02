@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Field from "./forms/Field";
 import SubmitButton from "./forms/SubmitButton";
 import useForm from "./forms/useForm";
+import store from "../store";
+import { loadUser } from "../actions/authActions";
 import axios from "axios";
 
 function EditProfileForm(props) {
@@ -16,6 +18,7 @@ function EditProfileForm(props) {
     .then(response => {
       console.log(response)
       setUpdate(true);
+      store.dispatch(loadUser());
     })
   }
 

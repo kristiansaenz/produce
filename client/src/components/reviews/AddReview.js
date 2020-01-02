@@ -3,7 +3,6 @@ import { addReview } from '../../actions/selectedBoothAction'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Rating } from "semantic-ui-react";
-import axios from 'axios'
 
 const AddReview = (props) => {
 
@@ -11,13 +10,15 @@ const AddReview = (props) => {
   const [userRating, setUserRating] = useState(null)
 
   const handleSubmit = () => {
-    console.log('submitting rating: ', userRating)
-    props.addReview(props.user._id, props.user.name, props.user.avatar, userRating, value, props.booth_id);
-    setValue('')
+    if(value === '') {
+      alert('Please type a review first')
+    } else {
+      props.addReview(props.user._id, props.user.name, props.user.avatar, userRating, value, props.booth_id);
+      setValue('')
+    }
   }
 
   const handleRating = (e, {rating, maxRating}) => {
-    console.log('HANDLERATING')
     setUserRating(rating)
   }
 
