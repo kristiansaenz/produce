@@ -28,13 +28,13 @@ function EditProfileForm(props) {
         <Field
           label="Name"
           name="name"
-          value={values.name != undefined ? values.name : props.user.name}
+          value={values.name !== undefined ? values.name : props.user.name}
           handleChange={handleChange}
         />
         <Field
           label="Email"
           name="email"
-          value={values.email != undefined ? values.email : props.user.email}
+          value={values.email !== undefined ? values.email : props.user.email}
           handleChange={handleChange}
         />
         {/* <Field

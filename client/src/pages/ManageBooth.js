@@ -20,6 +20,8 @@ class ManageBooth extends Component {
           </section>
         </section>
       );
+    } else {
+      return(<div>Login</div>)
     }
   }
 }
