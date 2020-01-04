@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Button, Icon } from 'semantic-ui-react'
@@ -12,6 +12,7 @@ import AddItemBoxList from "./produce/AddItemBoxList";
 
 function EditBoothForm(props) {
   // const { values, handleChange, handleSubmit } = useForm(updateBooth);
+  const [userBooth, setUserBooth] = useState(null)
   const [submitStatus, setSubmitStatus] = useState(false)
   const [boothName, setBoothName] = useState('')
   const [description, setDescription] = useState('')
@@ -19,14 +20,31 @@ function EditBoothForm(props) {
   const [vegetables, setVegetables] = useState(vegetableItems)
   const [selectedFruits, setSelectedFruits] = useState([])
   const [selectedVegetables, setSelectedVegetables] = useState([])
-  const [selectedProduce, setSelectedProduce] = useState([])
 
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const booth = await axios.get(`/booths/${props.user.booth}`)
+      setUserBooth(booth.data)
+
+      let fruitArray = booth.data.produce[0].items
+      let vegetableArray = booth.data.produce[1].items
+
+      setSelectedFruits(fruitArray)
+      setSelectedVegetables(vegetableArray)
+
+      let fruitDifference = fruitItems.filter(x => !fruitArray.includes(x))
+      let vegetableDifference = vegetableItems.filter(x => !vegetableArray.includes(x))
+      setFruits(fruitDifference)
+      setVegetables(vegetableDifference)
+      
+    };
+    fetchData();
+  }, []);
 
   function updateBooth() {
-
     setSubmitStatus(true)
-
     let produceArray = [
       {
         category: 'fruits',
@@ -37,8 +55,6 @@ function EditBoothForm(props) {
         items: selectedVegetables
       }
     ];
-
-    console.log(produceArray)
 
     axios
       .patch(`/booths/${props.user.booth}`, {
@@ -85,60 +101,63 @@ function EditBoothForm(props) {
     }
   }
 
-  return (
-    <div>
-      <div>
-        <h1>Choose Produce</h1>
-        <h5>Fruits</h5>
-        {fruits.map(fruit => {
-          return(
-            <ul>
-              <li><Button onClick={() => handleProduceAdd(fruit, 'fruit')}>{fruit}</Button></li>
-            </ul>
+  if(userBooth === null) {
+    return (<div>LOADING</div>)
+  } else {
+      return (
+        <div>
+          <p>{userBooth.booth_name}</p>
+          <p>{userBooth.description}</p>
+          <div>
+            <h1>Choose Produce</h1>
+            <h5>Fruits</h5>
+            {fruits.map(fruit => {
+              return(
+                <Button onClick={() => handleProduceAdd(fruit, 'fruit')}>{fruit}</Button>
+              )
+            })
+            }
+            <h5>Vegetables</h5>
+            {vegetables.map(vegetable => {
+              return(
+                <Button onClick={() => handleProduceAdd(vegetable, 'vegetable')}>{vegetable}</Button>
+              )
+            })
+            }
+          </div>
+          <br />
+          <h1>Selected Fruits</h1>
+          <div>
+            {selectedFruits.map(fruit => {
+              return(
+                <Button onClick={() => handleProduceRemove(fruit, 'fruit')}>{fruit}</Button>
+              )
+            })
+            }
+          </div>
+          <br />
+          <h1>Selected Vegetables</h1>
+          <div>
+          {selectedVegetables.map(vegetable => {
+              return(
+                <Button onClick={() => handleProduceRemove(vegetable, 'vegetable')}>{vegetable}</Button>
+              )
+            })
+            }
+          </div>
+          <br />
+          {submitStatus ? (
+            <Button loading>Loading</Button>
+          ) : (
+            <Button onClick={updateBooth}>Submit</Button>
           )
-        })
-        }
-        <h5>Vegetables</h5>
-        {vegetables.map(vegetable => {
-          return(
-            <ul>
-              <li><Button onClick={() => handleProduceAdd(vegetable, 'vegetable')}>{vegetable}</Button></li>
-            </ul>
-          )
-        })
-        }
-      </div>
-      <br />
-      <h1>Selected Fruits</h1>
-      <div>
-        {selectedFruits.map(fruit => {
-          return(
-            <Button onClick={() => handleProduceRemove(fruit, 'fruit')}>{fruit}</Button>
-          )
-        })
-        }
-      </div>
-      <br />
-      <h1>Selected Vegetables</h1>
-      <div>
-      {selectedVegetables.map(vegetable => {
-          return(
-            <Button onClick={() => handleProduceRemove(vegetable, 'vegetable')}>{vegetable}</Button>
-          )
-        })
-        }
-      </div>
-      <br />
-      {submitStatus ? (
-        <Button loading>Loading</Button>
-      ) : (
-        <Button onClick={updateBooth}>Submit</Button>
-      )
-      }
-      
-    </div>
-  );
-}
+          }
+          <Button onClick={() => console.log(userBooth)}>GET BOOTH</Button>
+          
+        </div>
+      );
+    }
+  }
 
 const mapStateToProps = state => ({
   user: state.auth.user
