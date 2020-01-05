@@ -62,7 +62,7 @@ const uploadsBusinessGallery = multer({
     cb( null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
    }
   }),
-  limits:{ fileSize: 4000000 }, // In bytes: 2000000 bytes = 2 MB
+  limits:{ fileSize: 4000000 }, // = 2 MB
   fileFilter: function( req, file, cb ){
    checkFileType( file, cb );
   }

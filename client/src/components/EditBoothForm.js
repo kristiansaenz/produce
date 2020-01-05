@@ -11,7 +11,6 @@ import useForm from "./forms/useForm";
 import AddItemBoxList from "./produce/AddItemBoxList";
 
 function EditBoothForm(props) {
-  // const { values, handleChange, handleSubmit } = useForm(updateBooth);
   const [userBooth, setUserBooth] = useState(null)
   const [submitStatus, setSubmitStatus] = useState(false)
   const [boothName, setBoothName] = useState('')
@@ -27,6 +26,8 @@ function EditBoothForm(props) {
     const fetchData = async () => {
       const booth = await axios.get(`/booths/${props.user.booth}`)
       setUserBooth(booth.data)
+      setBoothName(booth.data.booth_name)
+      setDescription(booth.data.description)
 
       let fruitArray = booth.data.produce[0].items
       let vegetableArray = booth.data.produce[1].items
@@ -56,17 +57,32 @@ function EditBoothForm(props) {
       }
     ];
 
-    axios
+    if(boothName !== '' && description !== '') {
+      axios
       .patch(`/booths/${props.user.booth}`, {
-        // booth_name: input.boothName,
-        // description: input.description,
+        booth_name: boothName,
+        description: description,
         produce: produceArray
       })
       .then(response => {
         console.log(response);
         setSubmitStatus(false)
         alert('Booth Updated!')
-    });
+      });
+    } else {
+      alert('Please enter a Booth Name and Description')
+      setSubmitStatus(false)
+    }
+  }
+
+  const handleBoothNameChange = e => {
+    setBoothName(e.target.value)
+    console.log(e.target.value)
+  }
+
+  const handleDescriptionChange = e => {
+    setDescription(e.target.value)
+    console.log(e.target.value)
   }
 
   const handleProduceAdd = (produce, type) => {
@@ -80,13 +96,11 @@ function EditBoothForm(props) {
         setSelectedVegetables([...selectedVegetables, produce])
         break;
       default:
-      console.log('hi')
+        break;
     }
-
   }
 
   const handleProduceRemove = (produce, type) => {
-
     switch(type) {
       case 'fruit':
         setSelectedFruits(selectedFruits.filter(item => item !== produce))
@@ -106,21 +120,31 @@ function EditBoothForm(props) {
   } else {
       return (
         <div>
-          <p>{userBooth.booth_name}</p>
-          <p>{userBooth.description}</p>
+          <Field 
+            name={boothName}
+            label='Booth Name'
+            value={boothName}
+            handleChange={handleBoothNameChange}
+          />
+          <TextAreaField 
+            name={description}
+            label='Booth Description'
+            value={description}
+            handleChange={handleDescriptionChange}
+          />
           <div>
             <h1>Choose Produce</h1>
             <h5>Fruits</h5>
             {fruits.map(fruit => {
               return(
-                <Button onClick={() => handleProduceAdd(fruit, 'fruit')}>{fruit}</Button>
+                <Button basic color='green' content='Green' onClick={() => handleProduceAdd(fruit, 'fruit')}>{fruit}</Button>
               )
             })
             }
             <h5>Vegetables</h5>
             {vegetables.map(vegetable => {
               return(
-                <Button onClick={() => handleProduceAdd(vegetable, 'vegetable')}>{vegetable}</Button>
+                <Button basic color='green' content='Green' onClick={() => handleProduceAdd(vegetable, 'vegetable')}>{vegetable}</Button>
               )
             })
             }
@@ -130,7 +154,7 @@ function EditBoothForm(props) {
           <div>
             {selectedFruits.map(fruit => {
               return(
-                <Button onClick={() => handleProduceRemove(fruit, 'fruit')}>{fruit}</Button>
+                <Button color='green' onClick={() => handleProduceRemove(fruit, 'fruit')}>{fruit}</Button>
               )
             })
             }
@@ -140,7 +164,7 @@ function EditBoothForm(props) {
           <div>
           {selectedVegetables.map(vegetable => {
               return(
-                <Button onClick={() => handleProduceRemove(vegetable, 'vegetable')}>{vegetable}</Button>
+                <Button color='green' onClick={() => handleProduceRemove(vegetable, 'vegetable')}>{vegetable}</Button>
               )
             })
             }
@@ -152,8 +176,6 @@ function EditBoothForm(props) {
             <Button onClick={updateBooth}>Submit</Button>
           )
           }
-          <Button onClick={() => console.log(userBooth)}>GET BOOTH</Button>
-          
         </div>
       );
     }
