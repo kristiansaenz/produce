@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import store from "../store";
+import { loadUser } from "../actions/authActions";
 import axios from "axios";
 import { Button, Icon } from 'semantic-ui-react'
 import Field from "../components/forms/Field";
@@ -21,27 +23,31 @@ function EditBoothForm(props) {
   const [selectedVegetables, setSelectedVegetables] = useState([])
 
 
-
   useEffect(() => {
-    const fetchData = async () => {
-      const booth = await axios.get(`/booths/${props.user.booth}`)
-      setUserBooth(booth.data)
-      setBoothName(booth.data.booth_name)
-      setDescription(booth.data.description)
 
-      let fruitArray = booth.data.produce[0].items
-      let vegetableArray = booth.data.produce[1].items
+    if(props.user.booth) {
+      const fetchData = async () => {
+        const booth = await axios.get(`/booths/${props.user.booth}`)
+        setUserBooth(booth.data)
+        setBoothName(booth.data.booth_name)
+        setDescription(booth.data.description)
 
-      setSelectedFruits(fruitArray)
-      setSelectedVegetables(vegetableArray)
+        let fruitArray = booth.data.produce[0].items
+        let vegetableArray = booth.data.produce[1].items
 
-      let fruitDifference = fruitItems.filter(x => !fruitArray.includes(x))
-      let vegetableDifference = vegetableItems.filter(x => !vegetableArray.includes(x))
-      setFruits(fruitDifference)
-      setVegetables(vegetableDifference)
-      
-    };
-    fetchData();
+        setSelectedFruits(fruitArray)
+        setSelectedVegetables(vegetableArray)
+
+        let fruitDifference = fruitItems.filter(x => !fruitArray.includes(x))
+        let vegetableDifference = vegetableItems.filter(x => !vegetableArray.includes(x))
+        setFruits(fruitDifference)
+        setVegetables(vegetableDifference)
+        
+      };
+      fetchData();
+    } else {
+      console.log('Booth Not Found')
+    }
   }, []);
 
   function updateBooth() {
@@ -72,6 +78,42 @@ function EditBoothForm(props) {
     } else {
       alert('Please enter a Booth Name and Description')
       setSubmitStatus(false)
+    }
+  }
+
+  const createBooth = e => {
+    setSubmitStatus(true)
+
+    let produceArray = [
+      {
+        category: 'fruits',
+        items: selectedFruits
+      },
+      {
+        category: 'vegetables',
+        items: selectedVegetables
+      }
+    ];
+
+    if (boothName !== '' && description !== '') {
+      let createBoothOptions = {
+        booth_name: boothName,
+        description: description,
+        produce: produceArray,
+        zip: 78237
+      }
+
+      axios
+        .post('/booths/create', createBoothOptions)
+        .then(res =>
+          axios
+            .patch(`/users/${props.user._id}`, { booth: res.data._id }))
+        .then(res => {
+          console.log(res)
+          alert('Booth Created!')
+          setSubmitStatus(false)
+          store.dispatch(loadUser())
+        })
     }
   }
 
@@ -115,71 +157,72 @@ function EditBoothForm(props) {
     }
   }
 
-  if(userBooth === null) {
-    return (<div>LOADING</div>)
-  } else {
-      return (
-        <div>
-          <Field 
-            name={boothName}
-            label='Booth Name'
-            value={boothName}
-            handleChange={handleBoothNameChange}
-          />
-          <TextAreaField 
-            name={description}
-            label='Booth Description'
-            value={description}
-            handleChange={handleDescriptionChange}
-          />
-          <div>
-            <h1>Choose Produce</h1>
-            <h5>Fruits</h5>
-            {fruits.map(fruit => {
-              return(
-                <Button basic color='green' content='Green' onClick={() => handleProduceAdd(fruit, 'fruit')}>{fruit}</Button>
-              )
-            })
-            }
-            <h5>Vegetables</h5>
-            {vegetables.map(vegetable => {
-              return(
-                <Button basic color='green' content='Green' onClick={() => handleProduceAdd(vegetable, 'vegetable')}>{vegetable}</Button>
-              )
-            })
-            }
-          </div>
-          <br />
-          <h1>Selected Fruits</h1>
-          <div>
-            {selectedFruits.map(fruit => {
-              return(
-                <Button color='green' onClick={() => handleProduceRemove(fruit, 'fruit')}>{fruit}</Button>
-              )
-            })
-            }
-          </div>
-          <br />
-          <h1>Selected Vegetables</h1>
-          <div>
-          {selectedVegetables.map(vegetable => {
-              return(
-                <Button color='green' onClick={() => handleProduceRemove(vegetable, 'vegetable')}>{vegetable}</Button>
-              )
-            })
-            }
-          </div>
-          <br />
-          {submitStatus ? (
-            <Button loading>Loading</Button>
-          ) : (
-            <Button onClick={updateBooth}>Submit</Button>
+  return (
+    <div>
+      <Field 
+        name={boothName}
+        label='Booth Name'
+        value={boothName}
+        handleChange={handleBoothNameChange}
+      />
+      <TextAreaField 
+        name={description}
+        label='Booth Description'
+        value={description}
+        handleChange={handleDescriptionChange}
+      />
+      <div>
+        <h1>Choose Produce</h1>
+        <h5>Fruits</h5>
+        {fruits.map(fruit => {
+          return(
+            <Button basic color='green' content='Green' onClick={() => handleProduceAdd(fruit, 'fruit')}><Icon name='add' color='black'/>{fruit}</Button>
           )
-          }
-        </div>
-      );
-    }
-  }
+        })
+        }
+        <h5>Vegetables</h5>
+        {vegetables.map(vegetable => {
+          return(
+            <Button basic color='green' content='Green' onClick={() => handleProduceAdd(vegetable, 'vegetable')}><Icon name='add' color='black'/>{vegetable}</Button>
+          )
+        })
+        }
+      </div>
+      <br />
+      <h1>Selected Fruits</h1>
+      <div>
+        {selectedFruits.map(fruit => {
+          return(
+            <Button color='green' onClick={() => handleProduceRemove(fruit, 'fruit')}><Icon name='remove' color='black'/>{fruit}</Button>
+          )
+        })
+        }
+      </div>
+      <br />
+      <h1>Selected Vegetables</h1>
+      <div>
+      {selectedVegetables.map(vegetable => {
+          return(
+            <Button color='green' onClick={() => handleProduceRemove(vegetable, 'vegetable')}><Icon name='remove' color='black'/>{vegetable}</Button>
+          )
+        })
+        }
+      </div>
+      <br />
+      {/* {submitStatus ? (
+        <Button loading>Loading</Button>
+      ) : (
+        <Button onClick={createBooth}>Submit</Button>
+      )
+      } */}
+      {props.user.booth ? (
+        <Button onClick={updateBooth}>Submit</Button>
+      ) : (
+        <Button onClick={createBooth}>Submit</Button>
+      )}
+    </div>
+  );
+}
 
 const mapStateToProps = state => ({
   user: state.auth.user

@@ -28,7 +28,7 @@ module.exports = {
         reviews: [],
         booth_name: req.body.booth_name,
         description: req.body.description,
-        produce: [],
+        produce: req.body.produce || [],
         images: []
       });
 
