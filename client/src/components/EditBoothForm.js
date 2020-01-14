@@ -21,7 +21,6 @@ function EditBoothForm(props) {
   const [selectedVegetables, setSelectedVegetables] = useState([])
 
 
-
   useEffect(() => {
     const fetchData = async () => {
       const booth = await axios.get(`/booths/${props.user.booth}`)
@@ -132,50 +131,60 @@ function EditBoothForm(props) {
             value={description}
             handleChange={handleDescriptionChange}
           />
-          <div>
-            <h1>Choose Produce</h1>
-            <h5>Fruits</h5>
-            {fruits.map(fruit => {
-              return(
-                <Button basic color='green' content='Green' onClick={() => handleProduceAdd(fruit, 'fruit')}>{fruit}</Button>
-              )
-            })
-            }
-            <h5>Vegetables</h5>
-            {vegetables.map(vegetable => {
-              return(
-                <Button basic color='green' content='Green' onClick={() => handleProduceAdd(vegetable, 'vegetable')}>{vegetable}</Button>
-              )
-            })
-            }
+          <div className="columns">
+            <div className="column">
+                <label className="label">Selected Fruits</label>
+                <div>
+                {selectedFruits.map(fruit => {
+                  return(
+                    <Button color='green' onClick={() => handleProduceRemove(fruit, 'fruit')}>{fruit}<span class="icon">
+                  </span></Button>
+                  )
+                })
+                }
+                </div>
+            </div>
+            <div className="column">
+              <label className="label">Add Fruit</label>
+              {fruits.map(fruit => {
+                return(
+                  <Button basic color='green' content='Green' onClick={() => handleProduceAdd(fruit, 'fruit')}>{fruit}</Button>
+                )
+              })
+              }
+            </div>
+          </div>
+          <div className="columns">
+              <div className="column">
+                <label className="label">Selected Vegetables</label>
+                <div>
+                {selectedVegetables.map(vegetable => {
+                    return(
+                      <Button color='green' onClick={() => handleProduceRemove(vegetable, 'vegetable')}>{vegetable}</Button>
+                    )
+                  })
+                  }
+                </div>
+              </div>
+              <div className="column">
+                <label className="label">Add Vegetables</label>
+                {vegetables.map(vegetable => {
+                  return(
+                    <Button basic color='green' content='Green' onClick={() => handleProduceAdd(vegetable, 'vegetable')}>{vegetable}</Button>
+                  )
+                })
+                }
+              </div>
           </div>
           <br />
-          <h1>Selected Fruits</h1>
-          <div>
-            {selectedFruits.map(fruit => {
-              return(
-                <Button color='green' onClick={() => handleProduceRemove(fruit, 'fruit')}>{fruit}</Button>
-              )
-            })
+          <div className="submit-button">
+            {submitStatus ? (
+              <Button loading>Loading</Button>
+            ) : (
+              <Button onClick={updateBooth}>Save Changes</Button>
+            )
             }
           </div>
-          <br />
-          <h1>Selected Vegetables</h1>
-          <div>
-          {selectedVegetables.map(vegetable => {
-              return(
-                <Button color='green' onClick={() => handleProduceRemove(vegetable, 'vegetable')}>{vegetable}</Button>
-              )
-            })
-            }
-          </div>
-          <br />
-          {submitStatus ? (
-            <Button loading>Loading</Button>
-          ) : (
-            <Button onClick={updateBooth}>Submit</Button>
-          )
-          }
         </div>
       );
     }
