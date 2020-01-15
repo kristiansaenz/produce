@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import ReactMapGl, { Marker, Popup } from "react-map-gl";
-import MapPopup from "./MapPopup";
-import Geocoder from "react-mapbox-gl-geocoder";
-import Pin from "../images/map-pin.svg";
-const GeoJSON = require("geojson");
+import React, { useState, useEffect } from 'react';
+import ReactMapGl, { Marker, Popup } from 'react-map-gl';
+import MapPopup from './MapPopup';
+import Geocoder from 'react-mapbox-gl-geocoder';
+import Pin from '../images/map-pin.svg';
+const GeoJSON = require('geojson');
 
 const ProfileMap = props => {
   const [viewport, setViewport] = useState({ props });
@@ -13,11 +13,11 @@ const ProfileMap = props => {
   //const MAP_TOKEN = "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
   const mapAccess = {
     mapboxApiAccessToken:
-      "pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw"
+      'pk.eyJ1IjoicnlhbmphbHVma2EiLCJhIjoiY2syNzBpZzl1MzdxNDNjbXQ0MDl0eTBwMyJ9.G7XyRwnaQnkWNFjDDx7QZw'
   };
   const queryParams = {
-    country: "us",
-    types: "place"
+    country: 'us',
+    types: 'place'
   };
 
   useEffect(() => {
@@ -40,8 +40,8 @@ const ProfileMap = props => {
       setViewport({
         latitude: latAvg,
         longitude: lngAvg,
-        width: "100%",
-        height: "40vh",
+        width: '100%',
+        height: '40vh',
         zoom: zoom
       });
     } else {
@@ -49,8 +49,8 @@ const ProfileMap = props => {
         setViewport({
           latitude: Number(props.booths.address.latitude),
           longitude: Number(props.booths.address.longitude),
-          width: "auto",
-          height: "25vh",
+          width: 'auto',
+          height: '25vh',
           zoom: 12
         });
       }
@@ -70,7 +70,7 @@ const ProfileMap = props => {
                 setActive(booth);
                 setPopupVisible(true);
               }}
-              class="map-marker"
+              class='map-marker'
             ></div>
           </Marker>
         ) : null
@@ -81,7 +81,7 @@ const ProfileMap = props => {
           latitude={Number(props.booths.address.latitude)}
           longitude={Number(props.booths.address.longitude)}
         >
-          <img src={Pin} id="profile-map-pin" alt="location" />
+          <img src={Pin} id='profile-map-pin' alt='location' />
         </Marker>
       ) : null;
     }
@@ -110,11 +110,11 @@ const ProfileMap = props => {
 
   const onSelected = (viewport, item) => {
     setViewport(viewport);
-    console.log("Selected: ", item);
+    console.log('Selected: ', item);
   };
 
   return (
-    <div class="map-container">
+    <div class='map-container'>
       {/* {Array.isArray(props.booths) && (
         <Geocoder
           {...mapAccess}
@@ -128,7 +128,7 @@ const ProfileMap = props => {
         {...mapAccess}
         {...viewport}
         onViewportChange={newViewport => setViewport(newViewport)}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle='mapbox://styles/mapbox/streets-v9'
       >
         {renderMarkers()}
         {renderPopups()}
@@ -138,7 +138,6 @@ const ProfileMap = props => {
 };
 
 export default ProfileMap;
-
 
 // import React, { useState, useEffect } from "react";
 // import ReactMapGl, { Marker, Popup } from "react-map-gl";

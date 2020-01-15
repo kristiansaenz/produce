@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
-import Booth from "../components/Booth";
+import React, { useEffect, useState } from 'react';
+import Booth from '../components/Booth';
 import { Loader } from 'semantic-ui-react';
 
 function BoothList(props) {
-
-  const [booths, setBooths] = useState([])
+  const [booths, setBooths] = useState([]);
 
   useEffect(() => {
-    console.log(props.booths)
-    setBooths(props.booths)
-  }, [props.booths])
+    console.log(props.booths);
+    setBooths(props.booths);
+  }, [props.booths]);
 
   if (props.booths.length === 0) {
     return (
-      <div className="boothlist-area">
-        <section className="section is-large">
+      <div className='boothlist-area'>
+        <section className='section is-large'>
           <Loader active inline='centered' />
         </section>
       </div>
@@ -22,7 +21,7 @@ function BoothList(props) {
   } else {
     return (
       <div>
-        <div className="columns is-mobile booth-list">
+        <div className='columns is-mobile booth-list'>
           {booths.map(booth => (
             <Booth
               booth={booth}

@@ -17,6 +17,7 @@ import BoothPage from "./pages/BoothPage";
 import Profile from "./pages/Profile";
 import ManageBooth from "./pages/ManageBooth";
 import SavedBooths from "./pages/SavedBooths";
+import CreateBooth from "./pages/CreateBooth";
 
 class App extends Component {
   componentDidMount() {
@@ -39,8 +40,9 @@ class App extends Component {
                 <Route path="/contact" component={Contact} />
                 <Route path="/booth/:id" component={BoothPage} />
                 <Route path="/profile" component={Profile} />
-                <Route path="/yourbooth" component={ManageBooth} />
+                <Route path="/manage-booth" component={ManageBooth} />
                 <Route path="/favorites" component={SavedBooths} />
+                <Route path="/create-booth" component={ManageBooth} />
               </main>
               <Footer />
             </div>

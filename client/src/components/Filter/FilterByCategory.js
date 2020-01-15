@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 function FilterByCategory(props) {
   return (
-    <div className="categories">
+    <div className='categories'>
       {props.categoryList.map(category => (
-        <label className="checkbox">
-          <input type="checkbox" key={category.id} />
+        <label className='checkbox'>
+          <input type='checkbox' key={category.id} />
           {category.name}
         </label>
       ))}

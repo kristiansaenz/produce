@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const ProduceIcon = props => {
   return props.food ? (
     <div>
       <img
         src={require(`../images/produce-icons/${props.food}.svg`)}
-        className="produce-icon"
+        className='produce-icon'
         alt={props.food}
       />
       {props.food}

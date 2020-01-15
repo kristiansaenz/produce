@@ -1,10 +1,10 @@
 const ObjectId = require('mongodb').ObjectID;
-const zipToCoordinates = require('./helpers')
-const FarmerModel = require('../models/farmer.js')
+const zipToCoordinates = require('./helpers');
+const FarmerModel = require('../models/farmer.js');
 
 module.exports = {
-  list: function (req, res) {
-    FarmerModel.find(function (err, Farmers) {
+  list: function(req, res) {
+    FarmerModel.find(function(err, Farmers) {
       if (err) {
         return res.status(500).json({
           message: 'Error when getting Farmers.',
@@ -15,13 +15,11 @@ module.exports = {
     });
   },
 
-  create: function (req, res) {
-
+  create: function(req, res) {
     // convert given zip to full address attribute to save in db
-    let coordinates = zipToCoordinates(req.body.zip)
+    let coordinates = zipToCoordinates(req.body.zip);
     coordinates.then(result => {
-
-      let search_address = result.city + ' ' + result.state
+      let search_address = result.city + ' ' + result.state;
 
       const Farmer = new FarmerModel({
         name: req.body.name,
@@ -33,54 +31,56 @@ module.exports = {
           description: req.body.booth.description,
           produce: req.body.booth.produce
         }
-      })
+      });
 
-
-      Farmer.save(Farmer, function (err, result) {
+      Farmer.save(Farmer, function(err, result) {
         if (err) throw err;
-        if (result) console.log('INSERTED SUCCESSFULLY')
-        return res.json(Farmer)
-      })
-    })
-  },
-
-  booth: function (req, res) {
-    let id = req.params.id;
-
-    FarmerModel.findOne({
-      _id: id
-    }, function (err, farmer) {
-      if (err) {
-        console.log(err);
-      }
-      if (farmer) {
-        console.log(farmer)
-        res.json(farmer);
-      }
+        if (result) console.log('INSERTED SUCCESSFULLY');
+        return res.json(Farmer);
+      });
     });
   },
 
-  filter: function (req, res) {
+  booth: function(req, res) {
+    let id = req.params.id;
+
+    FarmerModel.findOne(
+      {
+        _id: id
+      },
+      function(err, farmer) {
+        if (err) {
+          console.log(err);
+        }
+        if (farmer) {
+          console.log(farmer);
+          res.json(farmer);
+        }
+      }
+    );
+  },
+
+  filter: function(req, res) {
     let city = req.query.city;
-    console.log(city)
+    console.log(city);
 
     if (city !== '') {
       FarmerModel.find({
-        'address.city' : new RegExp(city, 'i')
+        'address.city': new RegExp(city, 'i')
         // 'searchAddress': new RegExp(city, 'i')
-      }).exec(function (err, results) {
+      }).exec(function(err, results) {
         if (err) {
           return res.status(500).json({
-            message: "Error when filtering Farmers...",
+            message: 'Error when filtering Farmers...',
             error: err
           });
         }
         console.log(results);
         return res.json(results);
-      })
+      });
     } else {
       // Temporary fix: when submitting search with no value, return all farms
-      FarmerModel.find(function (err, Farmers) {
+      FarmerModel.find(function(err, Farmers) {
         if (err) {
           return res.status(500).json({
             message: 'Error when getting Farmers.',
@@ -91,4 +91,4 @@ module.exports = {
       });
     }
   }
-}
+};
