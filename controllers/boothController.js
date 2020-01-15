@@ -1,13 +1,13 @@
-const ObjectId = require("mongodb").ObjectID;
-const zipToCoordinates = require("./helpers");
-const BoothModel = require("../models/boothModel.js");
+const ObjectId = require('mongodb').ObjectID;
+const zipToCoordinates = require('./helpers');
+const BoothModel = require('../models/boothModel.js');
 
 module.exports = {
   getAllBooths: function(req, res) {
     BoothModel.find(function(err, Booths) {
       if (err) {
         return res.status(500).json({
-          message: "Error when getting Booths.",
+          message: 'Error when getting Booths.',
           error: err
         });
       }
@@ -19,7 +19,7 @@ module.exports = {
     // convert given zip to full address attribute to save in db
     let coordinates = zipToCoordinates(req.body.zip);
     coordinates.then(result => {
-      let search_address = result.city + " " + result.state;
+      let search_address = result.city + ' ' + result.state;
 
       const Booth = new BoothModel({
         address: result,
@@ -34,7 +34,7 @@ module.exports = {
 
       Booth.save(Booth, function(err, result) {
         if (err) throw err;
-        if (result) console.log("Booth Created Successfully!");
+        if (result) console.log('Booth Created Successfully!');
         return res.json(Booth);
 
         // include a req body field with the logged in user's _id to search mongo
@@ -65,13 +65,13 @@ module.exports = {
     let state = req.body.state;
     console.log(state, 'from boothController');
 
-    if (state !== "") {
+    if (state !== '') {
       BoothModel.find({
-        "address.state_abbr": new RegExp(state, "i")
+        'address.state_abbr': new RegExp(state, 'i')
       }).exec(function(err, results) {
         if (err) {
           return res.status(500).json({
-            message: "Error when filtering Booths...",
+            message: 'Error when filtering Booths...',
             error: err
           });
         }
@@ -83,7 +83,7 @@ module.exports = {
       BoothModel.find(function(err, Booths) {
         if (err) {
           return res.status(500).json({
-            message: "Error when getting Booths.",
+            message: 'Error when getting Booths.',
             error: err
           });
         }
@@ -92,46 +92,52 @@ module.exports = {
     }
   },
 
-
   filter: function(req, res) {
-    let produce = req.body.produce
-    let location = req.body.location
+    let produce = req.body.produce;
+    let location = req.body.location;
 
-    if(location !== '' && produce.length > 0) {
+    if (location !== '' && produce.length > 0) {
       BoothModel.find(
         {
           'produce.category': { $in: produce },
-          'address.state_abbr': new RegExp(location, "i")
+          'address.state_abbr': new RegExp(location, 'i')
         },
-        function (err, Booths) {
+        function(err, Booths) {
           if (err) {
             return res.status(500).json({
-              message: "Error when filtering location and produce.",
+              message: 'Error when filtering location and produce.',
               error: err
             });
           }
           return res.json(Booths);
-        })
-    } else if(location === '' && produce.length > 0) {
-      BoothModel.find({ 'produce.category': { $in: produce } }, function(err, Booths) {
+        }
+      );
+    } else if (location === '' && produce.length > 0) {
+      BoothModel.find({ 'produce.category': { $in: produce } }, function(
+        err,
+        Booths
+      ) {
         if (err) {
           return res.status(500).json({
-            message: "Error when filtering produce.",
+            message: 'Error when filtering produce.',
             error: err
           });
         }
         return res.json(Booths);
-      })
-    } else if(location !== '' && produce.length < 1) {
-      BoothModel.find({ 'address.state_abbr': new RegExp(location, 'i') }, function(err, Booths) { 
-        if (err) {
-          return res.status(500).json({
-            message: "Error when filtering Booths...",
-            error: err
-          });
+      });
+    } else if (location !== '' && produce.length < 1) {
+      BoothModel.find(
+        { 'address.state_abbr': new RegExp(location, 'i') },
+        function(err, Booths) {
+          if (err) {
+            return res.status(500).json({
+              message: 'Error when filtering Booths...',
+              error: err
+            });
+          }
+          return res.json(Booths);
         }
-        return res.json(Booths);
-      })
+      );
     }
   },
 
@@ -142,7 +148,7 @@ module.exports = {
     BoothModel.findByIdAndUpdate(id, req.body, { new: true }).then(booth => {
       if (!booth) {
         return res.status(500).json({
-          message: "Booth not found with id: " + id
+          message: 'Booth not found with id: ' + id
         });
       }
       res.json(booth);
@@ -155,7 +161,7 @@ module.exports = {
     BoothModel.findByIdAndRemove(id).then(booth => {
       if (!booth) {
         return res.status(500).json({
-          message: "Booth not found with id " + id
+          message: 'Booth not found with id ' + id
         });
       }
       res.json(booth);

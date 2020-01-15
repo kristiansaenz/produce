@@ -1,22 +1,22 @@
-require("dotenv").config()
-var express = require("express");
+require('dotenv').config();
+var express = require('express');
 var router = express.Router();
 const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
 const multer = require('multer');
 const path = require('path');
-var BoothController = require("../controllers/boothController.js");
+var BoothController = require('../controllers/boothController.js');
 
-router.get("/", BoothController.getAllBooths);
-router.get("/:id", BoothController.getBoothById);
-router.post("/filterByLocation", BoothController.filterByLocation);
-router.post("/filter", BoothController.filter);
-router.post("/create", BoothController.create);
-router.patch("/:id", BoothController.updateBooth);
-router.delete("/:id", BoothController.deleteBooth);
+router.get('/', BoothController.getAllBooths);
+router.get('/:id', BoothController.getBoothById);
+router.post('/filterByLocation', BoothController.filterByLocation);
+router.post('/filter', BoothController.filter);
+router.post('/create', BoothController.create);
+router.patch('/:id', BoothController.updateBooth);
+router.delete('/:id', BoothController.deleteBooth);
 
-router.post("/upload-images", (req, res) => {
-  uploadsBusinessGallery(req, res, (error) => {
+router.post('/upload-images', (req, res) => {
+  uploadsBusinessGallery(req, res, error => {
     console.log('files', req.files);
     if (error) {
       console.log('errors', error);
@@ -34,7 +34,7 @@ router.post("/upload-images", (req, res) => {
         for (let i = 0; i < fileArray.length; i++) {
           fileLocation = fileArray[i].location;
           console.log('filenm', fileLocation);
-          galleryImgLocationArray.push(fileLocation)
+          galleryImgLocationArray.push(fileLocation);
         }
         // Save the file name into database
         res.json({
@@ -44,7 +44,7 @@ router.post("/upload-images", (req, res) => {
       }
     }
   });
-})
+});
 
 const s3 = new aws.S3({
   accessKeyId: process.env.ACCESSKEYID,
@@ -55,20 +55,26 @@ const s3 = new aws.S3({
 // Multiple File Uploads ( max 4 )
 const uploadsBusinessGallery = multer({
   storage: multerS3({
-   s3: s3,
-   bucket: process.env.BUCKET_NAME,
-   acl: 'public-read',
-   key: function (req, file, cb) {
-    cb( null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
-   }
+    s3: s3,
+    bucket: process.env.BUCKET_NAME,
+    acl: 'public-read',
+    key: function(req, file, cb) {
+      cb(
+        null,
+        path.basename(file.originalname, path.extname(file.originalname)) +
+          '-' +
+          Date.now() +
+          path.extname(file.originalname)
+      );
+    }
   }),
-  limits:{ fileSize: 4000000 }, // = 2 MB
-  fileFilter: function( req, file, cb ){
-   checkFileType( file, cb );
+  limits: { fileSize: 4000000 }, // = 2 MB
+  fileFilter: function(req, file, cb) {
+    checkFileType(file, cb);
   }
- }).array( 'galleryImage', 4 );
+}).array('galleryImage', 4);
 
- function checkFileType(file, cb) {
+function checkFileType(file, cb) {
   // Allowed ext
   const filetypes = /jpeg|jpg|png|gif/;
   // Check ext

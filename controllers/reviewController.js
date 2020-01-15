@@ -1,10 +1,14 @@
-const BoothModel = require('../models/boothModel')
+const BoothModel = require('../models/boothModel');
 
 module.exports = {
   addReview: function(req, res) {
-
-    const today = new Date()
-    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    const today = new Date();
+    const date =
+      today.getFullYear() +
+      '-' +
+      (today.getMonth() + 1) +
+      '-' +
+      today.getDate();
 
     const Review = {
       reviewer: req.body.reviewer,
@@ -13,18 +17,19 @@ module.exports = {
       rating: req.body.rating,
       message: req.body.message,
       created_at: date
-    }
+    };
 
     BoothModel.findOneAndUpdate(
       { _id: req.body.booth_id },
-      { $push: { reviews: Review  } },
+      { $push: { reviews: Review } },
       { useFindAndModify: false, returnOriginal: false },
-      function (error, success) {
+      function(error, success) {
         if (error) {
-            console.log("this is the error : ", error);
+          console.log('this is the error : ', error);
         } else {
-            res.json(success.reviews)
+          res.json(success.reviews);
         }
-    });
+      }
+    );
   }
-}
+};

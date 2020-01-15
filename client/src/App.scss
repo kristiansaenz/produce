@@ -470,11 +470,9 @@ button:focus {
 
 .is-backdrop {
   background: rgb(65, 186, 119);
-  background: linear-gradient(
-    90deg,
-    rgba(65, 186, 119, 1) 0%,
-    rgba(163, 208, 96, 1) 81%
-  );
+  background: linear-gradient(90deg,
+      rgba(65, 186, 119, 1) 0%,
+      rgba(163, 208, 96, 1) 81%);
   height: 35.5rem;
 }
 
