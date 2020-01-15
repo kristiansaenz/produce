@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SelectedImageDisplay from './SelectedImageDisplay';
 
 class MultipleImageUploader extends Component {
   state = {
+    images: [],
     selectedFiles: null
+  };
+
+  onImageChange = event => {
+    this.multipleFileChangedHandler(event);
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = e => {
+        this.setState({
+          images: [...this.state.images, e.target.result]
+        });
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
   };
 
   multipleFileChangedHandler = event => {
@@ -56,7 +71,7 @@ class MultipleImageUploader extends Component {
         });
     } else {
       // if file not selected throw error
-      alert('Please upload file');
+      alert('Please select file');
     }
   };
 
@@ -64,16 +79,13 @@ class MultipleImageUploader extends Component {
     return (
       <div>
         {/* Multiple File Upload */}
+        <SelectedImageDisplay images={this.state.images} />;
         <div
           className='card border-light mb-3'
           style={{ boxShadow: '0 5px 10px 2px rgba(195,192,192,.5)' }}
         >
           <div className='card-body'>
-            <input
-              type='file'
-              multiple
-              onChange={this.multipleFileChangedHandler}
-            />
+            <input type='file' multiple onChange={this.onImageChange} />
             <div className='mt-5'>
               <button
                 className='btn btn-info'
