@@ -1,12 +1,12 @@
 export const categories = [
-    { key: "fruits", text: "Fruits", value: "fruits" },
-    { key: "vegetables", text: "Vegetables", value: "vegetables" },
-    { key: "dairy", text: "Dairy", value: "dairy" },
-    { key: "bakery", text: "Bakery", value: "bakery" }
+  { key: 'fruits', text: 'Fruits', value: 'fruits' },
+  { key: 'vegetables', text: 'Vegetables', value: 'vegetables' },
+  { key: 'dairy', text: 'Dairy', value: 'dairy' },
+  { key: 'bakery', text: 'Bakery', value: 'bakery' }
 ];
 
-export const fruitItems = ["apples", "bananas", "strawberries", "oranges"]
-export const vegetableItems = ["carrots", "celery", "squash"]
+export const fruitItems = ['apples', 'bananas', 'strawberries', 'oranges'];
+export const vegetableItems = ['carrots', 'celery', 'squash'];
 
 // export const fruitItems = [
 //     { key: "apples", text: "Apples", value: "apples" },

@@ -1,39 +1,40 @@
-import React, { useState, useEffect } from "react";
-import Field from "./forms/Field";
-import SubmitButton from "./forms/SubmitButton";
-import useForm from "./forms/useForm";
-import store from "../store";
-import { loadUser } from "../actions/authActions";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import Field from './forms/Field';
+import SubmitButton from './forms/SubmitButton';
+import useForm from './forms/useForm';
+import store from '../store';
+import { loadUser } from '../actions/authActions';
+import axios from 'axios';
 
 function EditProfileForm(props) {
   const { values, handleChange, handleSubmit } = useForm(updateProfile);
   const [update, setUpdate] = useState(false);
 
   function updateProfile() {
-    axios.patch(`/users/${props.user._id}`, {
-      name: values.name,
-      email: values.email
-    })
-    .then(response => {
-      console.log(response)
-      setUpdate(true);
-      store.dispatch(loadUser());
-    })
+    axios
+      .patch(`/users/${props.user._id}`, {
+        name: values.name,
+        email: values.email
+      })
+      .then(response => {
+        console.log(response);
+        setUpdate(true);
+        store.dispatch(loadUser());
+      });
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <Field
-          label="Name"
-          name="name"
+          label='Name'
+          name='name'
           value={values.name !== undefined ? values.name : props.user.name}
           handleChange={handleChange}
         />
         <Field
-          label="Email"
-          name="email"
+          label='Email'
+          name='email'
           value={values.email !== undefined ? values.email : props.user.email}
           handleChange={handleChange}
         />
@@ -49,7 +50,7 @@ function EditProfileForm(props) {
           value="cant change this now"
           handleChange={handleChange}
         /> */}
-        <SubmitButton label="Save Changes" />
+        <SubmitButton label='Save Changes' />
       </form>
     </div>
   );

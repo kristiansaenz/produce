@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 const useForm = callback => {
   const [values, setValues] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     if (event) event.preventDefault();
     setIsSubmitting(true);
     callback();

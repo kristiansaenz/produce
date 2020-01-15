@@ -1,5 +1,5 @@
-import React from "react";
-import AddItemBox from "./AddItemBox";
+import React from 'react';
+import AddItemBox from './AddItemBox';
 
 const AddItemBoxList = props => {
   return props.itemBoxList.map(itemBox => (

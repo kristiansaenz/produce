@@ -6,6 +6,6 @@ const CreateBooth = () => {
       <h1>Create a booth</h1>
     </div>
   );
-}
+};
 
 export default CreateBooth;

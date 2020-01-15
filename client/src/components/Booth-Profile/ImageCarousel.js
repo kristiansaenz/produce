@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { Gallery, GalleryImage } from "react-gesture-gallery";
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import { Gallery, GalleryImage } from 'react-gesture-gallery';
 
 function ImageCarousel(props) {
   const [index, setIndex] = useState(0);
@@ -12,14 +12,16 @@ function ImageCarousel(props) {
         setIndex(i);
       }}
     >
-      {props.boothImages && props.boothImages.map(image => (
-        props.view === "profile" ?
+      {props.boothImages &&
+        props.boothImages.map(image =>
+          props.view === 'profile' ? (
             <figure class={props.image_size}>
-                <GalleryImage objectFit="fit" src={image} />
+              <GalleryImage objectFit='fit' src={image} />
             </figure>
-        :
-            <GalleryImage objectFit="fit" src={image} />
-      ))}
+          ) : (
+            <GalleryImage objectFit='fit' src={image} />
+          )
+        )}
     </Gallery>
   );
 }

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ADD_REVIEW } from './types';
 
 export const addReview = ({ message }) => dispatch => {
-    console.log(message)
+  console.log(message);
   // axios.post('/reviews/add-review', {
   //   reviewer: obj.reviewer,
   //   reviewer_name: obj.reviewer_name,
@@ -10,7 +10,7 @@ export const addReview = ({ message }) => dispatch => {
   //   message: obj.message,
   //   booth_id: obj.booth_id
   // })
-  // .then(res => 
+  // .then(res =>
   //   // dispatch({
   //   //   type: ADD_REVIEW,
   //   //   payload: res.data
@@ -20,4 +20,4 @@ export const addReview = ({ message }) => dispatch => {
   //     payload: 'HIHIHI'
   //   })
   // )
-}
+};

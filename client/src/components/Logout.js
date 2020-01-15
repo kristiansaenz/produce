@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
-import { logout } from "../actions/authActions";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { withRouter } from "react-router";
-import LogoutImage from "../images/logout.svg";
+import React, { Component, Fragment } from 'react';
+import { logout } from '../actions/authActions';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import LogoutImage from '../images/logout.svg';
 
 class Logout extends Component {
   handleLogout = () => {
@@ -12,7 +12,7 @@ class Logout extends Component {
 
   render() {
     return (
-      <a class="navbar-item" onClick={this.handleLogout}>
+      <a class='navbar-item' onClick={this.handleLogout}>
         Sign Out
       </a>
     );

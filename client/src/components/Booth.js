@@ -1,62 +1,61 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import PinIcon from "../images/map-pin.svg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PinIcon from '../images/map-pin.svg';
 import StarRatingComponent from 'react-star-rating-component';
-import ImageCarousel from "./Booth-Profile/ImageCarousel";
+import ImageCarousel from './Booth-Profile/ImageCarousel';
 
 class Booth extends React.Component {
-
   render() {
-  return (
-    <div class="column is-half-mobile is-one-quarter-tablet is-one-fifth-desktop">
-        <div class="card is-equal-height">
-
+    return (
+      <div class='column is-half-mobile is-one-quarter-tablet is-one-fifth-desktop'>
+        <div class='card is-equal-height'>
           {/* Card Image */}
-          <div class="card-image">
-            <ImageCarousel image_size="image" boothImages={this.props.boothImages} view="list" />
+          <div class='card-image'>
+            <ImageCarousel
+              image_size='image'
+              boothImages={this.props.boothImages}
+              view='list'
+            />
           </div>
 
           {/* Card Content */}
           <Link to={`booth/${this.props.id}`}>
-          <div class="card-content">
-            <div class="content">
-              <div class="subtitle">
-                {" "}
-                {this.props.booth_name}
-                <div className="booth-rating">
-                  <StarRatingComponent
-                    name="rate1"
-                    starCount={5}
-                    starColor={'#e80000'}
-                    emptyStarColor={'rgba(0, 0, 0, 0.15)'}
-                    value={this.props.rating}
-                    editing={false}
-                  />
+            <div class='card-content'>
+              <div class='content'>
+                <div class='subtitle'>
+                  {' '}
+                  {this.props.booth_name}
+                  <div className='booth-rating'>
+                    <StarRatingComponent
+                      name='rate1'
+                      starCount={5}
+                      starColor={'#e80000'}
+                      emptyStarColor={'rgba(0, 0, 0, 0.15)'}
+                      value={this.props.rating}
+                      editing={false}
+                    />
+                  </div>
                 </div>
+                {/* <p class="card-description"> {props.booth_description} </p> */}
+                {this.props.booth_description}
               </div>
-              {/* <p class="card-description"> {props.booth_description} </p> */}
-              {this.props.booth_description}
             </div>
-          </div>
 
-          {/* Card Footer */}
-          <footer class="card-footer">
-            <div class="card-footer-item">
-              <img src={PinIcon} className="pin" />
-              {this.props.address.city}, {this.props.address.state}
-            </div>
-          </footer>
+            {/* Card Footer */}
+            <footer class='card-footer'>
+              <div class='card-footer-item'>
+                <img src={PinIcon} className='pin' />
+                {this.props.address.city}, {this.props.address.state}
+              </div>
+            </footer>
           </Link>
         </div>
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
 
 export default Booth;
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
