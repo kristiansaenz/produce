@@ -76,10 +76,22 @@ class MultipleImageUploader extends Component {
   };
 
   render() {
+    // let imagePreview;
+
+    // if (this.state.images.length > 0) {
+    //   imagePreview = this.state.images.map(image => {
+    //     return (
+    //       <div>
+    //         {/* <img src={image} /> */}
+    //         <SelectedImageDisplay images={this.state.images} />
+    //       </div>
+    //     );
+    //   });
+    // }
     return (
       <div>
         {/* Multiple File Upload */}
-        <SelectedImageDisplay images={this.state.images} />;
+        <SelectedImageDisplay images={this.state.images} />
         <div
           className='card border-light mb-3'
           style={{ boxShadow: '0 5px 10px 2px rgba(195,192,192,.5)' }}
